@@ -8,6 +8,9 @@
 <meta name="theme-color" content="#0E1430">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%230E1430'/%3E%3Cstop offset='1' stop-color='%232B2470'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='64' height='64' rx='16' fill='url(%23g)'/%3E%3Ctext x='32' y='42' text-anchor='middle' font-family='Arial,Helvetica,sans-serif' font-weight='800' font-size='28' fill='%23F0D7AC'%3EUK%3C/text%3E%3C/svg%3E">
 <link rel="canonical" href="https://utkarshkashyap501.github.io/">
+<meta name="google-site-verification" content="meNUdM3-wzwVX-7VV9abxhzF1pe0DLDOjNjHTn4__Xk">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"Person","name":"Utkarsh Kashyap","url":"https://utkarshkashyap501.github.io/","jobTitle":"Product, Program & Customer Success","description":"6+ years where customers, product and delivery meet: product ownership, program delivery, customer success and AI enablement across APAC, EMEA, the Americas and the Middle East.","email":"mailto:utkarsh.kashyap768@gmail.com","sameAs":["https://www.linkedin.com/in/utkarshkashyap501"],"address":{"@type":"PostalAddress","addressCountry":"IN"},"alumniOf":{"@type":"CollegeOrUniversity","name":"St. Andrews Institute of Technology & Management"},"knowsAbout":["Product management","Product ownership","Program management","Customer success","Consulting","SaaS platforms","SDLC","Agile and Scrum","Customer journey mapping","Change management","AI agents and RAG"],"hasCredential":[{"@type":"EducationalOccupationalCredential","name":"Project Management Professional (PMP)"},{"@type":"EducationalOccupationalCredential","name":"Google Cloud Generative AI Leader"},{"@type":"EducationalOccupationalCredential","name":"Anthropic AI Fluency: Frameworks & Foundations"}]}
 </script>
@@ -350,6 +353,33 @@
   @media (prefers-reduced-motion:reduce){.rail-pill{transition:none}}
   .paused{animation-play-state:paused!important}
   .lenis-scrolling main{pointer-events:none}
+  /* ===== Print ===== */
+  .print-only{display:none}
+  @media print{
+    @page{margin:14mm}
+    html,body{background:#fff!important}
+    body{padding:0!important;font-size:10.5pt;color:#0E1430}
+    body:before,.rail,.skip,.ask-fab,.ask-panel,.a11y-panel,.journey,.stat .tex,#resume,.contact,footer .social{display:none!important}
+    .print-only{display:block;grid-column:1/-1;font-weight:700;font-size:9.5pt;color:#4338CA;margin:0 0 2mm}
+    .grid{gap:10px!important}
+    .t,.how .s,.seat,.intro h1 .w{opacity:1!important;transform:none!important;animation:none!important;transition:none!important}
+    .t{box-shadow:none!important;border:1px solid #D5DAE5!important;break-inside:avoid;page-break-inside:avoid}
+    .t:before{display:none!important}
+    .ai,.proj.dark,.stat.a{background:#fff!important;color:#0E1430!important}
+    .ai *,.proj.dark *,.stat.a *{color:#0E1430!important;background-color:transparent!important;border-color:#D5DAE5!important}
+    .stat.a b,.stat.b b{color:#4338CA!important}
+    .intro h1 .accent,.intro h1 .accent .w{background:none!important;color:#4338CA!important;-webkit-text-fill-color:#4338CA}
+    .btn{display:none!important}
+    a{color:inherit!important;text-decoration:none!important}
+    .proj .orb{display:none!important}
+    .t{padding:16px 18px!important;border-radius:12px!important}
+    .intro h1{font-size:26pt!important;line-height:1.05!important}
+    .stat{grid-column:span 6!important}
+    .stat b{font-size:26pt!important}
+    .proj{grid-column:span 6!important}
+    .tools,.ai,.fit{break-inside:auto!important;page-break-inside:auto!important}
+    .sec-title{margin-top:4mm!important;break-after:avoid}
+  }
   /* ===== Stat tile textures ===== */
   .stat .tex{position:absolute;left:0;right:0;top:0;height:62%;border-radius:inherit;pointer-events:none}
   .stat > b,.stat > span{position:relative}
@@ -433,6 +463,7 @@
   <a href="https://www.linkedin.com/in/utkarshkashyap501" target="_blank" rel="noopener" class="rail-ext" aria-label="LinkedIn (opens in a new tab)"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5ZM3 9.5h4V21H3V9.5Zm6.5 0h3.8v1.6h.06c.53-1 1.83-2.05 3.77-2.05 4.03 0 4.77 2.65 4.77 6.1V21h-4v-5.1c0-1.22-.02-2.78-1.7-2.78-1.7 0-1.96 1.33-1.96 2.7V21h-4V9.5Z" fill="currentColor"/></svg><span>LinkedIn</span></a>
 </nav>
 <main class="grid" id="top">
+  <p class="print-only">utkarshkashyap501.github.io | utkarsh.kashyap768@gmail.com | linkedin.com/in/utkarshkashyap501</p>
   <section class="t intro">
     <span class="avail"><i></i>Available to join immediately</span>
     <div>
