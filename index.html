@@ -102,15 +102,17 @@
   .seat b{display:block;font-weight:800;margin-bottom:4px}
   .seat span{color:var(--muted);font-size:.93rem}
 
-  .tools{grid-column:span 8}
-  .tools .group{margin-bottom:14px}
-  .tools .group:last-child{margin-bottom:0}
+  .tools{grid-column:span 12}
+  .tools .group{display:grid;grid-template-columns:200px 1fr;gap:16px;align-items:start;padding:14px 0;border-top:1px solid var(--line);margin:0}
+  .tools .group:first-of-type{border-top:none}
+  .tools .group b{padding-top:5px}
+  .tools .chips{margin-top:0}
   .tools .group b{display:block;font-size:.85rem;color:var(--muted);margin-bottom:8px}
   .tools .chip{background:var(--bg)}
   .tools .chip:hover{background:var(--indigo-soft);color:var(--indigo)}
 
-  .creds{grid-column:span 4;background:var(--indigo-soft)}
-  .creds ul{list-style:none;display:grid;gap:14px}
+  .creds{grid-column:span 12;background:var(--indigo-soft)}
+  .creds ul{list-style:none;display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
   .creds li b{display:block;font-weight:800}
   .creds li span{color:var(--muted);font-size:.9rem}
 
@@ -157,6 +159,8 @@
     .t{padding:22px}
     .how{grid-template-columns:1fr}
     .seats{grid-template-columns:1fr}
+    .tools .group{grid-template-columns:1fr;gap:8px}
+    .creds ul{grid-template-columns:1fr 1fr}
     .rform{grid-template-columns:1fr}
     .rform label.full,.rform .row{grid-column:span 1}
     .stat b{font-size:3.2rem}
@@ -245,18 +249,8 @@
   .social a:hover{background:var(--ink);color:#fff}
   ::selection{background:rgba(91,75,219,.2)}
   /* ===== Nav, headline sheen, motion ===== */
-  html{scroll-padding-top:92px}
+  html{scroll-padding-top:24px}
   body{padding-top:0}
-  .topnav{position:sticky;top:12px;z-index:50;max-width:1240px;margin:0 auto 18px;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:10px 12px 10px 20px;border-radius:18px;background:rgba(255,255,255,.72);backdrop-filter:blur(14px) saturate(160%);-webkit-backdrop-filter:blur(14px) saturate(160%);border:1px solid var(--line);box-shadow:0 8px 30px -18px rgba(14,20,48,.25);transition:box-shadow .25s,background .25s}
-  .topnav.scrolled{background:rgba(255,255,255,.9);box-shadow:0 14px 40px -20px rgba(14,20,48,.35)}
-  .topnav .brand{display:flex;align-items:center;gap:10px;font-weight:800;color:var(--ink);text-decoration:none;letter-spacing:-.01em}
-  .topnav .brand i{width:30px;height:30px;border-radius:9px;display:grid;place-items:center;font-style:normal;font-size:.8rem;background:linear-gradient(135deg,#0E1430,#2B2470);color:#F0D7AC}
-  .topnav nav{display:flex;gap:4px}
-  .topnav nav a{color:var(--muted);text-decoration:none;font-weight:600;font-size:.92rem;padding:8px 12px;border-radius:10px;transition:background .2s,color .2s}
-  .topnav nav a:hover,.topnav nav a.on{background:var(--indigo-soft);color:var(--violet)}
-  .topnav .cta{display:flex;gap:8px}
-  .topnav .btn{padding:10px 16px;border-radius:12px;font-size:.92rem}
-  .topnav .btn.g{background:linear-gradient(135deg,#F3E3C6,#E6C995);color:#3D2A0A;border:1px solid #E2C58F}
   .js .intro h1 .accent.done{background-image:linear-gradient(110deg,transparent 42%,rgba(255,255,255,.9) 50%,transparent 58%),linear-gradient(100deg,#5B4BDB 0%,#7A5AD6 45%,#B8894A 100%);background-size:250% 100%,100% 100%;background-repeat:no-repeat;background-position:150% 0,0 0;-webkit-background-clip:text;background-clip:text;color:transparent;animation:sheen1 1.6s ease .2s 1 forwards}
   @keyframes sheen1{to{background-position:-60% 0,0 0}}
   .journey{grid-column:span 12;position:relative;height:64px;margin:4px 6px 10px}
@@ -271,26 +265,63 @@
   .js .journey.in .pt{opacity:1}
   .js .journey.in .pt:nth-of-type(2){transition-delay:.25s}.js .journey.in .pt:nth-of-type(3){transition-delay:.7s}.js .journey.in .pt:nth-of-type(4){transition-delay:1.1s}.js .journey.in .pt:nth-of-type(5){transition-delay:1.45s}
   .mag{transition:transform .25s cubic-bezier(.2,.8,.2,1),box-shadow .2s,background .2s}
-  @media (max-width:860px){.topnav nav{display:none}}
-  @media (max-width:600px){.journey{display:none}.topnav{top:8px;padding:8px 8px 8px 14px}.topnav .brand span{display:none}}
-  /* ===== Ask AI Utkarsh ===== */
-  .ask-fab{position:fixed;right:22px;bottom:22px;z-index:60;display:inline-flex;align-items:center;gap:10px;padding:13px 18px 13px 14px;border:none;border-radius:999px;cursor:pointer;font:inherit;font-weight:700;color:#fff;background:linear-gradient(135deg,#0E1430,#2B2470 60%,#5B4BDB);box-shadow:0 16px 40px -14px rgba(14,20,48,.6),inset 0 1px 0 rgba(255,255,255,.15);transition:transform .2s ease,box-shadow .2s ease}
+  @media (max-width:600px){.journey{display:none}}
+  /* ===== Icon rail ===== */
+  .rail{position:fixed;left:18px;top:50%;transform:translateY(-50%);z-index:55;display:flex;flex-direction:column;align-items:center;gap:6px;padding:10px 8px;border-radius:22px;background:rgba(255,255,255,.78);backdrop-filter:blur(14px) saturate(160%);-webkit-backdrop-filter:blur(14px) saturate(160%);border:1px solid var(--line);box-shadow:0 18px 40px -22px rgba(14,20,48,.35)}
+  .rail a{position:relative;width:44px;height:44px;border-radius:14px;display:grid;place-items:center;color:var(--muted);text-decoration:none;transition:background .2s,color .2s,transform .2s}
+  .rail a svg{width:21px;height:21px}
+  .rail a:hover{background:var(--indigo-soft);color:var(--violet)}
+  .rail a.on{background:var(--ink);color:#F0D7AC}
+  .rail a span{position:absolute;left:calc(100% + 12px);top:50%;transform:translate(-6px,-50%);white-space:nowrap;padding:7px 12px;border-radius:10px;background:var(--ink);color:#fff;font-size:.82rem;font-weight:700;opacity:0;pointer-events:none;transition:opacity .18s,transform .18s;box-shadow:0 10px 24px -12px rgba(14,20,48,.6)}
+  .rail a:hover span,.rail a:focus-visible span{opacity:1;transform:translate(0,-50%)}
+  .rail .rail-logo{width:40px;height:40px;margin-bottom:4px;border-radius:12px;background:linear-gradient(135deg,#0E1430,#2B2470);color:#F0D7AC;font-weight:800;font-size:.8rem}
+  .rail .rail-logo:hover{background:linear-gradient(135deg,#0E1430,#2B2470);color:#fff;transform:scale(1.05)}
+  .rail-sep{width:24px;height:1px;background:var(--line);margin:4px 0}
+  .rail a[data-sec="resume"]{color:#9A6F2E}
+  .rail a[data-sec="resume"]:hover{background:#F7EBD6;color:#7A5420}
+  @media (max-width:1400px){body{padding-left:96px}}
+  @media (max-width:900px){
+    body{padding-left:14px;padding-bottom:90px}
+    .rail{left:50%;top:auto;bottom:12px;transform:translateX(-50%);flex-direction:row;padding:6px;gap:2px}
+    .rail .rail-logo,.rail-sep,.rail .rail-ext{display:none}
+    .rail a{width:42px;height:42px}
+    .rail a span{display:none}
+    .ask-fab{bottom:84px!important}
+    .ask-panel{bottom:146px!important;height:calc(100vh - 170px)!important}
+  }
+  /* ===== Utkarsh's AI Twin ===== */
+  .ask-fab{position:fixed;right:22px;bottom:22px;z-index:60;display:inline-flex;align-items:center;gap:0;height:56px;padding:0 15px;border:none;border-radius:999px;cursor:pointer;font:inherit;font-weight:700;color:#fff;background:linear-gradient(135deg,#0E1430,#2B2470 60%,#5B4BDB);box-shadow:0 16px 40px -14px rgba(14,20,48,.6),inset 0 1px 0 rgba(255,255,255,.15);transition:transform .2s ease,box-shadow .2s ease,padding .3s ease}
   .ask-fab:hover{transform:translateY(-2px);box-shadow:0 20px 44px -14px rgba(14,20,48,.7)}
-  .ask-fab .spark{width:26px;height:26px;border-radius:50%;display:grid;place-items:center;background:linear-gradient(135deg,#F0D7AC,#D9B276);color:#1A1406}
+  .ask-fab .spark{width:26px;height:26px;border-radius:50%;display:grid;place-items:center;background:linear-gradient(135deg,#F0D7AC,#D9B276);color:#1A1406;flex:none}
   .ask-fab .spark svg{width:15px;height:15px}
+  .ask-fab .lbl{max-width:220px;overflow:hidden;white-space:nowrap;margin-left:10px;transition:max-width .35s ease,margin .35s ease,opacity .25s ease}
+  .ask-fab.mini{padding:0 15px}
+  .ask-fab.mini .lbl{max-width:0;margin-left:0;opacity:0}
+  .ask-fab.mini:hover .lbl,.ask-fab.mini:focus-visible .lbl{max-width:220px;margin-left:10px;opacity:1}
+  .ask-fab .dot{position:absolute;top:6px;right:6px;width:10px;height:10px;border-radius:50%;background:#3DD6A0;border:2px solid #fff;display:none}
+  .ask-fab.unread .dot{display:block}
   @media (prefers-reduced-motion:no-preference){.ask-fab .spark{animation:pulseRing 2.6s ease-out infinite}}
   @keyframes pulseRing{0%{box-shadow:0 0 0 0 rgba(240,215,172,.55)}70%{box-shadow:0 0 0 10px rgba(240,215,172,0)}100%{box-shadow:0 0 0 0 rgba(240,215,172,0)}}
-  .ask-panel{position:fixed;right:22px;bottom:86px;z-index:61;width:min(400px,calc(100vw - 28px));height:min(580px,calc(100vh - 120px));display:flex;flex-direction:column;background:#fff;border:1px solid var(--line);border-radius:24px;box-shadow:0 30px 80px -30px rgba(14,20,48,.55);overflow:hidden;opacity:0;transform:translateY(14px) scale(.98);pointer-events:none;transition:opacity .22s ease,transform .22s ease}
+  .ask-panel{position:fixed;right:22px;bottom:90px;z-index:61;width:min(420px,calc(100vw - 28px));height:min(600px,calc(100vh - 120px));display:flex;flex-direction:column;background:#fff;border:1px solid var(--line);border-radius:24px;box-shadow:0 30px 80px -30px rgba(14,20,48,.55);overflow:hidden;opacity:0;transform:translateY(16px) scale(.96);transform-origin:bottom right;pointer-events:none;transition:opacity .22s ease,transform .25s cubic-bezier(.2,.8,.2,1)}
   .ask-panel.open{opacity:1;transform:none;pointer-events:auto}
-  .ask-head{padding:16px 18px;background:linear-gradient(135deg,#0E1430,#2B2470);color:#fff;display:flex;align-items:center;gap:12px}
-  .ask-head .av{width:38px;height:38px;border-radius:12px;display:grid;place-items:center;font-weight:800;font-size:.85rem;background:linear-gradient(135deg,#F0D7AC,#D9B276);color:#1A1406;flex:none}
+  .ask-head{padding:14px 14px 14px 18px;background:linear-gradient(135deg,#0E1430,#2B2470);color:#fff;display:flex;align-items:center;gap:12px}
+  .ask-head .av{width:38px;height:38px;border-radius:12px;display:grid;place-items:center;font-weight:800;font-size:.85rem;background:linear-gradient(135deg,#F0D7AC,#D9B276);color:#1A1406;flex:none;position:relative}
+  .ask-head .av:after{content:"";position:absolute;right:-2px;bottom:-2px;width:10px;height:10px;border-radius:50%;background:#3DD6A0;border:2px solid #1E2556}
   .ask-head b{display:block;font-size:1rem}
   .ask-head small{color:#C9CDE6;font-size:.78rem;line-height:1.3;display:block}
-  .ask-head button{margin-left:auto;background:rgba(255,255,255,.1);border:none;color:#fff;width:32px;height:32px;border-radius:10px;cursor:pointer;font-size:18px;line-height:1}
+  .ask-head .hb{margin-left:auto;display:flex;gap:6px}
+  .ask-head .hb button{background:rgba(255,255,255,.1);border:none;color:#fff;width:32px;height:32px;border-radius:10px;cursor:pointer;display:grid;place-items:center}
+  .ask-head .hb button:hover{background:rgba(255,255,255,.2)}
+  .ask-head .hb svg{width:16px;height:16px}
   .ask-log{flex:1;overflow-y:auto;padding:16px;display:flex;flex-direction:column;gap:10px;background:#F7F8FB}
-  .msg{max-width:86%;padding:10px 14px;border-radius:16px;font-size:.93rem;line-height:1.5;white-space:pre-wrap;word-wrap:break-word}
+  .msg{max-width:88%;padding:10px 14px;border-radius:16px;font-size:.93rem;line-height:1.55;word-wrap:break-word}
   .msg.ai{align-self:flex-start;background:#fff;border:1px solid var(--line);color:var(--ink);border-bottom-left-radius:6px}
-  .msg.me{align-self:flex-end;background:var(--ink);color:#fff;border-bottom-right-radius:6px}
+  .msg.me{align-self:flex-end;background:var(--ink);color:#fff;border-bottom-right-radius:6px;white-space:pre-wrap}
+  .msg p{margin:0 0 8px}.msg p:last-child{margin-bottom:0}
+  .msg ul,.msg ol{margin:4px 0 8px;padding-left:20px}
+  .msg li{margin:3px 0}
+  .msg strong{font-weight:800;color:#0E1430}
+  .msg a{color:var(--violet);font-weight:600;text-decoration:underline;text-underline-offset:2px;word-break:break-word}
   .msg.typing{color:var(--muted)}
   .msg.typing i{display:inline-block;width:6px;height:6px;margin:0 2px;border-radius:50%;background:var(--violet);animation:blink 1.2s infinite}
   .msg.typing i:nth-child(2){animation-delay:.2s}.msg.typing i:nth-child(3){animation-delay:.4s}
@@ -304,22 +335,22 @@
   .ask-form button{font:inherit;font-weight:700;border:none;border-radius:12px;padding:0 16px;cursor:pointer;background:var(--ink);color:#fff}
   .ask-form button:disabled{opacity:.5;cursor:default}
   .ask-note{font-size:.72rem;color:var(--muted);text-align:center;padding:0 12px 10px;background:#fff}
-  @media (max-width:600px){.ask-fab{right:14px;bottom:14px;padding:12px 14px 12px 12px}.ask-fab .lbl{display:none}.ask-panel{right:14px;bottom:76px;height:calc(100vh - 110px)}}
+  @media (max-width:600px){.ask-fab{right:14px}.ask-panel{right:14px}}
 </style>
 </head>
 <body>
-<header class="topnav" id="topnav">
-  <a class="brand" href="#top"><i>UK</i><span>Utkarsh Kashyap</span></a>
-  <nav aria-label="Sections">
-    <a href="#how">How I work</a>
-    <a href="#ai">AI</a>
-    <a href="#experience">Experience</a>
-    <a href="#projects">Projects</a>
-  </nav>
-  <div class="cta">
-    <a class="btn g mag" href="#resume">Request resume</a>
-  </div>
-</header>
+<nav class="rail" id="rail" aria-label="Sections">
+  <a class="rail-logo" href="#top" aria-label="Back to top">UK</a>
+  <a href="#top" data-sec="top"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10.5 12 3l9 7.5V20a1 1 0 0 1-1 1h-5v-6h-6v6H4a1 1 0 0 1-1-1v-9.5Z"/></svg><span>Home</span></a>
+  <a href="#how" data-sec="how"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6h16M4 12h10M4 18h7"/><circle cx="19" cy="17" r="2.5"/></svg><span>How I work</span></a>
+  <a href="#ai" data-sec="ai"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l1.8 5.2L19 10l-5.2 1.8L12 17l-1.8-5.2L5 10l5.2-1.8L12 3Z"/><path d="M19 15l.8 2.2L22 18l-2.2.8L19 21l-.8-2.2L16 18l2.2-.8L19 15Z"/></svg><span>How I use AI</span></a>
+  <a href="#experience" data-sec="experience"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2M3 13h18"/></svg><span>Experience</span></a>
+  <a href="#projects" data-sec="projects"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7.5" height="7.5" rx="2"/><rect x="13.5" y="3" width="7.5" height="7.5" rx="2"/><rect x="3" y="13.5" width="7.5" height="7.5" rx="2"/><rect x="13.5" y="13.5" width="7.5" height="7.5" rx="2"/></svg><span>Projects</span></a>
+  <a href="#resume" data-sec="resume"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M7 3h7l5 5v12a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1Z"/><path d="M14 3v5h5M9 13h6M9 17h6"/></svg><span>Request resume</span></a>
+  <i class="rail-sep"></i>
+  <a href="mailto:utkarsh.kashyap768@gmail.com" class="rail-ext"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1Zm0 1.6V17h16V7.6l-8 5.2-8-5.2ZM5.3 7 12 11.3 18.7 7H5.3Z" fill="currentColor"/></svg><span>Email me</span></a>
+  <a href="https://www.linkedin.com/in/utkarshkashyap501" target="_blank" rel="noopener" class="rail-ext"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5ZM3 9.5h4V21H3V9.5Zm6.5 0h3.8v1.6h.06c.53-1 1.83-2.05 3.77-2.05 4.03 0 4.77 2.65 4.77 6.1V21h-4v-5.1c0-1.22-.02-2.78-1.7-2.78-1.7 0-1.96 1.33-1.96 2.7V21h-4V9.5Z" fill="currentColor"/></svg><span>LinkedIn</span></a>
+</nav>
 <main class="grid" id="top">
   <section class="t intro">
     <span class="avail"><i></i>Available to join immediately</span>
@@ -363,7 +394,7 @@
     <p class="lead">I use AI every single day, at work and on my own projects. The way I look at it, AI is only worth it if it saves real time or people actually use it. So here's what that looks like for me in practice.</p>
     <div class="ai-cols">
       <div class="ai-col"><h3><i></i>At work</h3><ul>
-        <li>Built AI agents and RAG workflows on Gemini Enterprise.</li>
+        <li>Built AI agents and RAG workflows for real business use cases.</li>
         <li>Rolled out Copilot and Glean company-wide, and ran the training so people actually used them.</li>
         <li>Kept our prompt libraries, agent catalogs and model registries in order, and tracked latency and cost.</li>
         <li>Automated our team's recurring tasks with AI, which got us a 30% efficiency gain.</li>
@@ -439,9 +470,11 @@
 
   <section class="t tools">
     <h2>What I work with</h2>
-    <div class="group"><b>Product and delivery</b><div class="chips"><span class="chip">PRDs and user stories</span><span class="chip">Backlog ownership</span><span class="chip">Agile and Scrum</span><span class="chip">Wireframes</span><span class="chip">UAT</span><span class="chip">Go-to-market</span><span class="chip">Journey mapping</span></div></div>
-    <div class="group"><b>AI</b><div class="chips"><span class="chip">Claude</span><span class="chip">ChatGPT</span><span class="chip">Gemini Enterprise</span><span class="chip">RAG</span><span class="chip">Claude Code</span><span class="chip">n8n</span><span class="chip">Copilot</span><span class="chip">Glean</span></div></div>
-    <div class="group"><b>Tools and data</b><div class="chips"><span class="chip">JIRA</span><span class="chip">Confluence</span><span class="chip">ServiceNow</span><span class="chip">Salesforce</span><span class="chip">SQL</span><span class="chip">Python</span><span class="chip">Tableau</span><span class="chip">Qualtrics</span></div></div>
+    <div class="group"><b>Product and delivery</b><div class="chips"><span class="chip">Product management</span><span class="chip">PRDs with edge cases</span><span class="chip">BRDs and FRDs</span><span class="chip">User stories and acceptance criteria</span><span class="chip">Backlog and sprint planning</span><span class="chip">Agile and Scrum</span><span class="chip">Wireframes and mockups</span><span class="chip">AI prototypes</span><span class="chip">POC management</span><span class="chip">UAT and regression testing</span><span class="chip">Root cause analysis</span><span class="chip">RAID logs</span><span class="chip">Go-to-market</span><span class="chip">0-to-1 initiatives</span><span class="chip">Budget tracking</span></div></div>
+    <div class="group"><b>Customers and stakeholders</b><div class="chips"><span class="chip">Customer journey mapping</span><span class="chip">Discovery workshops</span><span class="chip">NPS, CSAT and VoC</span><span class="chip">Change management</span><span class="chip">Training and enablement</span><span class="chip">Digital adoption</span><span class="chip">C-suite engagement</span><span class="chip">SteerCo support</span><span class="chip">Presales support</span><span class="chip">Cross-sell proposals</span><span class="chip">Case studies</span><span class="chip">Vendor coordination</span><span class="chip">M&A integration support</span><span class="chip">Mentoring PMs and BAs</span><span class="chip">Team coordination</span></div></div>
+    <div class="group"><b>AI and automation</b><div class="chips"><span class="chip">Claude</span><span class="chip">ChatGPT</span><span class="chip">Gemini</span><span class="chip">Microsoft Copilot</span><span class="chip">Glean</span><span class="chip">Claude Code</span><span class="chip">Lovable</span><span class="chip">Replit</span><span class="chip">n8n</span><span class="chip">Zapier</span><span class="chip">Make</span><span class="chip">AI agents</span><span class="chip">RAG</span><span class="chip">Prompt libraries</span><span class="chip">Agent catalogs and model registries</span><span class="chip">AI observability</span><span class="chip">LLM evaluation</span><span class="chip">Vibe coding</span></div></div>
+    <div class="group"><b>Platforms and tools</b><div class="chips"><span class="chip">ServiceNow (ITSM, ITOM, HRSD, CSM)</span><span class="chip">Salesforce</span><span class="chip">SAP</span><span class="chip">Workday</span><span class="chip">SharePoint</span><span class="chip">JIRA</span><span class="chip">Confluence</span><span class="chip">Asana</span><span class="chip">Figma</span><span class="chip">Postman</span><span class="chip">Microsoft 365</span><span class="chip">SSO and connectors</span><span class="chip">Azure</span><span class="chip">AWS</span><span class="chip">GCP</span><span class="chip">Grafana</span><span class="chip">Prometheus</span><span class="chip">Azure Monitor</span></div></div>
+    <div class="group"><b>Data and research</b><div class="chips"><span class="chip">SQL</span><span class="chip">Python</span><span class="chip">Excel</span><span class="chip">Tableau</span><span class="chip">Power BI</span><span class="chip">Qualtrics</span><span class="chip">Gartner</span><span class="chip">Forrester</span><span class="chip">Statista</span><span class="chip">Factiva</span><span class="chip">Capital IQ</span></div></div>
   </section>
   <section class="t creds">
     <h2>Certifications</h2>
@@ -526,12 +559,10 @@
   // headline: swap word spans back to one text run so the gradient flows across, then sheen once
   var acc = h1.querySelector('.accent');
   if (acc) { var txt = acc.textContent; setTimeout(function(){ acc.textContent = txt; acc.classList.add('done'); }, (wi * 60) + 800); }
-  // sticky nav shadow + active section
-  var nav = document.getElementById('topnav');
-  window.addEventListener('scroll', function(){ nav.classList.toggle('scrolled', window.scrollY > 10); }, {passive:true});
-  var links = nav.querySelectorAll('nav a');
-  var spy = new IntersectionObserver(function(es){ es.forEach(function(e){ if (e.isIntersecting) links.forEach(function(a){ a.classList.toggle('on', a.getAttribute('href') === '#' + e.target.id); }); }); }, {rootMargin:'-45% 0px -50% 0px'});
-  ['how','ai','experience','projects'].forEach(function(id){ var el = document.getElementById(id); if (el) spy.observe(el); });
+  // icon rail: highlight the section in view
+  var rlinks = document.querySelectorAll('#rail a[data-sec]');
+  var spy = new IntersectionObserver(function(es){ es.forEach(function(e){ if (e.isIntersecting) rlinks.forEach(function(a){ a.classList.toggle('on', a.getAttribute('data-sec') === e.target.id); }); }); }, {rootMargin:'-45% 0px -50% 0px'});
+  ['top','how','ai','experience','projects','resume'].forEach(function(id){ var el = document.getElementById(id); if (el) spy.observe(el); });
   var fine = matchMedia('(pointer:fine)').matches;
   if (fine) {
     // magnetic buttons
@@ -555,17 +586,18 @@
   items.forEach(function(el){ io.observe(el); });
 })();
 </script>
-<button class="ask-fab" id="askFab" aria-controls="askPanel" aria-expanded="false"><span class="spark"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l1.9 5.6L19.5 9.5l-5.6 1.9L12 17l-1.9-5.6L4.5 9.5l5.6-1.9L12 2Zm6.5 11 .9 2.6 2.6.9-2.6.9-.9 2.6-.9-2.6-2.6-.9 2.6-.9.9-2.6Z" fill="currentColor"/></svg></span><span class="lbl">Ask AI Utkarsh</span></button>
+<button class="ask-fab" id="askFab" aria-controls="askPanel" aria-expanded="false" aria-label="Chat with my AI twin"><span class="spark"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l1.9 5.6L19.5 9.5l-5.6 1.9L12 17l-1.9-5.6L4.5 9.5l5.6-1.9L12 2Zm6.5 11 .9 2.6 2.6.9-2.6.9-.9 2.6-.9-2.6-2.6-.9 2.6-.9.9-2.6Z" fill="currentColor"/></svg></span><span class="lbl">Chat with my AI twin</span><i class="dot"></i></button>
 <section class="ask-panel" id="askPanel" role="dialog" aria-modal="false" aria-labelledby="askTitle">
-  <div class="ask-head"><div class="av">UK</div><div><b id="askTitle">AI Utkarsh</b><small>An AI version of me, trained on my background</small></div><button type="button" id="askClose" aria-label="Close chat">×</button></div>
+  <div class="ask-head"><div class="av">UK</div><div><b id="askTitle">Utkarsh's AI Twin</b><small>Trained on my background. Ask away.</small></div>
+    <div class="hb"><button type="button" id="askMin" aria-label="Minimise chat" title="Minimise"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg></button></div></div>
   <div class="ask-log" id="askLog" aria-live="polite"></div>
   <div class="ask-sugg" id="askSugg">
     <button type="button">What do you actually do?</button>
     <button type="button">How do you use AI at work?</button>
-    <button type="button">Why product and customer roles?</button>
+    <button type="button">Walk me through your career</button>
     <button type="button">Are you open to relocation?</button>
   </div>
-  <form class="ask-form" id="askForm"><label class="sr" for="askInput" style="position:absolute;left:-9999px">Your question</label><input id="askInput" maxlength="600" placeholder="Ask me anything about my work..." autocomplete="off"><button type="submit" id="askSend">Send</button></form>
+  <form class="ask-form" id="askForm"><label for="askInput" style="position:absolute;left:-9999px">Your question</label><input id="askInput" maxlength="600" placeholder="Ask me anything about my work..." autocomplete="off"><button type="submit" id="askSend">Send</button></form>
   <div class="ask-note">AI can get things wrong. For anything important, <a href="mailto:utkarsh.kashyap768@gmail.com">email the real me</a>.</div>
 </section>
 <script>
@@ -573,25 +605,61 @@
   var API = 'https://ask-utkarsh.utkarsh-kashyap768.workers.dev/';
   var fab = document.getElementById('askFab'), panel = document.getElementById('askPanel'), log = document.getElementById('askLog');
   var form = document.getElementById('askForm'), input = document.getElementById('askInput'), send = document.getElementById('askSend'), sugg = document.getElementById('askSugg');
+  var KEY = 'ukTwinChat', TTL = 24 * 60 * 60 * 1000;
   var history = [], busy = false, greeted = false;
-  function add(role, text){ var d = document.createElement('div'); d.className = 'msg ' + (role === 'user' ? 'me' : 'ai'); d.textContent = text; log.appendChild(d); log.scrollTop = log.scrollHeight; return d; }
-  function open(){ panel.classList.add('open'); fab.setAttribute('aria-expanded','true');
-    if (!greeted) { greeted = true; add('assistant', "Hi! I'm an AI version of Utkarsh. Ask me anything about my experience, how I work, or whether I'd fit a role you're hiring for."); }
+  function save(){ try { localStorage.setItem(KEY, JSON.stringify({t: Date.now(), h: history.slice(-30)})); } catch(e){} }
+  function load(){ try { var d = JSON.parse(localStorage.getItem(KEY) || 'null'); if (d && Date.now() - d.t < TTL && Array.isArray(d.h)) return d.h; localStorage.removeItem(KEY); } catch(e){} return []; }
+  // the button starts with its label, then shrinks to a small icon
+  setTimeout(function(){ if (!panel.classList.contains('open')) fab.classList.add('mini'); }, 6000);
+  window.addEventListener('scroll', function(){ if (window.scrollY > 300) fab.classList.add('mini'); }, {passive:true});
+
+  function esc(t){ return t.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
+  function inline(t){
+    var links = [];
+    function keep(html){ links.push(html); return '\u0000' + (links.length - 1) + '\u0000'; }
+    t = t.replace(/\[([^\]]+)\]\((https?:\/\/[^\s)]+|mailto:[^\s)]+)\)/g, function(m, label, url){ return keep('<a href="' + url + '"' + (url.indexOf('mailto:') === 0 ? '' : ' target="_blank" rel="noopener noreferrer"') + '>' + label + '</a>'); });
+    t = t.replace(/\b([\w.+-]+@[\w-]+\.[\w.-]+\w)\b/g, function(m){ return keep('<a href="mailto:' + m + '">' + m + '</a>'); });
+    t = t.replace(/\b((?:https?:\/\/|www\.)[^\s<]+[^\s<.,;:!?)\]'"])/g, function(m){ return keep('<a href="' + (m.indexOf('http') === 0 ? m : 'https://' + m) + '" target="_blank" rel="noopener noreferrer">' + m + '</a>'); });
+    t = t.replace(/\b((?:linkedin\.com|github\.com|ishqiyaa\.com|utkarshkashyap501\.github\.io)(?:\/[^\s<]*[^\s<.,;:!?)\]'"])?)/g, function(m){ return keep('<a href="https://' + m + '" target="_blank" rel="noopener noreferrer">' + m + '</a>'); });
+    t = t.replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>').replace(/__([^_]+)__/g, '<strong>$1</strong>');
+    t = t.replace(/(^|[\s(])\*([^*\s][^*]*?)\*(?=[\s).,!?]|$)/g, '$1<em>$2</em>');
+    return t.replace(/\u0000(\d+)\u0000/g, function(m, i){ return links[+i]; });
+  }
+  function render(text){
+    var lines = esc(text).replace(/\r/g,'').split('\n'), out = [], list = null, para = [];
+    function flushPara(){ if (para.length) { out.push('<p>' + inline(para.join(' ')) + '</p>'); para = []; } }
+    function flushList(){ if (list) { out.push('<' + list.type + '>' + list.items.map(function(i){ return '<li>' + inline(i) + '</li>'; }).join('') + '</' + list.type + '>'); list = null; } }
+    lines.forEach(function(raw){
+      var l = raw.trim().replace(/^#{1,6}\s+/, ''), m;
+      if (!l) { flushPara(); flushList(); return; }
+      if ((m = l.match(/^[-*•]\s+(.*)/))) { flushPara(); if (!list || list.type !== 'ul') { flushList(); list = {type:'ul', items:[]}; } list.items.push(m[1]); return; }
+      if ((m = l.match(/^\d+[.)]\s+(.*)/))) { flushPara(); if (!list || list.type !== 'ol') { flushList(); list = {type:'ol', items:[]}; } list.items.push(m[1]); return; }
+      flushList(); para.push(l);
+    });
+    flushPara(); flushList();
+    return out.join('');
+  }
+  function add(role, text){ var d = document.createElement('div'); d.className = 'msg ' + (role === 'user' ? 'me' : 'ai'); if (role === 'user') d.textContent = text; else d.innerHTML = render(text); log.appendChild(d); log.scrollTop = log.scrollHeight; return d; }
+  function open(){ panel.classList.add('open'); fab.setAttribute('aria-expanded','true'); fab.classList.add('mini'); fab.classList.remove('unread');
+    if (!greeted) { greeted = true;
+      history = load();
+      if (history.length) { add('assistant', "Welcome back! Here's where we left off."); history.forEach(function(m){ add(m.role, m.content); }); sugg.style.display = 'none'; }
+      else add('assistant', "Hi! I'm **Utkarsh's AI twin**. Ask me about my experience, how I work, or whether I'd fit a role you're hiring for."); }
     setTimeout(function(){ input.focus(); }, 150); }
-  function close(){ panel.classList.remove('open'); fab.setAttribute('aria-expanded','false'); fab.focus(); }
-  fab.addEventListener('click', function(){ panel.classList.contains('open') ? close() : open(); });
-  document.getElementById('askClose').addEventListener('click', close);
-  document.addEventListener('keydown', function(e){ if (e.key === 'Escape' && panel.classList.contains('open')) close(); });
+  function minimise(){ panel.classList.remove('open'); fab.setAttribute('aria-expanded','false'); fab.focus(); }
+  fab.addEventListener('click', function(){ panel.classList.contains('open') ? minimise() : open(); });
+  document.getElementById('askMin').addEventListener('click', minimise);
+  document.addEventListener('keydown', function(e){ if (e.key === 'Escape' && panel.classList.contains('open')) minimise(); });
   function ask(q){
     q = (q || '').trim(); if (!q || busy) return;
     busy = true; send.disabled = true; sugg.style.display = 'none';
-    add('user', q); history.push({role:'user', content:q}); input.value = '';
-    var t = add('assistant', ''); t.classList.add('typing'); t.innerHTML = '<i></i><i></i><i></i>';
-    fetch(API, {method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify({messages: history.slice(-8)})})
+    add('user', q); history.push({role:'user', content:q}); save(); input.value = '';
+    var t = document.createElement('div'); t.className = 'msg ai typing'; t.innerHTML = '<i></i><i></i><i></i>'; log.appendChild(t); log.scrollTop = log.scrollHeight;
+    fetch(API, {method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify({messages: history.slice(-12)})})
       .then(function(r){ return r.json(); })
-      .then(function(d){ var a = d.reply || "I can't answer right now. Email me at utkarsh.kashyap768@gmail.com and I'll get back to you."; t.classList.remove('typing'); t.textContent = a; history.push({role:'assistant', content:a}); })
-      .catch(function(){ t.classList.remove('typing'); t.textContent = "I couldn't connect just now. Email me at utkarsh.kashyap768@gmail.com and I'll get back to you."; })
-      .finally(function(){ busy = false; send.disabled = false; log.scrollTop = log.scrollHeight; input.focus(); if (window.goatcounter && window.goatcounter.count) { try { window.goatcounter.count({path:'ask-ai', title:'Asked AI Utkarsh', event:true}); } catch(e){} } });
+      .then(function(d){ var a = d.reply || "I can't answer right now. Email me at utkarsh.kashyap768@gmail.com and I'll get back to you."; t.classList.remove('typing'); t.innerHTML = render(a); history.push({role:'assistant', content:a}); save(); if (!panel.classList.contains('open')) fab.classList.add('unread'); })
+      .catch(function(){ t.classList.remove('typing'); t.innerHTML = render("I couldn't connect just now. Email me at utkarsh.kashyap768@gmail.com and I'll get back to you."); })
+      .finally(function(){ busy = false; send.disabled = false; log.scrollTop = log.scrollHeight; input.focus(); if (window.goatcounter && window.goatcounter.count) { try { window.goatcounter.count({path:'ask-ai', title:'Asked AI twin', event:true}); } catch(e){} } });
   }
   form.addEventListener('submit', function(e){ e.preventDefault(); ask(input.value); });
   sugg.addEventListener('click', function(e){ if (e.target.tagName === 'BUTTON') ask(e.target.textContent); });
