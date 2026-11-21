@@ -273,6 +273,38 @@
   .mag{transition:transform .25s cubic-bezier(.2,.8,.2,1),box-shadow .2s,background .2s}
   @media (max-width:860px){.topnav nav{display:none}}
   @media (max-width:600px){.journey{display:none}.topnav{top:8px;padding:8px 8px 8px 14px}.topnav .brand span{display:none}}
+  /* ===== Ask AI Utkarsh ===== */
+  .ask-fab{position:fixed;right:22px;bottom:22px;z-index:60;display:inline-flex;align-items:center;gap:10px;padding:13px 18px 13px 14px;border:none;border-radius:999px;cursor:pointer;font:inherit;font-weight:700;color:#fff;background:linear-gradient(135deg,#0E1430,#2B2470 60%,#5B4BDB);box-shadow:0 16px 40px -14px rgba(14,20,48,.6),inset 0 1px 0 rgba(255,255,255,.15);transition:transform .2s ease,box-shadow .2s ease}
+  .ask-fab:hover{transform:translateY(-2px);box-shadow:0 20px 44px -14px rgba(14,20,48,.7)}
+  .ask-fab .spark{width:26px;height:26px;border-radius:50%;display:grid;place-items:center;background:linear-gradient(135deg,#F0D7AC,#D9B276);color:#1A1406}
+  .ask-fab .spark svg{width:15px;height:15px}
+  @media (prefers-reduced-motion:no-preference){.ask-fab .spark{animation:pulseRing 2.6s ease-out infinite}}
+  @keyframes pulseRing{0%{box-shadow:0 0 0 0 rgba(240,215,172,.55)}70%{box-shadow:0 0 0 10px rgba(240,215,172,0)}100%{box-shadow:0 0 0 0 rgba(240,215,172,0)}}
+  .ask-panel{position:fixed;right:22px;bottom:86px;z-index:61;width:min(400px,calc(100vw - 28px));height:min(580px,calc(100vh - 120px));display:flex;flex-direction:column;background:#fff;border:1px solid var(--line);border-radius:24px;box-shadow:0 30px 80px -30px rgba(14,20,48,.55);overflow:hidden;opacity:0;transform:translateY(14px) scale(.98);pointer-events:none;transition:opacity .22s ease,transform .22s ease}
+  .ask-panel.open{opacity:1;transform:none;pointer-events:auto}
+  .ask-head{padding:16px 18px;background:linear-gradient(135deg,#0E1430,#2B2470);color:#fff;display:flex;align-items:center;gap:12px}
+  .ask-head .av{width:38px;height:38px;border-radius:12px;display:grid;place-items:center;font-weight:800;font-size:.85rem;background:linear-gradient(135deg,#F0D7AC,#D9B276);color:#1A1406;flex:none}
+  .ask-head b{display:block;font-size:1rem}
+  .ask-head small{color:#C9CDE6;font-size:.78rem;line-height:1.3;display:block}
+  .ask-head button{margin-left:auto;background:rgba(255,255,255,.1);border:none;color:#fff;width:32px;height:32px;border-radius:10px;cursor:pointer;font-size:18px;line-height:1}
+  .ask-log{flex:1;overflow-y:auto;padding:16px;display:flex;flex-direction:column;gap:10px;background:#F7F8FB}
+  .msg{max-width:86%;padding:10px 14px;border-radius:16px;font-size:.93rem;line-height:1.5;white-space:pre-wrap;word-wrap:break-word}
+  .msg.ai{align-self:flex-start;background:#fff;border:1px solid var(--line);color:var(--ink);border-bottom-left-radius:6px}
+  .msg.me{align-self:flex-end;background:var(--ink);color:#fff;border-bottom-right-radius:6px}
+  .msg.typing{color:var(--muted)}
+  .msg.typing i{display:inline-block;width:6px;height:6px;margin:0 2px;border-radius:50%;background:var(--violet);animation:blink 1.2s infinite}
+  .msg.typing i:nth-child(2){animation-delay:.2s}.msg.typing i:nth-child(3){animation-delay:.4s}
+  @keyframes blink{0%,80%,100%{opacity:.25}40%{opacity:1}}
+  .ask-sugg{display:flex;flex-wrap:wrap;gap:6px;padding:0 16px 10px;background:#F7F8FB}
+  .ask-sugg button{font:inherit;font-size:.8rem;font-weight:600;padding:7px 11px;border-radius:999px;border:1px solid #DDD7FB;background:#fff;color:var(--violet);cursor:pointer}
+  .ask-sugg button:hover{background:var(--indigo-soft)}
+  .ask-form{display:flex;gap:8px;padding:12px;border-top:1px solid var(--line);background:#fff}
+  .ask-form input{flex:1;font:inherit;font-size:.93rem;padding:11px 14px;border-radius:12px;border:1.5px solid var(--line);color:var(--ink)}
+  .ask-form input:focus{outline:none;border-color:var(--violet);box-shadow:0 0 0 4px rgba(91,75,219,.12)}
+  .ask-form button{font:inherit;font-weight:700;border:none;border-radius:12px;padding:0 16px;cursor:pointer;background:var(--ink);color:#fff}
+  .ask-form button:disabled{opacity:.5;cursor:default}
+  .ask-note{font-size:.72rem;color:var(--muted);text-align:center;padding:0 12px 10px;background:#fff}
+  @media (max-width:600px){.ask-fab{right:14px;bottom:14px;padding:12px 14px 12px 12px}.ask-fab .lbl{display:none}.ask-panel{right:14px;bottom:76px;height:calc(100vh - 110px)}}
 </style>
 </head>
 <body>
@@ -521,6 +553,48 @@
       io.unobserve(el); });
   }, {threshold:.12});
   items.forEach(function(el){ io.observe(el); });
+})();
+</script>
+<button class="ask-fab" id="askFab" aria-controls="askPanel" aria-expanded="false"><span class="spark"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l1.9 5.6L19.5 9.5l-5.6 1.9L12 17l-1.9-5.6L4.5 9.5l5.6-1.9L12 2Zm6.5 11 .9 2.6 2.6.9-2.6.9-.9 2.6-.9-2.6-2.6-.9 2.6-.9.9-2.6Z" fill="currentColor"/></svg></span><span class="lbl">Ask AI Utkarsh</span></button>
+<section class="ask-panel" id="askPanel" role="dialog" aria-modal="false" aria-labelledby="askTitle">
+  <div class="ask-head"><div class="av">UK</div><div><b id="askTitle">AI Utkarsh</b><small>An AI version of me, trained on my background</small></div><button type="button" id="askClose" aria-label="Close chat">×</button></div>
+  <div class="ask-log" id="askLog" aria-live="polite"></div>
+  <div class="ask-sugg" id="askSugg">
+    <button type="button">What do you actually do?</button>
+    <button type="button">How do you use AI at work?</button>
+    <button type="button">Why product and customer roles?</button>
+    <button type="button">Are you open to relocation?</button>
+  </div>
+  <form class="ask-form" id="askForm"><label class="sr" for="askInput" style="position:absolute;left:-9999px">Your question</label><input id="askInput" maxlength="600" placeholder="Ask me anything about my work..." autocomplete="off"><button type="submit" id="askSend">Send</button></form>
+  <div class="ask-note">AI can get things wrong. For anything important, <a href="mailto:utkarsh.kashyap768@gmail.com">email the real me</a>.</div>
+</section>
+<script>
+(function(){
+  var API = 'https://ask-utkarsh.utkarsh-kashyap768.workers.dev/';
+  var fab = document.getElementById('askFab'), panel = document.getElementById('askPanel'), log = document.getElementById('askLog');
+  var form = document.getElementById('askForm'), input = document.getElementById('askInput'), send = document.getElementById('askSend'), sugg = document.getElementById('askSugg');
+  var history = [], busy = false, greeted = false;
+  function add(role, text){ var d = document.createElement('div'); d.className = 'msg ' + (role === 'user' ? 'me' : 'ai'); d.textContent = text; log.appendChild(d); log.scrollTop = log.scrollHeight; return d; }
+  function open(){ panel.classList.add('open'); fab.setAttribute('aria-expanded','true');
+    if (!greeted) { greeted = true; add('assistant', "Hi! I'm an AI version of Utkarsh. Ask me anything about my experience, how I work, or whether I'd fit a role you're hiring for."); }
+    setTimeout(function(){ input.focus(); }, 150); }
+  function close(){ panel.classList.remove('open'); fab.setAttribute('aria-expanded','false'); fab.focus(); }
+  fab.addEventListener('click', function(){ panel.classList.contains('open') ? close() : open(); });
+  document.getElementById('askClose').addEventListener('click', close);
+  document.addEventListener('keydown', function(e){ if (e.key === 'Escape' && panel.classList.contains('open')) close(); });
+  function ask(q){
+    q = (q || '').trim(); if (!q || busy) return;
+    busy = true; send.disabled = true; sugg.style.display = 'none';
+    add('user', q); history.push({role:'user', content:q}); input.value = '';
+    var t = add('assistant', ''); t.classList.add('typing'); t.innerHTML = '<i></i><i></i><i></i>';
+    fetch(API, {method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify({messages: history.slice(-8)})})
+      .then(function(r){ return r.json(); })
+      .then(function(d){ var a = d.reply || "I can't answer right now. Email me at utkarsh.kashyap768@gmail.com and I'll get back to you."; t.classList.remove('typing'); t.textContent = a; history.push({role:'assistant', content:a}); })
+      .catch(function(){ t.classList.remove('typing'); t.textContent = "I couldn't connect just now. Email me at utkarsh.kashyap768@gmail.com and I'll get back to you."; })
+      .finally(function(){ busy = false; send.disabled = false; log.scrollTop = log.scrollHeight; input.focus(); if (window.goatcounter && window.goatcounter.count) { try { window.goatcounter.count({path:'ask-ai', title:'Asked AI Utkarsh', event:true}); } catch(e){} } });
+  }
+  form.addEventListener('submit', function(e){ e.preventDefault(); ask(input.value); });
+  sugg.addEventListener('click', function(e){ if (e.target.tagName === 'BUTTON') ask(e.target.textContent); });
 })();
 </script>
 <script data-goatcounter="https://utkarshkashyap501.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>
