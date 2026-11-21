@@ -143,8 +143,8 @@
     .js .fit.in .seat:nth-child(2){transition-delay:.1s}
     .js .fit.in .seat:nth-child(3){transition-delay:.2s}
     .js .fit.in .seat:nth-child(4){transition-delay:.3s}
-    .js .t,.js .how .s{opacity:0;transform:translateY(18px) scale(.98)}
-    .js .in,.js .how .s.in{opacity:1;transform:var(--tilt,none);transition:opacity .6s ease,transform .6s cubic-bezier(.2,.8,.2,1)}
+    .js .t,.js .how .s{opacity:0;transform:translateY(28px)}
+    .js .in,.js .how .s.in{opacity:1;transform:var(--tilt,none);transition:opacity .8s cubic-bezier(.16,1,.3,1),transform .9s cubic-bezier(.16,1,.3,1)}
   }
   @media (max-width:1000px){
     .intro,.stat,.proj,.tools,.creds{grid-column:span 12}
@@ -333,6 +333,18 @@
   .ask-form button:disabled{opacity:.5;cursor:default}
   .ask-note{font-size:.72rem;color:var(--muted);text-align:center;padding:0 12px 10px;background:#fff}
   @media (max-width:600px){.ask-fab{right:14px}.ask-panel{right:14px}}
+  /* ===== Smooth scrolling and sliding rail highlight ===== */
+  html.lenis,html.lenis body{height:auto}
+  .lenis.lenis-stopped{overflow:clip}
+  .lenis [data-lenis-prevent]{overscroll-behavior:contain}
+  @media (prefers-reduced-motion:no-preference){html:not(.lenis){scroll-behavior:smooth}}
+  .rail-pill{position:absolute;left:0;top:0;width:44px;height:44px;border-radius:14px;background:var(--ink);box-shadow:0 8px 18px -8px rgba(14,20,48,.55);pointer-events:none;opacity:0;z-index:0;transition:transform .5s cubic-bezier(.65,0,.35,1),opacity .25s ease}
+  .rail-pill.ready{opacity:1}
+  .rail a{z-index:1;transition:background .25s,color .35s ease,transform .2s}
+  .rail.has-pill a.on,.rail.has-pill a.on:hover{background:transparent;color:#F0D7AC}
+  @media (max-width:900px){.rail-pill{width:42px;height:42px}}
+  @media (prefers-reduced-motion:reduce){.rail-pill{transition:none}}
+  .paused{animation-play-state:paused!important}
 </style>
 </head>
 <body>
@@ -569,40 +581,94 @@
       c.addEventListener('pointerleave', function(){ c.style.transition = 'transform .5s cubic-bezier(.2,.8,.2,1), box-shadow .25s'; c.style.setProperty('--tilt', 'none'); });
     });
   }
-  var items = document.querySelectorAll('.t, .how .s, .journey'), n = 0;
+  var items = document.querySelectorAll('.t, .how .s, .journey');
   function countUp(el){var end=+el.dataset.count,suf=el.dataset.suffix||'',t0;function s(t){t0=t0||t;var k=Math.min(1,(t-t0)/1100);el.textContent=Math.round(end*(1-Math.pow(1-k,3)))+suf;if(k<1)requestAnimationFrame(s)}requestAnimationFrame(s)}
   var io = new IntersectionObserver(function(es){
+    var k = 0;
     es.forEach(function(e){ if(!e.isIntersecting) return; var el=e.target;
-      setTimeout(function(){ el.classList.add('in'); var c=el.querySelector('[data-count]'); if(c) countUp(c); }, (n++ % 4) * 90);
+      setTimeout(function(){ el.classList.add('in'); var c=el.querySelector('[data-count]'); if(c) countUp(c); }, Math.min(k++, 5) * 80);
       io.unobserve(el); });
-  }, {threshold:.12});
+  }, {threshold:.1, rootMargin:'0px 0px -6% 0px'});
   items.forEach(function(el){ io.observe(el); });
 })();
 </script>
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.3.27/dist/lenis.min.js" integrity="sha384-R18XzqnxvVLEF+BYfhpmDx30v7eP83fAckyfoRzK7/Uf6nGqufcmsk0eAKo7S3RU" crossorigin="anonymous"></script>
 <script>
 (function(){
-  // icon rail: highlight the section currently on screen (and the one you just clicked)
-  var links = Array.prototype.slice.call(document.querySelectorAll('#rail a[data-sec]'));
+  // smooth scrolling, smooth jumps from the rail and a sliding highlight for the current section
+  var reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var rail = document.getElementById('rail');
+  var links = Array.prototype.slice.call(rail.querySelectorAll('a[data-sec]'));
   var ids = ['top','how','ai','experience','projects','resume'];
   var targets = { top: document.querySelector('.intro') };
   ids.slice(1).forEach(function(id){ targets[id] = document.getElementById(id); });
-  var lock = 0;
-  function setOn(id){ links.forEach(function(a){ var on = a.getAttribute('data-sec') === id; a.classList.toggle('on', on); if (on) a.setAttribute('aria-current','true'); else a.removeAttribute('aria-current'); }); }
-  function update(){
-    if (Date.now() < lock) return;
-    var line = window.innerHeight * 0.35, current = 'top';
-    ids.forEach(function(id){ var el = targets[id]; if (el && el.getBoundingClientRect().top <= line) current = id; });
-    if (window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 4) current = 'resume';
-    setOn(current);
+  var pill = document.createElement('i');
+  pill.className = 'rail-pill'; pill.setAttribute('aria-hidden', 'true');
+  rail.insertBefore(pill, rail.firstChild); rail.classList.add('has-pill');
+  var current = null, lock = false;
+  function place(a, animate){
+    if (!animate) pill.style.transition = 'none';
+    pill.style.transform = 'translate(' + a.offsetLeft + 'px,' + a.offsetTop + 'px)';
+    if (!animate) { pill.offsetWidth; pill.style.transition = ''; }
   }
-  links.forEach(function(a){ a.addEventListener('click', function(){ setOn(a.getAttribute('data-sec')); lock = Date.now() + 900; setTimeout(update, 950); }); });
-  window.addEventListener('scroll', update, {passive:true});
-  window.addEventListener('resize', update);
-  update();
+  function setOn(id){
+    if (id === current) return;
+    var first = current === null; current = id;
+    links.forEach(function(a){ var on = a.getAttribute('data-sec') === id; a.classList.toggle('on', on); if (on) { a.setAttribute('aria-current', 'true'); place(a, !first); } else a.removeAttribute('aria-current'); });
+    if (first) requestAnimationFrame(function(){ pill.classList.add('ready'); });
+  }
+  function measure(){
+    var line = window.innerHeight * 0.35, cur = 'top';
+    ids.forEach(function(id){ var el = targets[id]; if (el && el.getBoundingClientRect().top <= line) cur = id; });
+    if (window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 4) cur = 'resume';
+    return cur;
+  }
+  var ticking = false;
+  function onScroll(){
+    if (lock || ticking) return; ticking = true;
+    requestAnimationFrame(function(){ ticking = false; if (!lock) setOn(measure()); });
+  }
+  var lenis = null;
+  if (!reduce && window.Lenis) {
+    try { lenis = new Lenis({ lerp: 0.09, smoothWheel: true, autoRaf: true }); lenis.on('scroll', onScroll); }
+    catch (err) { lenis = null; }
+  }
+  if (!lenis) window.addEventListener('scroll', onScroll, {passive:true});
+  ['wheel','touchstart','keydown'].forEach(function(t){ window.addEventListener(t, function(){ if (lock) { lock = false; onScroll(); } }, {passive:true}); });
+  window.addEventListener('resize', function(){ var a = rail.querySelector('a.on'); if (a) place(a, false); onScroll(); });
+  function ease(t){ return t < .5 ? 4*t*t*t : 1 - Math.pow(-2*t + 2, 3) / 2; }
+  document.addEventListener('click', function(e){
+    var a = e.target.closest && e.target.closest('a[href^="#"]'); if (!a) return;
+    var hash = a.getAttribute('href'); if (hash.length < 2) return;
+    var el = hash === '#top' ? null : document.getElementById(hash.slice(1));
+    if (hash !== '#top' && !el) return;
+    e.preventDefault();
+    var sec = a.getAttribute('data-sec') || (el && el.id);
+    if (ids.indexOf(sec) > -1) setOn(sec);
+    lock = true;
+    var guard = setTimeout(done, 2200);
+    function done(){ clearTimeout(guard); lock = false; onScroll(); }
+    if (history.replaceState) history.replaceState(null, '', hash);
+    var y = el ? el.getBoundingClientRect().top + window.scrollY - 48 : 0;
+    if (lenis) {
+      var dist = Math.abs(y - window.scrollY);
+      lenis.scrollTo(el ? el : 0, { duration: Math.min(1.5, 0.7 + dist / 6000), easing: ease, onComplete: done });
+    } else {
+      window.scrollTo({ top: Math.max(0, y), behavior: reduce ? 'auto' : 'smooth' });
+      setTimeout(done, reduce ? 50 : 900);
+    }
+    if (e.detail === 0 && el) { el.setAttribute('tabindex', '-1'); el.focus({preventScroll:true}); }
+  });
+  // pause the looping background animations while they're off screen
+  if ('IntersectionObserver' in window) {
+    var po = new IntersectionObserver(function(es){ es.forEach(function(e){ e.target.classList.toggle('paused', !e.isIntersecting); }); });
+    document.querySelectorAll('.stat.a, .contact, .proj .orb').forEach(function(el){ po.observe(el); });
+  }
+  setOn(measure());
 })();
 </script>
 <button class="ask-fab" id="askFab" aria-controls="askPanel" aria-expanded="false" aria-label="Chat with my AI twin"><span class="spark"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l1.9 5.6L19.5 9.5l-5.6 1.9L12 17l-1.9-5.6L4.5 9.5l5.6-1.9L12 2Zm6.5 11 .9 2.6 2.6.9-2.6.9-.9 2.6-.9-2.6-2.6-.9 2.6-.9.9-2.6Z" fill="currentColor"/></svg></span><span class="lbl">Chat with my AI twin</span><i class="dot"></i></button>
-<section class="ask-panel" id="askPanel" role="dialog" aria-modal="false" aria-labelledby="askTitle">
+<section class="ask-panel" id="askPanel" data-lenis-prevent role="dialog" aria-modal="false" aria-labelledby="askTitle">
   <div class="ask-head"><div class="av">UK</div><div><b id="askTitle">Utkarsh's AI Twin</b><small>Trained on my background. Ask away.</small></div>
     <div class="hb"><button type="button" id="askMin" aria-label="Minimise chat" title="Minimise"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg></button></div></div>
   <div class="ask-log" id="askLog" aria-live="polite"></div>
