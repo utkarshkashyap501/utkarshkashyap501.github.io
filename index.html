@@ -10,16 +10,20 @@
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
   :root{
-    --ink:#0E2A47;      /* deep navy, carries over from his resume */
-    --ink-2:#1B3B5E;
-    --paper:#F4F6FA;    /* cool working-surface grey */
+    --ink:#0B1F3A;      /* deep navy, carries over from his resume */
+    --ink-2:#16335C;
+    --paper:#F5F7FC;    /* cool working-surface grey */
+    --blue:#2563EB;
+    --teal:#0EA5A4;
+    --violet:#6D5BF6;
+    --grad:linear-gradient(120deg,#2563EB 0%,#6D5BF6 50%,#0EA5A4 100%);
     --white:#FFFFFF;
     --text:#1B2430;
     --muted:#5E6B7A;
     --line:#DCE2EC;
-    --sticky:#FFD23F;   /* sticky-note yellow, used only on the board */
+    --sticky:#FFC93C;   /* sticky-note yellow, used only on the board */
     --shipped:#1F9D6B;
-    --now:#3D6CF0;
+    --now:#2563EB;
     --display:"Bricolage Grotesque",system-ui,sans-serif;
     --body:"Instrument Sans",system-ui,sans-serif;
   }
@@ -38,11 +42,17 @@
   .nav-links{display:flex;align-items:center;gap:28px}
   .nav-links a{text-decoration:none;font-weight:500;font-size:.95rem;color:var(--muted)}
   .nav-links a:hover{color:var(--ink)}
-  .nav-links .pill{background:var(--ink);color:var(--white);padding:9px 18px;border-radius:999px}
-  .nav-links .pill:hover{background:var(--ink-2);color:var(--white)}
+  .nav-links .pill{background:var(--grad);color:var(--white);padding:9px 18px;border-radius:999px}
+  .nav-links .pill:hover{filter:brightness(1.08);color:var(--white)}
+  .progress{position:fixed;top:0;left:0;height:3px;width:100%;background:var(--grad);transform-origin:0 50%;transform:scaleX(0);z-index:30}
 
   /* hero */
-  .hero{padding:88px 0 96px}
+  .hero{padding:88px 0 96px;position:relative;overflow:hidden}
+  .hero:before,.hero:after{content:"";position:absolute;border-radius:50%;filter:blur(70px);opacity:.55;z-index:0;pointer-events:none}
+  .hero:before{width:520px;height:520px;background:#C7D7FE;top:-160px;right:-120px}
+  .hero:after{width:420px;height:420px;background:#C9F2EE;bottom:-200px;left:-140px}
+  .hero .wrap{position:relative;z-index:1}
+  .hl{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
   .hero .wrap{display:grid;grid-template-columns:1.05fr 1fr;gap:64px;align-items:center}
   .status{display:inline-flex;align-items:center;gap:10px;font-size:.9rem;font-weight:600;color:var(--shipped);background:#E3F4EC;padding:6px 14px;border-radius:999px}
   .status i{width:8px;height:8px;border-radius:50%;background:var(--shipped);box-shadow:0 0 0 4px rgba(31,157,107,.18)}
@@ -50,13 +60,15 @@
   .hero p{font-size:1.15rem;color:var(--muted);max-width:34em}
   .actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:34px}
   .btn{display:inline-block;text-decoration:none;font-weight:600;padding:13px 24px;border-radius:10px;font-size:1rem}
-  .btn-dark{background:var(--ink);color:var(--white)}
+  .btn{transition:transform .18s ease,box-shadow .18s ease,background .18s ease}
+  .btn:hover{transform:translateY(-2px)}
+  .btn-dark{background:var(--ink);color:var(--white);box-shadow:0 10px 24px -12px rgba(11,31,58,.6)}
   .btn-dark:hover{background:var(--ink-2)}
   .btn-line{border:1.5px solid var(--ink);color:var(--ink)}
   .btn-line:hover{background:var(--white)}
 
   /* the roadmap board: the one bold element */
-  .board{background:var(--white);border:1px solid var(--line);border-radius:18px;padding:20px;box-shadow:0 30px 60px -30px rgba(14,42,71,.35)}
+  .board{position:relative;background:var(--white);border:1px solid var(--line);border-radius:18px;padding:20px;box-shadow:0 30px 60px -30px rgba(14,42,71,.35)}
   .board-head{display:flex;justify-content:space-between;align-items:center;padding:4px 6px 16px;border-bottom:1px solid var(--line);margin-bottom:16px}
   .board-head b{font-family:var(--display);font-size:1.05rem;color:var(--ink)}
   .board-head span{font-size:.85rem;color:var(--muted)}
@@ -64,7 +76,8 @@
   .col h4{font-family:var(--body);font-size:.85rem;font-weight:600;color:var(--muted);display:flex;align-items:center;gap:8px;margin:0 4px 10px}
   .col h4 em{font-style:normal;background:var(--paper);border-radius:6px;padding:0 7px;font-size:.8rem}
   .col-body{background:var(--paper);border-radius:12px;padding:10px;display:flex;flex-direction:column;gap:10px;min-height:100%}
-  .ticket{background:var(--white);border:1px solid var(--line);border-radius:10px;padding:12px 14px;font-size:.9rem}
+  .ticket{background:var(--white);border:1px solid var(--line);border-radius:10px;padding:12px 14px;font-size:.9rem;transition:transform .2s ease,box-shadow .2s ease}
+  .ticket:hover{transform:translateY(-2px);box-shadow:0 10px 20px -14px rgba(11,31,58,.5)}
   .ticket .t-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:6px}
   .ticket .id{font-size:.78rem;font-weight:600;color:var(--muted)}
   .ticket .tag{font-size:.74rem;font-weight:600;padding:2px 8px;border-radius:6px}
@@ -86,6 +99,23 @@
     @keyframes drop-tilt{from{opacity:0;transform:translateY(-14px) rotate(0)}to{opacity:1;transform:rotate(-1.5deg)}}
   }
 
+  /* stats strip */
+  .stats{display:grid;grid-template-columns:repeat(4,1fr);background:var(--ink);border-radius:20px;color:#AFC2DB;overflow:hidden;position:relative}
+  .stats:before{content:"";position:absolute;inset:0;background:radial-gradient(600px 200px at 10% 0%,rgba(37,99,235,.35),transparent),radial-gradient(500px 200px at 90% 100%,rgba(14,165,164,.3),transparent)}
+  .stat{position:relative;padding:30px 28px}
+  .stat + .stat{border-left:1px solid rgba(255,255,255,.1)}
+  .stat b{display:block;font-family:var(--display);font-size:2.6rem;font-weight:800;color:var(--white);line-height:1}
+  .stat span{display:block;margin-top:8px;font-size:.95rem}
+  .stats-wrap{margin-top:-40px;position:relative;z-index:2}
+
+  /* scroll reveal (set up only when JS + motion are allowed) */
+  .js-motion .reveal{opacity:0;transform:translateY(22px);transition:opacity .7s ease,transform .7s cubic-bezier(.2,.8,.2,1)}
+  .js-motion .reveal.in{opacity:1;transform:none}
+  .js-motion .hero h1 .w{display:inline-block;opacity:0;transform:translateY(.4em);animation:rise .7s cubic-bezier(.2,.8,.2,1) forwards}
+  @keyframes rise{to{opacity:1;transform:none}}
+  .js-motion .hl{background:none;color:inherit}
+  .js-motion .hl .w{background:var(--grad);background-size:220% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;padding-bottom:.06em}
+
   /* sections */
   section{padding:96px 0}
   .sec-head{max-width:640px;margin-bottom:48px}
@@ -94,10 +124,11 @@
   .white{background:var(--white)}
 
   /* how I work: a real sequence, so it is numbered */
-  .process{display:grid;grid-template-columns:repeat(4,1fr);gap:0;border-top:2px solid var(--ink)}
+  .process{display:grid;grid-template-columns:repeat(4,1fr);gap:0;position:relative}
+  .process:before{content:"";position:absolute;top:0;left:0;right:0;height:3px;background:var(--grad);transform-origin:0 50%;transform:scaleX(var(--draw,1));transition:transform 1.2s cubic-bezier(.2,.8,.2,1)}
   .step{padding:28px 26px 8px 0}
   .step + .step{padding-left:26px;border-left:1px solid var(--line)}
-  .step .n{font-family:var(--display);font-weight:800;font-size:2.6rem;color:var(--line);line-height:1}
+  .step .n{font-family:var(--display);font-weight:800;font-size:2.6rem;line-height:1;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent;opacity:.85}
   .step h3{font-size:1.35rem;margin:14px 0 10px}
   .step p{color:var(--muted);font-size:.97rem}
 
@@ -110,13 +141,16 @@
   .xp .org{color:var(--muted);margin:4px 0 16px;font-weight:500}
   .xp ul{list-style:none;display:grid;gap:10px}
   .xp li{padding-left:22px;position:relative}
-  .xp li:before{content:"";position:absolute;left:0;top:.62em;width:10px;height:2px;background:var(--now)}
+  .xp li:before{content:"";position:absolute;left:0;top:.62em;width:10px;height:2px;background:var(--grad)}
+  .xp h3{transition:color .2s}
+  .xp:hover h3{color:var(--blue)}
   .xp li b{color:var(--ink)}
 
   /* projects as case studies */
   .cases{display:grid;grid-template-columns:1fr 1fr;gap:28px}
-  .case{background:var(--white);border:1px solid var(--line);border-radius:20px;padding:34px}
-  .case.feature{background:var(--ink);border-color:var(--ink);color:#C9D6E6}
+  .case{background:var(--white);border:1px solid var(--line);border-radius:20px;padding:34px;transition:transform .25s ease,box-shadow .25s ease}
+  .case:hover{transform:translateY(-4px);box-shadow:0 24px 48px -28px rgba(11,31,58,.45)}
+  .case.feature{background:radial-gradient(500px 260px at 100% 0%,rgba(109,91,246,.45),transparent),radial-gradient(400px 240px at 0% 100%,rgba(14,165,164,.35),transparent),var(--ink);border-color:var(--ink);color:#C9D6E6}
   .case.feature h3{color:var(--white)}
   .case h3{font-size:1.8rem;margin-bottom:6px}
   .case .kind{font-weight:500;color:var(--muted)}
@@ -134,16 +168,17 @@
   .toolkit{display:grid;grid-template-columns:repeat(3,1fr);gap:40px}
   .toolkit h3{font-size:1.15rem;margin-bottom:14px}
   .toolkit .chips{display:flex;flex-wrap:wrap;gap:8px}
-  .toolkit .chip{background:var(--white)}
+  .toolkit .chip{background:var(--white);transition:all .18s ease}
+  .toolkit .chip:hover{border-color:var(--blue);color:var(--blue);transform:translateY(-1px)}
 
   /* credentials */
   .creds{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-top:64px}
-  .cred{border-left:3px solid var(--ink);padding:4px 0 4px 16px}
+  .cred{border-left:3px solid;border-image:var(--grad) 1;padding:4px 0 4px 16px}
   .cred strong{display:block;color:var(--ink);font-family:var(--display);font-size:1.1rem;line-height:1.25}
   .cred span{color:var(--muted);font-size:.9rem}
 
   /* contact */
-  .contact{background:var(--ink);color:#C9D6E6;padding:110px 0}
+  .contact{background:radial-gradient(700px 300px at 85% 20%,rgba(37,99,235,.45),transparent),radial-gradient(600px 300px at 10% 90%,rgba(14,165,164,.3),transparent),var(--ink);color:#C9D6E6;padding:110px 0}
   .contact h2{color:var(--white);font-size:clamp(2.4rem,5vw,4rem);font-weight:800;letter-spacing:-.02em;max-width:14em}
   .contact p{max-width:34em;margin-top:20px;font-size:1.1rem}
   .contact .actions .btn-dark{background:var(--sticky);color:var(--ink)}
@@ -155,6 +190,9 @@
   footer a{color:#C9D6E6}
 
   @media (max-width:960px){
+    .stats{grid-template-columns:1fr 1fr}
+    .stat:nth-child(3){border-left:none}
+    .stat:nth-child(n+3){border-top:1px solid rgba(255,255,255,.1)}
     .hero .wrap{grid-template-columns:1fr;gap:48px}
     .process{grid-template-columns:1fr 1fr}
     .step:nth-child(3){padding-left:0;border-left:none}
@@ -172,11 +210,13 @@
     .step,.step + .step{padding:24px 0 4px;border-left:none;border-top:1px solid var(--line)}
     .xp{grid-template-columns:1fr;gap:10px}
     .toolkit,.creds{grid-template-columns:1fr}
+    .stat b{font-size:2.1rem}
     .case{padding:26px}
   }
 </style>
 </head>
 <body>
+<div class="progress" aria-hidden="true"></div>
 
 <nav>
   <div class="wrap">
@@ -195,12 +235,11 @@
   <div class="wrap">
     <div>
       <span class="status"><i></i>Available to join immediately</span>
-      <h1>I turn messy problems into products people actually use.</h1>
+      <h1>I turn messy problems into <span class="hl">products people actually use.</span></h1>
       <p>Product and program manager with 6+ years across platform delivery, product operations and AI enablement. I've worked with Fortune 500, government and mid-market clients across APAC, EMEA, the Americas and the Middle East.</p>
       <div class="actions">
         <a class="btn btn-dark" href="#projects">See my work</a>
         <a class="btn btn-line" href="https://www.linkedin.com/in/utkarshkashyap501" target="_blank" rel="noopener">LinkedIn</a>
-        <a class="btn btn-line" href="https://github.com/utkarshkashyap501" target="_blank" rel="noopener">GitHub</a>
       </div>
     </div>
 
@@ -226,13 +265,22 @@
   </div>
 </header>
 
-<section id="how" class="white">
+<div class="wrap stats-wrap">
+  <div class="stats reveal">
+    <div class="stat"><b data-count="6" data-suffix="+">6+</b><span>Years in product and delivery</span></div>
+    <div class="stat"><b data-count="30" data-suffix="%">30%</b><span>Efficiency gain from AI automation</span></div>
+    <div class="stat"><b data-count="4">4</b><span>Regions of client work</span></div>
+    <div class="stat"><b data-count="3">3</b><span>Certifications, including PMP</span></div>
+  </div>
+</div>
+
+<section id="how">
   <div class="wrap">
-    <div class="sec-head">
+    <div class="sec-head reveal">
       <h2>How I work</h2>
       <p>The same loop I've run with enterprise clients and on my own builds: understand the problem, write it down clearly, ship it, then make sure people use it.</p>
     </div>
-    <div class="process">
+    <div class="process reveal">
       <div class="step"><div class="n">1</div><h3>Discover</h3><p>Client discovery workshops, customer journey mapping and market research to find the real pain point before anyone writes code.</p></div>
       <div class="step"><div class="n">2</div><h3>Define</h3><p>PRDs, BRDs and user stories with scenarios, edge cases and acceptance criteria. Wireframes and AI prototypes when words aren't enough.</p></div>
       <div class="step"><div class="n">3</div><h3>Deliver</h3><p>Backlog ownership and sprint planning in JIRA, UAT, regression checks and root cause analysis until it's ready to go live.</p></div>
@@ -243,12 +291,12 @@
 
 <section id="experience">
   <div class="wrap">
-    <div class="sec-head">
+    <div class="sec-head reveal">
       <h2>Experience</h2>
       <p>From AI data operations, to HR-tech platform delivery, to consulting and AI enablement.</p>
     </div>
 
-    <div class="xp">
+    <div class="xp reveal">
       <div class="when">Mar 2024 to Jul 2026</div>
       <div>
         <h3>Senior Analyst</h3>
@@ -263,7 +311,7 @@
       </div>
     </div>
 
-    <div class="xp">
+    <div class="xp reveal">
       <div class="when">Jun 2022 to Feb 2024</div>
       <div>
         <h3>Platform delivery and client management</h3>
@@ -276,7 +324,7 @@
       </div>
     </div>
 
-    <div class="xp">
+    <div class="xp reveal">
       <div class="when">Sep 2020 to May 2022</div>
       <div>
         <h3>AI/ML data operations</h3>
@@ -292,12 +340,12 @@
 
 <section id="projects" class="white">
   <div class="wrap">
-    <div class="sec-head">
+    <div class="sec-head reveal">
       <h2>Things I've built</h2>
       <p>Side projects where I'm the PM, designer and engineer.</p>
     </div>
     <div class="cases">
-      <article class="case feature">
+      <article class="case reveal feature">
         <h3>Ishqiyaa.com</h3>
         <div class="kind">Freelance client product</div>
         <dl>
@@ -308,7 +356,7 @@
         <div class="stack"><span class="chip">Lovable</span><span class="chip">Razorpay</span><span class="chip">Product management</span></div>
         <a class="visit" href="https://ishqiyaa.com" target="_blank" rel="noopener">Visit ishqiyaa.com</a>
       </article>
-      <article class="case">
+      <article class="case reveal">
         <h3>AI job application co-pilot</h3>
         <div class="kind">Personal agentic workflow</div>
         <dl>
@@ -324,10 +372,10 @@
 
 <section id="toolkit">
   <div class="wrap">
-    <div class="sec-head">
+    <div class="sec-head reveal">
       <h2>Toolkit</h2>
     </div>
-    <div class="toolkit">
+    <div class="toolkit reveal">
       <div><h3>Product and delivery</h3><div class="chips">
         <span class="chip">PRDs and user stories</span><span class="chip">Backlog ownership</span><span class="chip">Agile and Scrum</span><span class="chip">Wireframes</span><span class="chip">UAT</span><span class="chip">Root cause analysis</span><span class="chip">Go-to-market</span><span class="chip">Journey mapping</span></div></div>
       <div><h3>AI</h3><div class="chips">
@@ -336,7 +384,7 @@
         <span class="chip">JIRA</span><span class="chip">Confluence</span><span class="chip">ServiceNow</span><span class="chip">Salesforce</span><span class="chip">SQL</span><span class="chip">Python</span><span class="chip">Tableau</span><span class="chip">Qualtrics</span><span class="chip">Postman</span><span class="chip">Azure, GCP, AWS</span></div></div>
     </div>
 
-    <div class="creds">
+    <div class="creds reveal">
       <div class="cred"><strong>PMP</strong><span>Project Management Institute</span></div>
       <div class="cred"><strong>Generative AI Leader</strong><span>Google Cloud</span></div>
       <div class="cred"><strong>AI Fluency</strong><span>Anthropic</span></div>
@@ -359,5 +407,62 @@
   <div class="wrap"><span>© 2026 Utkarsh Kashyap</span><a href="mailto:utkarsh.kashyap768@gmail.com">utkarsh.kashyap768@gmail.com</a></div>
 </footer>
 
+<script>
+(function(){
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var bar = document.querySelector('.progress');
+  function onScroll(){
+    var h = document.documentElement;
+    var p = h.scrollTop / Math.max(1, h.scrollHeight - h.clientHeight);
+    bar.style.transform = 'scaleX(' + p + ')';
+  }
+  window.addEventListener('scroll', onScroll, {passive:true}); onScroll();
+  if (reduce || !('IntersectionObserver' in window)) return;
+
+  document.documentElement.classList.add('js-motion');
+
+  // headline: words rise in one by one
+  var h1 = document.querySelector('.hero h1');
+  var i = 0;
+  (function wrap(node){
+    Array.prototype.slice.call(node.childNodes).forEach(function(n){
+      if (n.nodeType === 3) {
+        var frag = document.createDocumentFragment();
+        n.textContent.split(/(\s+)/).forEach(function(part){
+          if (!part) return;
+          if (/^\s+$/.test(part)) { frag.appendChild(document.createTextNode(part)); return; }
+          var w = document.createElement('span'); w.className = 'w'; w.textContent = part;
+          w.style.animationDelay = (0.08 * i++) + 's'; frag.appendChild(w);
+        });
+        n.parentNode.replaceChild(frag, n);
+      } else if (n.nodeType === 1) wrap(n);
+    });
+  })(h1);
+
+  // count-up numbers
+  function countUp(el){
+    var end = +el.dataset.count, suf = el.dataset.suffix || '', t0 = null;
+    function step(t){ if(!t0) t0 = t; var k = Math.min(1,(t - t0)/1100);
+      el.textContent = Math.round(end * (1 - Math.pow(1 - k, 3))) + suf;
+      if (k < 1) requestAnimationFrame(step); }
+    el.textContent = '0' + suf; requestAnimationFrame(step);
+  }
+
+  var proc = document.querySelector('.process');
+  if (proc) proc.style.setProperty('--draw', 0);
+
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if (!e.isIntersecting) return;
+      var el = e.target;
+      el.classList.add('in');
+      if (el.classList.contains('stats')) el.querySelectorAll('[data-count]').forEach(countUp);
+      if (el.classList.contains('process')) setTimeout(function(){ el.style.setProperty('--draw', 1); }, 150);
+      io.unobserve(el);
+    });
+  }, {threshold: 0.18});
+  document.querySelectorAll('.reveal').forEach(function(el){ io.observe(el); });
+})();
+</script>
 </body>
 </html>
