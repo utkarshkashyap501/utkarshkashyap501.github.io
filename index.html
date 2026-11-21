@@ -348,19 +348,81 @@
   @media (max-width:900px){.rail-pill{width:42px;height:42px}}
   @media (prefers-reduced-motion:reduce){.rail-pill{transition:none}}
   .paused{animation-play-state:paused!important}
+  /* ===== Accessibility ===== */
+  .skip{position:fixed;left:16px;top:-80px;z-index:100;background:var(--ink);color:#fff;padding:12px 18px;border-radius:12px;font-weight:700;text-decoration:none;transition:top .2s}
+  .skip:focus{top:16px}
+  .ai :focus-visible,.proj.dark :focus-visible,.stat.a :focus-visible,.contact :focus-visible,.ask-fab:focus-visible{outline-color:#F0D7AC}
+  .rform input:focus{box-shadow:0 0 0 4px rgba(15,157,118,.32)}
+  .ask-form input:focus{box-shadow:0 0 0 4px rgba(91,75,219,.3)}
+  .rail .a11y-btn{position:relative;z-index:1;width:44px;height:44px;border-radius:14px;display:grid;place-items:center;border:0;background:none;color:var(--muted);cursor:pointer;font:inherit;transition:background .25s,color .35s ease,transform .2s}
+  .rail .a11y-btn svg{width:21px;height:21px}
+  .rail .a11y-btn:hover,.rail .a11y-btn[aria-expanded="true"]{background:var(--indigo-soft);color:var(--violet)}
+  .rail .a11y-btn.active:after{content:"";position:absolute;top:8px;right:8px;width:7px;height:7px;border-radius:50%;background:var(--gold);box-shadow:0 0 0 2px #fff}
+  .rail .a11y-btn span{position:absolute;left:calc(100% + 12px);top:50%;transform:translate(-6px,-50%);white-space:nowrap;padding:7px 12px;border-radius:10px;background:var(--ink);color:#fff;font-size:.82rem;font-weight:700;opacity:0;pointer-events:none;transition:opacity .18s,transform .18s;box-shadow:0 10px 24px -12px rgba(14,20,48,.6)}
+  .rail .a11y-btn:hover span,.rail .a11y-btn:focus-visible span{opacity:1;transform:translate(0,-50%)}
+  .rail .a11y-btn[aria-expanded="true"] span{opacity:0}
+  .a11y-panel{position:fixed;left:92px;top:50%;transform:translateY(-50%);z-index:70;width:min(330px,calc(100vw - 24px));max-height:calc(100vh - 32px);overflow:auto;background:#fff;border:1px solid var(--line);border-radius:22px;padding:18px;box-shadow:0 30px 60px -24px rgba(14,20,48,.45);color:var(--ink)}
+  .a11y-panel[hidden]{display:none}
+  .a11y-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px}
+  .a11y-head h2{font-size:1.1rem;font-weight:800;letter-spacing:-.01em}
+  .a11y-x{width:34px;height:34px;border-radius:10px;border:0;background:var(--bg);color:var(--ink);display:grid;place-items:center;cursor:pointer}
+  .a11y-x svg{width:16px;height:16px}
+  .a11y-row{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:10px 12px;border-radius:14px;background:var(--bg);margin-bottom:8px;font-weight:700;font-size:.93rem}
+  .a11y-seg{display:flex;gap:4px;background:#fff;border-radius:11px;padding:3px;border:1px solid var(--line)}
+  .a11y-seg button{min-width:42px;height:34px;border:0;border-radius:8px;background:none;color:var(--ink);font:inherit;font-weight:800;cursor:pointer}
+  .a11y-seg button[data-size="1"]{font-size:1.05em}.a11y-seg button[data-size="2"]{font-size:1.18em}
+  .a11y-seg button[aria-pressed="true"]{background:var(--ink);color:#F0D7AC}
+  .a11y-list{display:grid;gap:6px}
+  .a11y-opt{display:flex;align-items:center;justify-content:space-between;gap:12px;width:100%;text-align:left;padding:11px 12px;border-radius:14px;border:1px solid var(--line);background:#fff;color:var(--ink);font:inherit;cursor:pointer;transition:border-color .2s,background .2s}
+  .a11y-opt:hover{border-color:#C9C3F3;background:#FBFAFF}
+  .a11y-opt b{display:block;font-size:.93rem}
+  .a11y-opt small{display:block;color:var(--muted);font-size:.8rem;font-weight:500;margin-top:2px}
+  .a11y-opt .sw{flex:none;position:relative;width:40px;height:24px;border-radius:999px;background:#D5DAE5;transition:background .2s}
+  .a11y-opt .sw:after{content:"";position:absolute;top:3px;left:3px;width:18px;height:18px;border-radius:50%;background:#fff;box-shadow:0 1px 3px rgba(14,20,48,.3);transition:transform .2s}
+  .a11y-opt[aria-pressed="true"]{border-color:var(--ink)}
+  .a11y-opt[aria-pressed="true"] .sw{background:var(--ink)}
+  .a11y-opt[aria-pressed="true"] .sw:after{transform:translateX(16px);background:#F0D7AC}
+  .a11y-reset{margin-top:12px;width:100%;height:42px;border-radius:12px;border:1px solid var(--line);background:var(--bg);color:var(--ink);font:inherit;font-weight:700;cursor:pointer}
+  .a11y-note{margin-top:8px;text-align:center;font-size:.78rem;color:var(--muted)}
+  @media (max-width:900px){
+    .rail .a11y-btn{width:42px;height:42px}.rail .a11y-btn span{display:none}
+    .a11y-panel{left:12px;right:12px;width:auto;top:auto;bottom:78px;transform:none;max-height:calc(100vh - 100px)}
+  }
+  /* settings */
+  html.a11y-size1{font-size:112.5%}
+  html.a11y-size2{font-size:125%}
+  html.a11y-contrast{--muted:#1E2540;--line:#7D86A3;--bg:#FFFFFF}
+  html.a11y-contrast body{color:#000}
+  html.a11y-contrast .t:not(.ai):not(.dark):not(.stat):not(.contact){border:2px solid #0E1430}
+  html.a11y-contrast .intro h1 .accent,html.a11y-contrast .intro h1 .accent .w{background:none!important;color:#2B1FA6!important;-webkit-text-fill-color:#2B1FA6}
+  html.a11y-contrast .ai *,html.a11y-contrast .proj.dark *{color:#fff!important}
+  html.a11y-contrast .ai,html.a11y-contrast .proj.dark{background:#0A0F24!important}
+  html.a11y-contrast a:not(.btn){text-decoration:underline;text-underline-offset:3px}
+  html.a11y-still{scroll-behavior:auto!important}
+  html.a11y-still *,html.a11y-still *:before,html.a11y-still *:after{animation:none!important;transition:none!important;scroll-behavior:auto!important}
+  html.a11y-still .t,html.a11y-still .how .s,html.a11y-still .seat,html.a11y-still .intro h1 .w,html.a11y-still .mag{opacity:1!important;transform:none!important}
+  html.a11y-still .journey .line{transform:none!important}
+  html.a11y-still .journey .pt{opacity:1!important}
+  html.a11y-font body,html.a11y-font :is(h1,h2,h3,input,button,textarea){font-family:'Atkinson Hyperlegible',Verdana,sans-serif!important}
+  html.a11y-links a:not(.rail a):not(.skip){text-decoration:underline!important;text-decoration-thickness:2px!important;text-underline-offset:4px}
+  html.a11y-spacing body{letter-spacing:.012em;word-spacing:.08em}
+  html.a11y-spacing main :is(p,li),html.a11y-spacing .ask-log{line-height:1.9!important}
 </style>
+<script>try{var A=JSON.parse(localStorage.getItem('ukA11y')||'{}'),C=document.documentElement.classList;if(A.size)C.add('a11y-size'+A.size);['contrast','still','font','links','spacing'].forEach(function(k){if(A[k])C.add('a11y-'+k)});if(A.font){var L=document.createElement('link');L.rel='stylesheet';L.href='https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&display=swap';document.head.appendChild(L)}}catch(e){}</script>
 </head>
 <body>
+<a class="skip" href="#top">Skip to content</a>
 <nav class="rail" id="rail" aria-label="Sections">
-  <a href="#top" data-sec="top"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10.5 12 3l9 7.5V20a1 1 0 0 1-1 1h-5v-6h-6v6H4a1 1 0 0 1-1-1v-9.5Z"/></svg><span>Home</span></a>
-  <a href="#how" data-sec="how"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6h16M4 12h10M4 18h7"/><circle cx="19" cy="17" r="2.5"/></svg><span>How I work</span></a>
-  <a href="#ai" data-sec="ai"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l1.8 5.2L19 10l-5.2 1.8L12 17l-1.8-5.2L5 10l5.2-1.8L12 3Z"/><path d="M19 15l.8 2.2L22 18l-2.2.8L19 21l-.8-2.2L16 18l2.2-.8L19 15Z"/></svg><span>How I use AI</span></a>
-  <a href="#experience" data-sec="experience"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2M3 13h18"/></svg><span>Experience</span></a>
-  <a href="#projects" data-sec="projects"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7.5" height="7.5" rx="2"/><rect x="13.5" y="3" width="7.5" height="7.5" rx="2"/><rect x="3" y="13.5" width="7.5" height="7.5" rx="2"/><rect x="13.5" y="13.5" width="7.5" height="7.5" rx="2"/></svg><span>Projects</span></a>
-  <a href="#resume" data-sec="resume"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M7 3h7l5 5v12a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1Z"/><path d="M14 3v5h5M9 13h6M9 17h6"/></svg><span>Request resume</span></a>
+  <a href="#top" data-sec="top" aria-label="Home"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10.5 12 3l9 7.5V20a1 1 0 0 1-1 1h-5v-6h-6v6H4a1 1 0 0 1-1-1v-9.5Z"/></svg><span>Home</span></a>
+  <a href="#how" data-sec="how" aria-label="How I work"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6h16M4 12h10M4 18h7"/><circle cx="19" cy="17" r="2.5"/></svg><span>How I work</span></a>
+  <a href="#ai" data-sec="ai" aria-label="How I use AI"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l1.8 5.2L19 10l-5.2 1.8L12 17l-1.8-5.2L5 10l5.2-1.8L12 3Z"/><path d="M19 15l.8 2.2L22 18l-2.2.8L19 21l-.8-2.2L16 18l2.2-.8L19 15Z"/></svg><span>How I use AI</span></a>
+  <a href="#experience" data-sec="experience" aria-label="Experience"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2M3 13h18"/></svg><span>Experience</span></a>
+  <a href="#projects" data-sec="projects" aria-label="Projects"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7.5" height="7.5" rx="2"/><rect x="13.5" y="3" width="7.5" height="7.5" rx="2"/><rect x="3" y="13.5" width="7.5" height="7.5" rx="2"/><rect x="13.5" y="13.5" width="7.5" height="7.5" rx="2"/></svg><span>Projects</span></a>
+  <a href="#resume" data-sec="resume" aria-label="Request resume"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M7 3h7l5 5v12a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1Z"/><path d="M14 3v5h5M9 13h6M9 17h6"/></svg><span>Request resume</span></a>
+  <button type="button" class="a11y-btn" id="a11yBtn" aria-controls="a11yPanel" aria-expanded="false" aria-label="Accessibility options"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="4.6" r="1.9"/><path d="M4.5 8.6 12 10l7.5-1.4M12 10v4.6M12 14.6 8.8 21M12 14.6l3.2 6.4"/></svg><span>Accessibility</span></button>
   <i class="rail-sep"></i>
-  <a href="mailto:utkarsh.kashyap768@gmail.com" class="rail-ext"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1Zm0 1.6V17h16V7.6l-8 5.2-8-5.2ZM5.3 7 12 11.3 18.7 7H5.3Z" fill="currentColor"/></svg><span>Email me</span></a>
-  <a href="https://www.linkedin.com/in/utkarshkashyap501" target="_blank" rel="noopener" class="rail-ext"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5ZM3 9.5h4V21H3V9.5Zm6.5 0h3.8v1.6h.06c.53-1 1.83-2.05 3.77-2.05 4.03 0 4.77 2.65 4.77 6.1V21h-4v-5.1c0-1.22-.02-2.78-1.7-2.78-1.7 0-1.96 1.33-1.96 2.7V21h-4V9.5Z" fill="currentColor"/></svg><span>LinkedIn</span></a>
+  <a href="mailto:utkarsh.kashyap768@gmail.com" class="rail-ext" aria-label="Email me"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1Zm0 1.6V17h16V7.6l-8 5.2-8-5.2ZM5.3 7 12 11.3 18.7 7H5.3Z" fill="currentColor"/></svg><span>Email me</span></a>
+  <a href="https://www.linkedin.com/in/utkarshkashyap501" target="_blank" rel="noopener" class="rail-ext" aria-label="LinkedIn (opens in a new tab)"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5ZM3 9.5h4V21H3V9.5Zm6.5 0h3.8v1.6h.06c.53-1 1.83-2.05 3.77-2.05 4.03 0 4.77 2.65 4.77 6.1V21h-4v-5.1c0-1.22-.02-2.78-1.7-2.78-1.7 0-1.96 1.33-1.96 2.7V21h-4V9.5Z" fill="currentColor"/></svg><span>LinkedIn</span></a>
 </nav>
 <main class="grid" id="top">
   <section class="t intro">
@@ -545,7 +607,7 @@
   });
 })();
 (function(){
-  if (matchMedia('(prefers-reduced-motion: reduce)').matches || !('IntersectionObserver' in window)) return;
+  if (matchMedia('(prefers-reduced-motion: reduce)').matches || document.documentElement.classList.contains('a11y-still') || !('IntersectionObserver' in window)) return;
   document.documentElement.classList.add('js');
   var h1 = document.querySelector('.intro h1'), wi = 0;
   (function wrap(node){
@@ -633,19 +695,24 @@
     requestAnimationFrame(function(){ ticking = false; if (!lock) setOn(measure()); });
   }
   var lenis = null;
-  if (!reduce && window.Lenis) {
-    try { lenis = new Lenis({ lerp: 0.09, smoothWheel: true, autoRaf: true }); lenis.on('scroll', onScroll); }
+  function still(){ return reduce || document.documentElement.classList.contains('a11y-still'); }
+  function startSmooth(){
+    if (lenis || still() || !window.Lenis) return;
+    try { lenis = new Lenis({ lerp: 0.09, smoothWheel: true, autoRaf: true }); lenis.on('scroll', onScroll); window.removeEventListener('scroll', onScroll); }
     catch (err) { lenis = null; }
   }
-  if (!lenis) window.addEventListener('scroll', onScroll, {passive:true});
+  function stopSmooth(){ if (!lenis) return; try { lenis.destroy(); } catch (err) {} lenis = null; window.addEventListener('scroll', onScroll, {passive:true}); }
+  window.ukSmooth = { on: startSmooth, off: stopSmooth };
+  window.addEventListener('scroll', onScroll, {passive:true});
+  startSmooth();
   ['wheel','touchstart','keydown'].forEach(function(t){ window.addEventListener(t, function(){ if (lock) { lock = false; onScroll(); } }, {passive:true}); });
   window.addEventListener('resize', function(){ var a = rail.querySelector('a.on'); if (a) place(a, false); onScroll(); });
   function ease(t){ return t < .5 ? 4*t*t*t : 1 - Math.pow(-2*t + 2, 3) / 2; }
   document.addEventListener('click', function(e){
     var a = e.target.closest && e.target.closest('a[href^="#"]'); if (!a) return;
     var hash = a.getAttribute('href'); if (hash.length < 2) return;
-    var el = hash === '#top' ? null : document.getElementById(hash.slice(1));
-    if (hash !== '#top' && !el) return;
+    var el = document.getElementById(hash.slice(1));
+    if (!el) return;
     e.preventDefault();
     var sec = a.getAttribute('data-sec') || (el && el.id);
     if (ids.indexOf(sec) > -1) setOn(sec);
@@ -653,15 +720,16 @@
     var guard = setTimeout(done, 2200);
     function done(){ clearTimeout(guard); lock = false; onScroll(); }
     if (history.replaceState) history.replaceState(null, '', hash);
-    var y = el ? el.getBoundingClientRect().top + window.scrollY - 48 : 0;
+    var top0 = hash === '#top';
+    var y = top0 ? 0 : el.getBoundingClientRect().top + window.scrollY - 48;
     if (lenis) {
       var dist = Math.abs(y - window.scrollY);
-      lenis.scrollTo(el ? el : 0, { duration: Math.min(1.5, 0.7 + dist / 6000), easing: ease, onComplete: done });
+      lenis.scrollTo(top0 ? 0 : el, { duration: Math.min(1.5, 0.7 + dist / 6000), easing: ease, onComplete: done });
     } else {
-      window.scrollTo({ top: Math.max(0, y), behavior: reduce ? 'auto' : 'smooth' });
-      setTimeout(done, reduce ? 50 : 900);
+      window.scrollTo({ top: Math.max(0, y), behavior: still() ? 'auto' : 'smooth' });
+      setTimeout(done, still() ? 50 : 900);
     }
-    if (e.detail === 0 && el) { el.setAttribute('tabindex', '-1'); el.focus({preventScroll:true}); }
+    if (e.detail === 0 || a.classList.contains('skip')) { el.setAttribute('tabindex', '-1'); el.focus({preventScroll:true}); }
   });
   // pause the looping background animations while they're off screen
   if ('IntersectionObserver' in window) {
@@ -686,6 +754,19 @@
   }, true);
 })();
 </script>
+<div class="a11y-panel" id="a11yPanel" role="dialog" aria-modal="false" aria-labelledby="a11yTitle" hidden data-lenis-prevent>
+  <div class="a11y-head"><h2 id="a11yTitle">Accessibility</h2><button type="button" class="a11y-x" id="a11yClose" aria-label="Close accessibility options"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"/></svg></button></div>
+  <div class="a11y-row"><span id="a11ySizeL">Text size</span><div class="a11y-seg" role="group" aria-labelledby="a11ySizeL"><button type="button" data-size="0" aria-pressed="true" aria-label="Default text size">A</button><button type="button" data-size="1" aria-pressed="false" aria-label="Larger text">A+</button><button type="button" data-size="2" aria-pressed="false" aria-label="Largest text">A++</button></div></div>
+  <div class="a11y-list">
+    <button type="button" class="a11y-opt" data-opt="contrast" aria-pressed="false"><span><b>High contrast</b><small>Darker text and clearer edges</small></span><i class="sw" aria-hidden="true"></i></button>
+    <button type="button" class="a11y-opt" data-opt="still" aria-pressed="false"><span><b>Stop animations</b><small>Pauses motion and smooth scrolling</small></span><i class="sw" aria-hidden="true"></i></button>
+    <button type="button" class="a11y-opt" data-opt="font" aria-pressed="false"><span><b>Readable font</b><small>Switches to Atkinson Hyperlegible</small></span><i class="sw" aria-hidden="true"></i></button>
+    <button type="button" class="a11y-opt" data-opt="links" aria-pressed="false"><span><b>Underline links</b><small>Makes every link easy to spot</small></span><i class="sw" aria-hidden="true"></i></button>
+    <button type="button" class="a11y-opt" data-opt="spacing" aria-pressed="false"><span><b>More spacing</b><small>Extra room between lines and letters</small></span><i class="sw" aria-hidden="true"></i></button>
+  </div>
+  <button type="button" class="a11y-reset" id="a11yReset">Reset all</button>
+  <p class="a11y-note">Saved on this device only.</p>
+</div>
 <button class="ask-fab" id="askFab" aria-controls="askPanel" aria-expanded="false" aria-label="Chat with my AI twin"><span class="spark"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l1.9 5.6L19.5 9.5l-5.6 1.9L12 17l-1.9-5.6L4.5 9.5l5.6-1.9L12 2Zm6.5 11 .9 2.6 2.6.9-2.6.9-.9 2.6-.9-2.6-2.6-.9 2.6-.9.9-2.6Z" fill="currentColor"/></svg></span><span class="lbl">Chat with my AI twin</span><i class="dot"></i></button>
 <section class="ask-panel" id="askPanel" data-lenis-prevent role="dialog" aria-modal="false" aria-labelledby="askTitle">
   <div class="ask-head"><div class="av">UK</div><div><b id="askTitle">Utkarsh's AI Twin</b><small>Trained on my background. Ask away.</small></div>
@@ -763,6 +844,48 @@
   }
   form.addEventListener('submit', function(e){ e.preventDefault(); ask(input.value); });
   sugg.addEventListener('click', function(e){ if (e.target.tagName === 'BUTTON') ask(e.target.textContent); });
+})();
+</script>
+<script>
+(function(){
+  // accessibility menu: settings are saved on this device and applied before the page paints
+  var KEY = 'ukA11y', root = document.documentElement;
+  var btn = document.getElementById('a11yBtn'), panel = document.getElementById('a11yPanel');
+  var OPTS = ['contrast','still','font','links','spacing'];
+  var st = {}; try { st = JSON.parse(localStorage.getItem(KEY) || '{}') || {}; } catch (e) {}
+  function loadFont(){
+    if (document.getElementById('a11yFont')) return;
+    var l = document.createElement('link'); l.id = 'a11yFont'; l.rel = 'stylesheet';
+    l.href = 'https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&display=swap';
+    document.head.appendChild(l);
+  }
+  function apply(){
+    root.classList.remove('a11y-size1', 'a11y-size2');
+    if (st.size) root.classList.add('a11y-size' + st.size);
+    OPTS.forEach(function(k){
+      root.classList.toggle('a11y-' + k, !!st[k]);
+      var b = panel.querySelector('[data-opt="' + k + '"]'); if (b) b.setAttribute('aria-pressed', st[k] ? 'true' : 'false');
+    });
+    panel.querySelectorAll('[data-size]').forEach(function(b){ b.setAttribute('aria-pressed', String((st.size || 0) === +b.getAttribute('data-size'))); });
+    if (st.font) loadFont();
+    if (window.ukSmooth) { if (st.still) window.ukSmooth.off(); else window.ukSmooth.on(); }
+    btn.classList.toggle('active', OPTS.some(function(k){ return st[k]; }) || !!st.size);
+    window.dispatchEvent(new Event('resize'));
+  }
+  function save(){ try { localStorage.setItem(KEY, JSON.stringify(st)); } catch (e) {} apply(); }
+  function open(){ panel.hidden = false; btn.setAttribute('aria-expanded', 'true'); var f = panel.querySelector('[data-size][aria-pressed="true"]'); if (f) f.focus(); }
+  function close(focusBtn){ if (panel.hidden) return; panel.hidden = true; btn.setAttribute('aria-expanded', 'false'); if (focusBtn) btn.focus(); }
+  btn.addEventListener('click', function(){ panel.hidden ? open() : close(true); });
+  document.getElementById('a11yClose').addEventListener('click', function(){ close(true); });
+  document.addEventListener('keydown', function(e){ if (e.key === 'Escape' && !panel.hidden) close(true); });
+  document.addEventListener('pointerdown', function(e){ if (!panel.hidden && !panel.contains(e.target) && !btn.contains(e.target)) close(false); });
+  panel.addEventListener('click', function(e){
+    var b = e.target.closest('button'); if (!b) return;
+    if (b.hasAttribute('data-size')) { var v = +b.getAttribute('data-size'); if (v) st.size = v; else delete st.size; save(); }
+    else if (b.hasAttribute('data-opt')) { var k = b.getAttribute('data-opt'); if (st[k]) delete st[k]; else st[k] = true; save(); }
+    else if (b.id === 'a11yReset') { st = {}; save(); }
+  });
+  apply();
 })();
 </script>
 <script data-goatcounter="https://utkarshkashyap501.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>
