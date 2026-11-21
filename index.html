@@ -3,86 +3,176 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Utkarsh Kashyap | Product, Program & AI Enablement</title>
-<meta name="description" content="Utkarsh Kashyap: 6+ years across platform implementation, client delivery, product operations and AI enablement. PMP certified.">
+<title>Utkarsh Kashyap | Product &amp; Program Manager</title>
+<meta name="description" content="Utkarsh Kashyap: product and program manager with 6+ years across platform delivery, product operations and AI enablement. PMP certified.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
   :root{
-    --navy:#003a70; --navy-dark:#002548; --blue-light:#e8f0f8; --accent:#2f7ad6;
-    --text:#1f2933; --muted:#5b6670; --line:#dbe3ec; --white:#fff;
+    --ink:#0E2A47;      /* deep navy, carries over from his resume */
+    --ink-2:#1B3B5E;
+    --paper:#F4F6FA;    /* cool working-surface grey */
+    --white:#FFFFFF;
+    --text:#1B2430;
+    --muted:#5E6B7A;
+    --line:#DCE2EC;
+    --sticky:#FFD23F;   /* sticky-note yellow, used only on the board */
+    --shipped:#1F9D6B;
+    --now:#3D6CF0;
+    --display:"Bricolage Grotesque",system-ui,sans-serif;
+    --body:"Instrument Sans",system-ui,sans-serif;
   }
   *{box-sizing:border-box;margin:0;padding:0}
   html{scroll-behavior:smooth}
-  body{font-family:Inter,Helvetica,Arial,sans-serif;color:var(--text);background:var(--white);line-height:1.6}
-  a{color:var(--navy);text-decoration:none}
-  a:hover{text-decoration:underline}
-  .wrap{max-width:1040px;margin:0 auto;padding:0 24px}
+  body{font-family:var(--body);font-size:17px;line-height:1.6;color:var(--text);background:var(--paper)}
+  a{color:inherit}
+  :focus-visible{outline:3px solid var(--now);outline-offset:3px;border-radius:4px}
+  .wrap{max-width:1160px;margin:0 auto;padding:0 28px}
+  h1,h2,h3{font-family:var(--display);color:var(--ink);line-height:1.1}
 
-  nav{position:sticky;top:0;z-index:10;background:rgba(255,255,255,.95);backdrop-filter:blur(6px);border-bottom:1px solid var(--line)}
-  nav .wrap{display:flex;justify-content:space-between;align-items:center;height:60px}
-  .logo{font-weight:800;color:var(--navy);font-size:1.1rem;letter-spacing:.5px}
-  .links a{margin-left:22px;font-size:.92rem;font-weight:500;color:var(--text)}
-  .links a:hover{color:var(--navy)}
+  /* nav */
+  nav{position:sticky;top:0;z-index:20;background:rgba(244,246,250,.88);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+  nav .wrap{display:flex;align-items:center;justify-content:space-between;height:68px}
+  .brand{font-family:var(--display);font-weight:800;font-size:1.15rem;color:var(--ink);text-decoration:none}
+  .nav-links{display:flex;align-items:center;gap:28px}
+  .nav-links a{text-decoration:none;font-weight:500;font-size:.95rem;color:var(--muted)}
+  .nav-links a:hover{color:var(--ink)}
+  .nav-links .pill{background:var(--ink);color:var(--white);padding:9px 18px;border-radius:999px}
+  .nav-links .pill:hover{background:var(--ink-2);color:var(--white)}
 
-  header{background:linear-gradient(135deg,var(--navy-dark),var(--navy));color:var(--white);padding:96px 0 88px}
-  header h1{font-size:clamp(2.2rem,5vw,3.4rem);font-weight:800;line-height:1.15}
-  header .role{font-size:clamp(1.05rem,2.2vw,1.3rem);margin-top:14px;color:#cfe0f3;font-weight:500}
-  header p.lead{max-width:680px;margin-top:22px;color:#e4edf7;font-size:1.05rem}
-  .cta{margin-top:32px;display:flex;flex-wrap:wrap;gap:12px}
-  .btn{display:inline-block;padding:11px 22px;border-radius:6px;font-weight:600;font-size:.95rem}
-  .btn-primary{background:var(--white);color:var(--navy)}
-  .btn-outline{border:1.5px solid rgba(255,255,255,.7);color:var(--white)}
-  .btn:hover{text-decoration:none;opacity:.9}
-  .meta{margin-top:26px;font-size:.9rem;color:#b9cfe6}
+  /* hero */
+  .hero{padding:88px 0 96px}
+  .hero .wrap{display:grid;grid-template-columns:1.05fr 1fr;gap:64px;align-items:center}
+  .status{display:inline-flex;align-items:center;gap:10px;font-size:.9rem;font-weight:600;color:var(--shipped);background:#E3F4EC;padding:6px 14px;border-radius:999px}
+  .status i{width:8px;height:8px;border-radius:50%;background:var(--shipped);box-shadow:0 0 0 4px rgba(31,157,107,.18)}
+  .hero h1{font-size:clamp(2.6rem,5.4vw,4.4rem);font-weight:800;letter-spacing:-.02em;margin:22px 0 22px}
+  .hero p{font-size:1.15rem;color:var(--muted);max-width:34em}
+  .actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:34px}
+  .btn{display:inline-block;text-decoration:none;font-weight:600;padding:13px 24px;border-radius:10px;font-size:1rem}
+  .btn-dark{background:var(--ink);color:var(--white)}
+  .btn-dark:hover{background:var(--ink-2)}
+  .btn-line{border:1.5px solid var(--ink);color:var(--ink)}
+  .btn-line:hover{background:var(--white)}
 
-  section{padding:72px 0;border-bottom:1px solid var(--line)}
-  section:nth-of-type(even){background:#f8fafc}
-  h2{font-size:1.65rem;color:var(--navy);font-weight:800;margin-bottom:8px}
-  .bar{width:48px;height:4px;background:var(--navy);border-radius:2px;margin-bottom:32px}
+  /* the roadmap board: the one bold element */
+  .board{background:var(--white);border:1px solid var(--line);border-radius:18px;padding:20px;box-shadow:0 30px 60px -30px rgba(14,42,71,.35)}
+  .board-head{display:flex;justify-content:space-between;align-items:center;padding:4px 6px 16px;border-bottom:1px solid var(--line);margin-bottom:16px}
+  .board-head b{font-family:var(--display);font-size:1.05rem;color:var(--ink)}
+  .board-head span{font-size:.85rem;color:var(--muted)}
+  .cols{display:grid;grid-template-columns:1.25fr 1fr;gap:14px}
+  .col h4{font-family:var(--body);font-size:.85rem;font-weight:600;color:var(--muted);display:flex;align-items:center;gap:8px;margin:0 4px 10px}
+  .col h4 em{font-style:normal;background:var(--paper);border-radius:6px;padding:0 7px;font-size:.8rem}
+  .col-body{background:var(--paper);border-radius:12px;padding:10px;display:flex;flex-direction:column;gap:10px;min-height:100%}
+  .ticket{background:var(--white);border:1px solid var(--line);border-radius:10px;padding:12px 14px;font-size:.9rem}
+  .ticket .t-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:6px}
+  .ticket .id{font-size:.78rem;font-weight:600;color:var(--muted)}
+  .ticket .tag{font-size:.74rem;font-weight:600;padding:2px 8px;border-radius:6px}
+  .tag-done{background:#E3F4EC;color:var(--shipped)}
+  .tag-now{background:#E6ECFE;color:var(--now)}
+  .ticket strong{display:block;color:var(--ink);font-size:.98rem;line-height:1.3}
+  .ticket small{color:var(--muted);font-size:.82rem}
+  .ticket.sticky{background:var(--sticky);border-color:#F0BE1E;transform:rotate(-1.5deg)}
+  .ticket.sticky strong{font-family:var(--display);font-size:1.15rem}
+  .ticket.sticky small{color:#5a4a00}
 
-  .stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:16px;margin-top:28px}
-  .stat{background:var(--blue-light);border-radius:10px;padding:20px}
-  .stat b{display:block;font-size:1.7rem;color:var(--navy)}
-  .stat span{font-size:.9rem;color:var(--muted)}
+  @media (prefers-reduced-motion:no-preference){
+    .ticket{animation:drop .55s cubic-bezier(.2,.8,.2,1) both}
+    .ticket:nth-child(2){animation-delay:.12s}
+    .ticket:nth-child(3){animation-delay:.24s}
+    .col:last-child .ticket{animation-delay:.55s}
+    .col:last-child .ticket.sticky{animation-name:drop-tilt}
+    @keyframes drop{from{opacity:0;transform:translateY(-14px)}to{opacity:1;transform:none}}
+    @keyframes drop-tilt{from{opacity:0;transform:translateY(-14px) rotate(0)}to{opacity:1;transform:rotate(-1.5deg)}}
+  }
 
-  .job{position:relative;padding-left:26px;margin-bottom:36px;border-left:2px solid var(--line)}
-  .job:before{content:"";position:absolute;left:-7px;top:6px;width:12px;height:12px;border-radius:50%;background:var(--navy)}
-  .job h3{font-size:1.15rem}
-  .job .co{color:var(--navy);font-weight:600}
-  .job .when{font-size:.88rem;color:var(--muted);margin:2px 0 10px}
-  .job ul{padding-left:18px}
-  .job li{margin-bottom:6px}
+  /* sections */
+  section{padding:96px 0}
+  .sec-head{max-width:640px;margin-bottom:48px}
+  .sec-head h2{font-size:clamp(2rem,3.6vw,2.8rem);font-weight:800;letter-spacing:-.015em}
+  .sec-head p{color:var(--muted);margin-top:14px;font-size:1.08rem}
+  .white{background:var(--white)}
 
-  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px}
-  .card{background:var(--white);border:1px solid var(--line);border-radius:10px;padding:24px}
-  .card h3{color:var(--navy);font-size:1.1rem;margin-bottom:8px}
-  .card p{color:var(--muted);font-size:.95rem}
-  .tags{margin-top:14px;display:flex;flex-wrap:wrap;gap:6px}
-  .tag{background:var(--blue-light);color:var(--navy);font-size:.78rem;font-weight:600;padding:4px 10px;border-radius:999px}
+  /* how I work: a real sequence, so it is numbered */
+  .process{display:grid;grid-template-columns:repeat(4,1fr);gap:0;border-top:2px solid var(--ink)}
+  .step{padding:28px 26px 8px 0}
+  .step + .step{padding-left:26px;border-left:1px solid var(--line)}
+  .step .n{font-family:var(--display);font-weight:800;font-size:2.6rem;color:var(--line);line-height:1}
+  .step h3{font-size:1.35rem;margin:14px 0 10px}
+  .step p{color:var(--muted);font-size:.97rem}
 
-  .skills{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:20px}
-  .skills .card ul{list-style:none}
-  .skills .card li{padding:5px 0;border-bottom:1px dashed var(--line);font-size:.93rem}
-  .skills .card li:last-child{border-bottom:none}
+  /* experience */
+  .xp{display:grid;grid-template-columns:220px 1fr;gap:40px;padding:36px 0;border-top:1px solid var(--line)}
+  .xp:last-child{border-bottom:1px solid var(--line)}
+  .xp .when{font-weight:600;color:var(--ink)}
+  .xp .when small{display:block;color:var(--muted);font-weight:500;margin-top:4px}
+  .xp h3{font-size:1.5rem}
+  .xp .org{color:var(--muted);margin:4px 0 16px;font-weight:500}
+  .xp ul{list-style:none;display:grid;gap:10px}
+  .xp li{padding-left:22px;position:relative}
+  .xp li:before{content:"";position:absolute;left:0;top:.62em;width:10px;height:2px;background:var(--now)}
+  .xp li b{color:var(--ink)}
 
-  .certs{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px}
-  .cert{background:var(--blue-light);border-radius:10px;padding:18px 20px;font-weight:600;color:var(--navy)}
-  .cert small{display:block;font-weight:500;color:var(--muted);margin-top:4px}
+  /* projects as case studies */
+  .cases{display:grid;grid-template-columns:1fr 1fr;gap:28px}
+  .case{background:var(--white);border:1px solid var(--line);border-radius:20px;padding:34px}
+  .case.feature{background:var(--ink);border-color:var(--ink);color:#C9D6E6}
+  .case.feature h3{color:var(--white)}
+  .case h3{font-size:1.8rem;margin-bottom:6px}
+  .case .kind{font-weight:500;color:var(--muted)}
+  .case.feature .kind{color:#9FB3CC}
+  .case dl{margin-top:24px;display:grid;gap:16px}
+  .case dt{font-weight:600;font-size:.9rem;color:var(--ink)}
+  .case.feature dt{color:var(--sticky)}
+  .case dd{margin-top:2px}
+  .case .stack{display:flex;flex-wrap:wrap;gap:8px;margin-top:24px}
+  .chip{font-size:.85rem;font-weight:500;padding:5px 12px;border-radius:999px;background:var(--paper);color:var(--ink);border:1px solid var(--line)}
+  .case.feature .chip{background:rgba(255,255,255,.08);border-color:rgba(255,255,255,.16);color:var(--white)}
+  .case a.visit{display:inline-block;margin-top:24px;font-weight:600;color:var(--white)}
 
-  .contact{text-align:center}
-  .contact p{color:var(--muted);max-width:560px;margin:0 auto 26px}
-  .contact .cta{justify-content:center}
-  .contact .btn-primary{background:var(--navy);color:var(--white)}
-  .contact .btn-outline{border-color:var(--navy);color:var(--navy)}
+  /* toolkit */
+  .toolkit{display:grid;grid-template-columns:repeat(3,1fr);gap:40px}
+  .toolkit h3{font-size:1.15rem;margin-bottom:14px}
+  .toolkit .chips{display:flex;flex-wrap:wrap;gap:8px}
+  .toolkit .chip{background:var(--white)}
 
-  footer{background:var(--navy-dark);color:#b9cfe6;text-align:center;padding:26px 0;font-size:.85rem}
+  /* credentials */
+  .creds{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-top:64px}
+  .cred{border-left:3px solid var(--ink);padding:4px 0 4px 16px}
+  .cred strong{display:block;color:var(--ink);font-family:var(--display);font-size:1.1rem;line-height:1.25}
+  .cred span{color:var(--muted);font-size:.9rem}
 
+  /* contact */
+  .contact{background:var(--ink);color:#C9D6E6;padding:110px 0}
+  .contact h2{color:var(--white);font-size:clamp(2.4rem,5vw,4rem);font-weight:800;letter-spacing:-.02em;max-width:14em}
+  .contact p{max-width:34em;margin-top:20px;font-size:1.1rem}
+  .contact .actions .btn-dark{background:var(--sticky);color:var(--ink)}
+  .contact .actions .btn-dark:hover{background:#FFE07A}
+  .contact .actions .btn-line{border-color:#9FB3CC;color:var(--white)}
+  .contact .actions .btn-line:hover{background:var(--ink-2)}
+  footer{background:var(--ink);color:#7F96B2;font-size:.88rem;padding:0 0 36px}
+  footer .wrap{border-top:1px solid rgba(255,255,255,.12);padding-top:24px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
+  footer a{color:#C9D6E6}
+
+  @media (max-width:960px){
+    .hero .wrap{grid-template-columns:1fr;gap:48px}
+    .process{grid-template-columns:1fr 1fr}
+    .step:nth-child(3){padding-left:0;border-left:none}
+    .cases{grid-template-columns:1fr}
+    .toolkit{grid-template-columns:1fr 1fr}
+    .creds{grid-template-columns:1fr 1fr}
+  }
   @media (max-width:640px){
-    .links{display:none}
-    header{padding:72px 0 64px}
-    section{padding:56px 0}
+    body{font-size:16px}
+    .nav-links a:not(.pill){display:none}
+    .hero{padding:56px 0 64px}
+    section{padding:72px 0}
+    .cols{grid-template-columns:1fr}
+    .process{grid-template-columns:1fr}
+    .step,.step + .step{padding:24px 0 4px;border-left:none;border-top:1px solid var(--line)}
+    .xp{grid-template-columns:1fr;gap:10px}
+    .toolkit,.creds{grid-template-columns:1fr}
+    .case{padding:26px}
   }
 </style>
 </head>
@@ -90,149 +180,183 @@
 
 <nav>
   <div class="wrap">
-    <div class="logo">UK</div>
-    <div class="links">
-      <a href="#about">About</a>
+    <a class="brand" href="#top">Utkarsh Kashyap</a>
+    <div class="nav-links">
+      <a href="#how">How I work</a>
       <a href="#experience">Experience</a>
       <a href="#projects">Projects</a>
-      <a href="#skills">Skills</a>
-      <a href="#contact">Contact</a>
+      <a href="#toolkit">Toolkit</a>
+      <a class="pill" href="mailto:utkarsh.kashyap768@gmail.com">Email me</a>
     </div>
   </div>
 </nav>
 
-<header>
+<header class="hero" id="top">
   <div class="wrap">
-    <h1>Utkarsh Kashyap</h1>
-    <div class="role">Product &amp; Program Management · Client Delivery · AI Enablement</div>
-    <p class="lead">I help teams roll out platforms and AI tools that people actually use. Over 6+ years I've worked across platform implementation, client delivery, product operations and AI/ML operations for clients in APAC, EMEA, the Americas and the Middle East.</p>
-    <div class="cta">
-      <a class="btn btn-primary" href="#contact">Get in touch</a>
-      <a class="btn btn-outline" href="https://www.linkedin.com/in/utkarshkashyap501" target="_blank" rel="noopener">LinkedIn</a>
-      <a class="btn btn-outline" href="https://github.com/utkarshkashyap501" target="_blank" rel="noopener">GitHub</a>
+    <div>
+      <span class="status"><i></i>Available to join immediately</span>
+      <h1>I turn messy problems into products people actually use.</h1>
+      <p>Product and program manager with 6+ years across platform delivery, product operations and AI enablement. I've worked with Fortune 500, government and mid-market clients across APAC, EMEA, the Americas and the Middle East.</p>
+      <div class="actions">
+        <a class="btn btn-dark" href="#projects">See my work</a>
+        <a class="btn btn-line" href="https://www.linkedin.com/in/utkarshkashyap501" target="_blank" rel="noopener">LinkedIn</a>
+        <a class="btn btn-line" href="https://github.com/utkarshkashyap501" target="_blank" rel="noopener">GitHub</a>
+      </div>
     </div>
-    <div class="meta">India · Open to relocation · PMP certified</div>
+
+    <div class="board" aria-label="Career roadmap">
+      <div class="board-head"><b>Career roadmap</b><span>2020 to now</span></div>
+      <div class="cols">
+        <div class="col">
+          <h4>Shipped <em>3</em></h4>
+          <div class="col-body">
+            <div class="ticket"><div class="t-top"><span class="id">2024 to 2026</span><span class="tag tag-done">Done</span></div><strong>Mercer Talent Enterprise</strong><small>Senior Analyst. Consulting, product ownership and AI enablement</small></div>
+            <div class="ticket"><div class="t-top"><span class="id">2022 to 2024</span><span class="tag tag-done">Done</span></div><strong>Kincentric (Formerly AON)</strong><small>HR-tech platform delivery and client management</small></div>
+            <div class="ticket"><div class="t-top"><span class="id">2020 to 2022</span><span class="tag tag-done">Done</span></div><strong>Hive.ai</strong><small>AI/ML data operations. Promoted within 14 months</small></div>
+          </div>
+        </div>
+        <div class="col">
+          <h4>Up next <em>1</em></h4>
+          <div class="col-body">
+            <div class="ticket sticky"><div class="t-top"><span class="id">Now</span><span class="tag tag-now">Open</span></div><strong>Your product team?</strong><small>Product, program and AI enablement roles. Open to relocation.</small></div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </header>
 
-<section id="about">
+<section id="how" class="white">
   <div class="wrap">
-    <h2>About</h2>
-    <div class="bar"></div>
-    <p>My career started in AI/ML data operations at Hive.ai, moved into HR-tech platform delivery and client management at Kincentric (Formerly AON), and grew into broader consulting and AI-enablement work at Mercer Talent Enterprise. Along the way I've owned backlogs and requirements, run UAT, led client discovery workshops, driven adoption of tools like Microsoft Copilot and Glean, and built AI agents with Gemini Enterprise.</p>
-    <p style="margin-top:14px">I like turning messy problems into clear requirements, then staying with them until they ship and get adopted.</p>
-    <div class="stats">
-      <div class="stat"><b>6+ yrs</b><span>Platform, product &amp; client delivery</span></div>
-      <div class="stat"><b>30%</b><span>Team efficiency gain from AI automation</span></div>
-      <div class="stat"><b>4 regions</b><span>APAC, EMEA, Americas, Middle East</span></div>
-      <div class="stat"><b>PMP</b><span>Project Management Professional</span></div>
+    <div class="sec-head">
+      <h2>How I work</h2>
+      <p>The same loop I've run with enterprise clients and on my own builds: understand the problem, write it down clearly, ship it, then make sure people use it.</p>
+    </div>
+    <div class="process">
+      <div class="step"><div class="n">1</div><h3>Discover</h3><p>Client discovery workshops, customer journey mapping and market research to find the real pain point before anyone writes code.</p></div>
+      <div class="step"><div class="n">2</div><h3>Define</h3><p>PRDs, BRDs and user stories with scenarios, edge cases and acceptance criteria. Wireframes and AI prototypes when words aren't enough.</p></div>
+      <div class="step"><div class="n">3</div><h3>Deliver</h3><p>Backlog ownership and sprint planning in JIRA, UAT, regression checks and root cause analysis until it's ready to go live.</p></div>
+      <div class="step"><div class="n">4</div><h3>Drive adoption</h3><p>Rollout, training and change management, then NPS, CSAT and usage data to see what's working and what to fix next.</p></div>
     </div>
   </div>
 </section>
 
 <section id="experience">
   <div class="wrap">
-    <h2>Experience</h2>
-    <div class="bar"></div>
-
-    <div class="job">
-      <h3>Senior Analyst · <span class="co">Mercer (Mercer Talent Enterprise)</span></h3>
-      <div class="when">Mar 2024 – Jul 2026</div>
-      <ul>
-        <li>Owned product backlog, user stories and acceptance criteria in JIRA/Confluence; wrote BRDs, FRDs and PRDs.</li>
-        <li>Led company-wide AI adoption work: Copilot and Glean rollout, training and change management.</li>
-        <li>Built AI agents and RAG workflows using Claude, ChatGPT and Gemini.</li>
-        <li>Automated recurring team tasks with AI tools for a 30% efficiency gain.</li>
-        <li>Ran client discovery workshops, UAT and post-launch support for enterprise clients.</li>
-      </ul>
+    <div class="sec-head">
+      <h2>Experience</h2>
+      <p>From AI data operations, to HR-tech platform delivery, to consulting and AI enablement.</p>
     </div>
 
-    <div class="job">
-      <h3><span class="co">Kincentric (Formerly AON)</span></h3>
-      <div class="when">Jun 2022 – Feb 2024</div>
-      <ul>
-        <li>Delivered HR-tech platform implementations and managed client relationships.</li>
-        <li>Owned NPS/CSAT and voice-of-customer surveys end to end; maintained and extended the Tableau CSAT dashboard.</li>
-        <li>Configured SSO and connectors during deployments; integrated with ServiceNow ITSM.</li>
-        <li>Coordinated a team of 5–6 specialists across scheduling, reviews and SLA coverage.</li>
-      </ul>
+    <div class="xp">
+      <div class="when">Mar 2024 to Jul 2026</div>
+      <div>
+        <h3>Senior Analyst</h3>
+        <div class="org">Mercer (Mercer Talent Enterprise)</div>
+        <ul>
+          <li><b>Product ownership.</b> Owned the backlog, user stories and acceptance criteria in JIRA and Confluence; wrote BRDs, FRDs and PRDs.</li>
+          <li><b>AI enablement.</b> Led company-wide AI adoption, including Copilot and Glean rollout, training and change management.</li>
+          <li><b>AI building.</b> Built AI agents and RAG workflows using Claude, ChatGPT and Gemini.</li>
+          <li><b>Efficiency.</b> Automated recurring team tasks with AI tools for a 30% efficiency gain.</li>
+          <li><b>Client delivery.</b> Ran discovery workshops, UAT and post-launch support for enterprise clients.</li>
+        </ul>
+      </div>
     </div>
 
-    <div class="job">
-      <h3><span class="co">Hive.ai</span></h3>
-      <div class="when">Sep 2020 – May 2022 · Promoted within 14 months</div>
-      <ul>
-        <li>Ran AI/ML data operations: labeling, evaluation and quality calibration for model training.</li>
-        <li>Coordinated a team of 7–10 specialists with 24x7 coverage.</li>
-      </ul>
+    <div class="xp">
+      <div class="when">Jun 2022 to Feb 2024</div>
+      <div>
+        <h3>Platform delivery and client management</h3>
+        <div class="org">Kincentric (Formerly AON)</div>
+        <ul>
+          <li><b>Implementation.</b> Delivered HR-tech platform implementations, including SSO and connector setup and ServiceNow integration.</li>
+          <li><b>Voice of customer.</b> Owned NPS and CSAT surveys end to end; maintained and extended the Tableau CSAT dashboard.</li>
+          <li><b>Team.</b> Coordinated 5 to 6 specialists across scheduling, reviews and SLA coverage.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="xp">
+      <div class="when">Sep 2020 to May 2022</div>
+      <div>
+        <h3>AI/ML data operations</h3>
+        <div class="org">Hive.ai</div>
+        <ul>
+          <li><b>Model quality.</b> Ran data labeling, evaluation and grader calibration for AI/ML model training.</li>
+          <li><b>Team.</b> Coordinated 7 to 10 specialists with 24x7 coverage. Promoted within 14 months.</li>
+        </ul>
+      </div>
     </div>
   </div>
 </section>
 
-<section id="projects">
+<section id="projects" class="white">
   <div class="wrap">
-    <h2>Projects</h2>
-    <div class="bar"></div>
-    <div class="grid">
-      <div class="card">
+    <div class="sec-head">
+      <h2>Things I've built</h2>
+      <p>Side projects where I'm the PM, designer and engineer.</p>
+    </div>
+    <div class="cases">
+      <article class="case feature">
         <h3>Ishqiyaa.com</h3>
-        <p>An appointment-booking website I built for a client that sends meeting invites to both the guide and the guest. I integrated the Razorpay payment gateway and now run the client's product, design and engineering.</p>
-        <div class="tags"><span class="tag">Lovable</span><span class="tag">Razorpay</span><span class="tag">Product</span></div>
-        <p style="margin-top:14px"><a href="https://ishqiyaa.com" target="_blank" rel="noopener">Visit site →</a></p>
-      </div>
-      <div class="card">
-        <h3>AI Job Application Co-pilot</h3>
-        <p>A self-hosted n8n agent that reads job descriptions, tailors a resume, scores it against the JD and sends it to Telegram for my approval before anything goes out.</p>
-        <div class="tags"><span class="tag">n8n</span><span class="tag">LLM API</span><span class="tag">Telegram</span><span class="tag">Docker</span></div>
-      </div>
+        <div class="kind">Freelance client product</div>
+        <dl>
+          <div><dt>Problem</dt><dd>The client needed a way to take paid appointment bookings online.</dd></div>
+          <div><dt>What I built</dt><dd>A booking site that sends meeting invites to both the guide and the guest, with the Razorpay payment gateway integrated end to end.</dd></div>
+          <div><dt>Where it is now</dt><dd>Live, and I run the client's product, design and engineering.</dd></div>
+        </dl>
+        <div class="stack"><span class="chip">Lovable</span><span class="chip">Razorpay</span><span class="chip">Product management</span></div>
+        <a class="visit" href="https://ishqiyaa.com" target="_blank" rel="noopener">Visit ishqiyaa.com</a>
+      </article>
+      <article class="case">
+        <h3>AI job application co-pilot</h3>
+        <div class="kind">Personal agentic workflow</div>
+        <dl>
+          <div><dt>Problem</dt><dd>Tailoring a resume for every job description takes hours.</dd></div>
+          <div><dt>What I built</dt><dd>A self-hosted n8n agent that reads a job description, tailors my resume, scores it against the JD and sends it to Telegram for my approval.</dd></div>
+          <div><dt>Where it is now</dt><dd>Running on my Mac, with job search and form filling in progress.</dd></div>
+        </dl>
+        <div class="stack"><span class="chip">n8n</span><span class="chip">LLM API</span><span class="chip">Telegram bot</span><span class="chip">Docker</span></div>
+      </article>
     </div>
   </div>
 </section>
 
-<section id="skills">
+<section id="toolkit">
   <div class="wrap">
-    <h2>Skills</h2>
-    <div class="bar"></div>
-    <div class="skills">
-      <div class="card"><h3>Product &amp; Delivery</h3><ul>
-        <li>Backlog &amp; user stories</li><li>BRD / FRD / PRD</li><li>UAT &amp; root cause analysis</li><li>Agile / Scrum</li><li>Customer journey mapping</li><li>Go-to-market</li></ul></div>
-      <div class="card"><h3>AI &amp; Cloud</h3><ul>
-        <li>Gemini Enterprise (agents, RAG)</li><li>Azure OpenAI · Vertex AI</li><li>Microsoft Copilot · Glean</li><li>AI observability</li><li>Claude Code · n8n · Zapier</li><li>Azure · GCP · AWS</li></ul></div>
-      <div class="card"><h3>Tools &amp; Data</h3><ul>
-        <li>JIRA · Confluence · Asana</li><li>ServiceNow · Salesforce</li><li>SQL · Python</li><li>Tableau · Excel</li><li>Qualtrics (NPS/CSAT)</li><li>Postman · SharePoint</li></ul></div>
-      <div class="card"><h3>Stakeholders</h3><ul>
-        <li>Client discovery workshops</li><li>C-suite engagement</li><li>Change management &amp; training</li><li>Presales support</li><li>Vendor coordination</li><li>Team coordination</li></ul></div>
+    <div class="sec-head">
+      <h2>Toolkit</h2>
+    </div>
+    <div class="toolkit">
+      <div><h3>Product and delivery</h3><div class="chips">
+        <span class="chip">PRDs and user stories</span><span class="chip">Backlog ownership</span><span class="chip">Agile and Scrum</span><span class="chip">Wireframes</span><span class="chip">UAT</span><span class="chip">Root cause analysis</span><span class="chip">Go-to-market</span><span class="chip">Journey mapping</span></div></div>
+      <div><h3>AI</h3><div class="chips">
+        <span class="chip">Claude</span><span class="chip">ChatGPT</span><span class="chip">Gemini Enterprise</span><span class="chip">RAG</span><span class="chip">Claude Code</span><span class="chip">n8n</span><span class="chip">Copilot</span><span class="chip">Glean</span><span class="chip">AI observability</span></div></div>
+      <div><h3>Tools and data</h3><div class="chips">
+        <span class="chip">JIRA</span><span class="chip">Confluence</span><span class="chip">ServiceNow</span><span class="chip">Salesforce</span><span class="chip">SQL</span><span class="chip">Python</span><span class="chip">Tableau</span><span class="chip">Qualtrics</span><span class="chip">Postman</span><span class="chip">Azure, GCP, AWS</span></div></div>
+    </div>
+
+    <div class="creds">
+      <div class="cred"><strong>PMP</strong><span>Project Management Institute</span></div>
+      <div class="cred"><strong>Generative AI Leader</strong><span>Google Cloud</span></div>
+      <div class="cred"><strong>AI Fluency</strong><span>Anthropic</span></div>
+      <div class="cred"><strong>B.Tech, Computer Science</strong><span>St. Andrews Institute of Technology &amp; Management, 2021</span></div>
     </div>
   </div>
 </section>
 
-<section id="certifications">
+<section class="contact" id="contact">
   <div class="wrap">
-    <h2>Certifications &amp; Education</h2>
-    <div class="bar"></div>
-    <div class="certs">
-      <div class="cert">Project Management Professional (PMP)<small>PMI</small></div>
-      <div class="cert">Generative AI Leader<small>Google Cloud</small></div>
-      <div class="cert">AI Fluency: Frameworks &amp; Foundations<small>Anthropic</small></div>
-      <div class="cert">B.Tech, Computer Science Engineering<small>St. Andrews Institute of Technology &amp; Management · 2017–2021</small></div>
+    <h2>Building something people need to adopt? Let's talk.</h2>
+    <p>I'm available to join immediately and open to product, program and AI enablement roles, in India or abroad.</p>
+    <div class="actions">
+      <a class="btn btn-dark" href="mailto:utkarsh.kashyap768@gmail.com">Email me</a>
+      <a class="btn btn-line" href="https://www.linkedin.com/in/utkarshkashyap501" target="_blank" rel="noopener">Connect on LinkedIn</a>
     </div>
   </div>
 </section>
-
-<section id="contact" class="contact">
-  <div class="wrap">
-    <h2>Let's talk</h2>
-    <div class="bar" style="margin:0 auto 24px"></div>
-    <p>I'm available to join immediately and open to roles in product, program management, consulting and AI enablement.</p>
-    <div class="cta">
-      <a class="btn btn-primary" href="mailto:utkarsh.kashyap768@gmail.com">Email me</a>
-      <a class="btn btn-outline" href="https://www.linkedin.com/in/utkarshkashyap501" target="_blank" rel="noopener">LinkedIn</a>
-    </div>
-  </div>
-</section>
-
 <footer>
-  © 2026 Utkarsh Kashyap
+  <div class="wrap"><span>© 2026 Utkarsh Kashyap</span><a href="mailto:utkarsh.kashyap768@gmail.com">utkarsh.kashyap768@gmail.com</a></div>
 </footer>
 
 </body>
