@@ -24,7 +24,7 @@
   .t:hover{box-shadow:0 18px 40px -26px rgba(16,24,40,.45)}
   .t{transition:box-shadow .25s ease,transform .25s ease}
 
-  .intro{grid-column:span 7;grid-row:span 2;display:flex;flex-direction:column;justify-content:space-between;min-height:420px}
+  .intro{grid-column:span 7;grid-row:span 3;display:flex;flex-direction:column;justify-content:space-between;min-height:420px}
   .intro .avail{display:inline-flex;align-items:center;gap:8px;font-size:.85rem;font-weight:700;color:var(--emerald);background:var(--emerald-soft);padding:6px 12px;border-radius:999px;align-self:flex-start}
   .intro .avail i{width:8px;height:8px;border-radius:50%;background:var(--emerald);animation:pulse 2s infinite}
   @keyframes pulse{0%{box-shadow:0 0 0 0 rgba(15,157,118,.5)}70%{box-shadow:0 0 0 8px rgba(15,157,118,0)}100%{box-shadow:0 0 0 0 rgba(15,157,118,0)}}
@@ -37,9 +37,26 @@
   .btn.p{background:var(--ink);color:#fff}
   .btn.s{background:var(--bg);color:var(--ink)}
 
-  .stat{grid-column:span 5;display:flex;align-items:flex-end;justify-content:space-between;gap:16px}
-  .stat b{font-size:4.2rem;font-weight:800;letter-spacing:-.04em;line-height:.9}
-  .stat span{color:var(--muted);font-weight:600;max-width:13em;text-align:right}
+  .stat{grid-column:span 5;display:flex;flex-direction:column;justify-content:space-between;gap:14px;padding:26px 30px}
+  .stat .top{display:flex;align-items:baseline;gap:16px}
+  .stat b{font-size:3.6rem;font-weight:800;letter-spacing:-.04em;line-height:.9;flex:none}
+  .stat span{color:var(--muted);font-weight:600;max-width:20em}
+  .stat.c{background:#FFF0EA}
+  .stat.c b{color:var(--coral)}
+  .tl{display:flex;align-items:center;gap:0;margin-top:4px}
+  .tl .st{display:flex;flex-direction:column;gap:2px;font-size:.8rem;font-weight:700;color:var(--ink);position:relative;flex:1}
+  .tl .st small{font-weight:600;color:var(--muted)}
+  .tl .st:before{content:"";width:12px;height:12px;border-radius:50%;background:var(--emerald);box-shadow:0 0 0 4px rgba(15,157,118,.18);margin-bottom:8px}
+  .tl .st:after{content:"";position:absolute;top:5px;left:14px;right:6px;height:2px;background:linear-gradient(90deg,var(--emerald),rgba(15,157,118,.25))}
+  .tl .st:last-child:after{display:none}
+  .stat .chips{margin-top:0}
+  .stat.c .chip{background:#fff;color:var(--ink)}
+  .ic{width:18px;height:18px;flex:none}
+  .btn{display:inline-flex;align-items:center;gap:8px}
+  .social{display:flex;gap:10px}
+  .social a{width:38px;height:38px;border-radius:12px;display:grid;place-items:center;background:var(--tile);color:var(--ink);transition:transform .18s,background .18s,color .18s}
+  .social a:hover{transform:translateY(-2px);background:var(--indigo);color:#fff}
+  footer{align-items:center}
   .stat.a{background:var(--indigo);color:#fff}
   .stat.a span{color:#C9C6F6}
   .stat.b{background:var(--emerald-soft)}
@@ -185,15 +202,18 @@
       <h1>Hi, I'm Utkarsh.<br><span class="accent">I make products work for the people who use them.</span></h1>
       <p>I've spent the last 6+ years where customers, product and delivery meet. Honestly, that's where I'm happiest: figuring out what people actually need, writing it down clearly, getting it shipped, and then making sure it actually gets used. I've done this for Fortune 500, government and mid-market clients across APAC, EMEA, the Americas and the Middle East.</p>
       <div class="btns">
-        <a class="btn p" href="mailto:utkarsh.kashyap768@gmail.com">Email me</a>
+        <a class="btn p" href="mailto:utkarsh.kashyap768@gmail.com"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1Zm0 1.6V17h16V7.6l-8 5.2-8-5.2ZM5.3 7 12 11.3 18.7 7H5.3Z" fill="currentColor"/></svg>Email me</a>
         <a class="btn g" href="#resume">Request my resume</a>
-        <a class="btn s" href="https://www.linkedin.com/in/utkarshkashyap501" target="_blank" rel="noopener">LinkedIn</a>
+        <a class="btn s" href="https://www.linkedin.com/in/utkarshkashyap501" target="_blank" rel="noopener"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5ZM3 9.5h4V21H3V9.5Zm6.5 0h3.8v1.6h.06c.53-1 1.83-2.05 3.77-2.05 4.03 0 4.77 2.65 4.77 6.1V21h-4v-5.1c0-1.22-.02-2.78-1.7-2.78-1.7 0-1.96 1.33-1.96 2.7V21h-4V9.5Z" fill="currentColor"/></svg>LinkedIn</a>
       </div>
     </div>
   </section>
 
-  <section class="t stat a"><b data-count="30" data-suffix="%">30%</b><span>Efficiency my team gained after I automated our recurring work with AI</span></section>
-  <section class="t stat b"><b data-count="6" data-suffix="+">6+</b><span>Years doing this, across Hive.ai, Kincentric (Formerly AON) and Mercer</span></section>
+  <section class="t stat a"><div class="top"><b data-count="30" data-suffix="%">30%</b><span>efficiency my team gained after I automated our recurring work with AI</span></div></section>
+  <section class="t stat b"><div class="top"><b data-count="6" data-suffix="+">6+</b><span>years doing this, across three companies</span></div>
+    <div class="tl"><div class="st">Hive.ai<small>2020</small></div><div class="st">Kincentric<small>2022</small></div><div class="st">Mercer<small>2024</small></div></div></section>
+  <section class="t stat c"><div class="top"><b data-count="3">3</b><span>certifications that back up the hands-on work</span></div>
+    <div class="chips"><span class="chip">PMP</span><span class="chip">Google Cloud GenAI Leader</span><span class="chip">Anthropic AI Fluency</span></div></section>
 
   <h2 class="sec-title">How I usually work</h2>
   <section class="how">
@@ -324,12 +344,12 @@
   <section class="t contact">
     <h2>Need someone to turn a product into real results for customers? I'd love to chat.</h2>
     <div class="btns" style="margin-top:0">
-      <a class="btn p" href="mailto:utkarsh.kashyap768@gmail.com">Email me</a>
-      <a class="btn s" href="https://www.linkedin.com/in/utkarshkashyap501" target="_blank" rel="noopener">LinkedIn</a>
+      <a class="btn p" href="mailto:utkarsh.kashyap768@gmail.com"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1Zm0 1.6V17h16V7.6l-8 5.2-8-5.2ZM5.3 7 12 11.3 18.7 7H5.3Z" fill="currentColor"/></svg>Email me</a>
+      <a class="btn s" href="https://www.linkedin.com/in/utkarshkashyap501" target="_blank" rel="noopener"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5ZM3 9.5h4V21H3V9.5Zm6.5 0h3.8v1.6h.06c.53-1 1.83-2.05 3.77-2.05 4.03 0 4.77 2.65 4.77 6.1V21h-4v-5.1c0-1.22-.02-2.78-1.7-2.78-1.7 0-1.96 1.33-1.96 2.7V21h-4V9.5Z" fill="currentColor"/></svg>LinkedIn</a>
     </div>
   </section>
 </main>
-<footer><span>© 2026 Utkarsh Kashyap</span><span>Open to relocation within or outside India</span></footer>
+<footer><span>© 2026 Utkarsh Kashyap</span><div class="social"><a href="mailto:utkarsh.kashyap768@gmail.com" aria-label="Email Utkarsh"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1Zm0 1.6V17h16V7.6l-8 5.2-8-5.2ZM5.3 7 12 11.3 18.7 7H5.3Z" fill="currentColor"/></svg></a><a href="https://www.linkedin.com/in/utkarshkashyap501" target="_blank" rel="noopener" aria-label="Utkarsh on LinkedIn"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5ZM3 9.5h4V21H3V9.5Zm6.5 0h3.8v1.6h.06c.53-1 1.83-2.05 3.77-2.05 4.03 0 4.77 2.65 4.77 6.1V21h-4v-5.1c0-1.22-.02-2.78-1.7-2.78-1.7 0-1.96 1.33-1.96 2.7V21h-4V9.5Z" fill="currentColor"/></svg></a></div><span>Open to relocation within or outside India</span></footer>
 
 <script>
 (function(){
@@ -384,5 +404,6 @@
   items.forEach(function(el){ io.observe(el); });
 })();
 </script>
+<script data-goatcounter="https://utkarshkashyap501.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>
 </body>
 </html>
