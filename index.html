@@ -29,7 +29,7 @@
     --r:26px;
   }
   *{box-sizing:border-box;margin:0;padding:0}
-  body{font-family:Manrope,system-ui,sans-serif;background:var(--bg);color:var(--ink);line-height:1.55;padding:28px}
+  body{font-family:Manrope,system-ui,sans-serif;background:var(--bg);color:var(--ink);line-height:1.55;padding:48px 28px 28px}
   a{color:inherit}
   :focus-visible{outline:3px solid var(--indigo);outline-offset:3px;border-radius:6px}
   .grid{max-width:1240px;margin:0 auto;display:grid;grid-template-columns:repeat(12,1fr);gap:16px}
@@ -234,7 +234,7 @@
   .chip{background:#F2F3F8;color:var(--ink);border:1px solid var(--line)}
   .proj.dark .chip{background:rgba(255,255,255,.1);color:#fff;border-color:rgba(255,255,255,.15)}
   .tools .chip:hover{background:var(--indigo-soft);color:var(--violet);border-color:#CFC7FA}
-  .creds{background:linear-gradient(160deg,#F7F2E8,#FFFFFF);border-color:#EADFC9}
+  .creds{background:linear-gradient(160deg,#EEEBFF,#FFFFFF 70%);border-color:#DDD7FB}
   .resume{background:linear-gradient(135deg,#F7F2E8,#FFFFFF);border-color:#EADFC9}
   .resume p{color:#5D5340}
   .rform input{border-color:#E4D6BC}
@@ -249,8 +249,7 @@
   .social a:hover{background:var(--ink);color:#fff}
   ::selection{background:rgba(91,75,219,.2)}
   /* ===== Nav, headline sheen, motion ===== */
-  html{scroll-padding-top:24px}
-  body{padding-top:0}
+  html{scroll-padding-top:48px}
   .js .intro h1 .accent.done{background-image:linear-gradient(110deg,transparent 42%,rgba(255,255,255,.9) 50%,transparent 58%),linear-gradient(100deg,#5B4BDB 0%,#7A5AD6 45%,#B8894A 100%);background-size:250% 100%,100% 100%;background-repeat:no-repeat;background-position:150% 0,0 0;-webkit-background-clip:text;background-clip:text;color:transparent;animation:sheen1 1.6s ease .2s 1 forwards}
   @keyframes sheen1{to{background-position:-60% 0,0 0}}
   .journey{grid-column:span 12;position:relative;height:64px;margin:4px 6px 10px}
@@ -274,8 +273,6 @@
   .rail a.on{background:var(--ink);color:#F0D7AC}
   .rail a span{position:absolute;left:calc(100% + 12px);top:50%;transform:translate(-6px,-50%);white-space:nowrap;padding:7px 12px;border-radius:10px;background:var(--ink);color:#fff;font-size:.82rem;font-weight:700;opacity:0;pointer-events:none;transition:opacity .18s,transform .18s;box-shadow:0 10px 24px -12px rgba(14,20,48,.6)}
   .rail a:hover span,.rail a:focus-visible span{opacity:1;transform:translate(0,-50%)}
-  .rail .rail-logo{width:40px;height:40px;margin-bottom:4px;border-radius:12px;background:linear-gradient(135deg,#0E1430,#2B2470);color:#F0D7AC;font-weight:800;font-size:.8rem}
-  .rail .rail-logo:hover{background:linear-gradient(135deg,#0E1430,#2B2470);color:#fff;transform:scale(1.05)}
   .rail-sep{width:24px;height:1px;background:var(--line);margin:4px 0}
   .rail a[data-sec="resume"]{color:#9A6F2E}
   .rail a[data-sec="resume"]:hover{background:#F7EBD6;color:#7A5420}
@@ -283,7 +280,7 @@
   @media (max-width:900px){
     body{padding-left:14px;padding-bottom:90px}
     .rail{left:50%;top:auto;bottom:12px;transform:translateX(-50%);flex-direction:row;padding:6px;gap:2px}
-    .rail .rail-logo,.rail-sep,.rail .rail-ext{display:none}
+    .rail-sep,.rail .rail-ext{display:none}
     .rail a{width:42px;height:42px}
     .rail a span{display:none}
     .ask-fab{bottom:84px!important}
@@ -340,7 +337,6 @@
 </head>
 <body>
 <nav class="rail" id="rail" aria-label="Sections">
-  <a class="rail-logo" href="#top" aria-label="Back to top">UK</a>
   <a href="#top" data-sec="top"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10.5 12 3l9 7.5V20a1 1 0 0 1-1 1h-5v-6h-6v6H4a1 1 0 0 1-1-1v-9.5Z"/></svg><span>Home</span></a>
   <a href="#how" data-sec="how"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6h16M4 12h10M4 18h7"/><circle cx="19" cy="17" r="2.5"/></svg><span>How I work</span></a>
   <a href="#ai" data-sec="ai"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l1.8 5.2L19 10l-5.2 1.8L12 17l-1.8-5.2L5 10l5.2-1.8L12 3Z"/><path d="M19 15l.8 2.2L22 18l-2.2.8L19 21l-.8-2.2L16 18l2.2-.8L19 15Z"/></svg><span>How I use AI</span></a>
@@ -435,9 +431,9 @@
   <section class="t xp">
     <div class="when">Jun 2022 to Feb 2024</div>
     <h3>Kincentric (Formerly AON)</h3>
-    <div class="role">Platform delivery and client management</div>
+    <div class="role">SaaS platform delivery and client management</div>
     <ul>
-      <li>I delivered HR-tech platform rollouts, including SSO setup and ServiceNow integration.</li>
+      <li>I delivered rollouts of our HR-tech SaaS platform, including SSO setup and ServiceNow integration.</li>
       <li>I owned our NPS and CSAT surveys end to end.</li>
       <li>I kept the Tableau CSAT dashboard running and added new data and metrics to it.</li>
     </ul>
@@ -447,7 +443,7 @@
     <h3>Mercer Talent Enterprise</h3>
     <div class="role">Senior Analyst, doing product owner and product manager work</div>
     <ul>
-      <li>I worked as the product owner and product manager: I owned the backlog, user stories and PRDs in JIRA and Confluence.</li>
+      <li>I worked as the product owner and product manager on our SaaS platform: I owned the backlog, user stories and PRDs in JIRA and Confluence.</li>
       <li>I led our company-wide AI adoption, including the Copilot and Glean rollout.</li>
       <li>I built AI agents and RAG workflows using Claude, ChatGPT and Gemini.</li>
       <li>I ran discovery workshops, UAT and post-launch support for clients.</li>
@@ -471,7 +467,7 @@
 
   <section class="t tools">
     <h2>What I work with</h2>
-    <div class="group"><b>Product and delivery</b><div class="chips"><span class="chip">Product management</span><span class="chip">PRDs with edge cases</span><span class="chip">BRDs and FRDs</span><span class="chip">User stories and acceptance criteria</span><span class="chip">Backlog and sprint planning</span><span class="chip">Agile and Scrum</span><span class="chip">Wireframes and mockups</span><span class="chip">AI prototypes</span><span class="chip">POC management</span><span class="chip">UAT and regression testing</span><span class="chip">Root cause analysis</span><span class="chip">RAID logs</span><span class="chip">Go-to-market</span><span class="chip">0-to-1 initiatives</span><span class="chip">Budget tracking</span></div></div>
+    <div class="group"><b>Product and delivery</b><div class="chips"><span class="chip">Product management</span><span class="chip">SaaS platforms</span><span class="chip">PRDs with edge cases</span><span class="chip">BRDs and FRDs</span><span class="chip">User stories and acceptance criteria</span><span class="chip">Backlog and sprint planning</span><span class="chip">SDLC</span><span class="chip">Agile and Scrum</span><span class="chip">Wireframes and mockups</span><span class="chip">AI prototypes</span><span class="chip">POC management</span><span class="chip">UAT and regression testing</span><span class="chip">Root cause analysis</span><span class="chip">RAID logs</span><span class="chip">Go-to-market</span><span class="chip">0-to-1 initiatives</span><span class="chip">Budget tracking</span></div></div>
     <div class="group"><b>Customers and stakeholders</b><div class="chips"><span class="chip">Customer journey mapping</span><span class="chip">Discovery workshops</span><span class="chip">NPS, CSAT and VoC</span><span class="chip">Change management</span><span class="chip">Training and enablement</span><span class="chip">Digital adoption</span><span class="chip">C-suite engagement</span><span class="chip">SteerCo support</span><span class="chip">Presales support</span><span class="chip">Cross-sell proposals</span><span class="chip">Case studies</span><span class="chip">Vendor coordination</span><span class="chip">M&A integration support</span><span class="chip">Mentoring PMs and BAs</span><span class="chip">Team coordination</span></div></div>
     <div class="group"><b>AI and automation</b><div class="chips"><span class="chip">Claude</span><span class="chip">ChatGPT</span><span class="chip">Gemini</span><span class="chip">Microsoft Copilot</span><span class="chip">Glean</span><span class="chip">Claude Code</span><span class="chip">Lovable</span><span class="chip">Replit</span><span class="chip">n8n</span><span class="chip">Zapier</span><span class="chip">Make</span><span class="chip">AI agents</span><span class="chip">RAG</span><span class="chip">Prompt libraries</span><span class="chip">Agent catalogs and model registries</span><span class="chip">AI observability</span><span class="chip">LLM evaluation</span><span class="chip">Vibe coding</span></div></div>
     <div class="group"><b>Platforms and tools</b><div class="chips"><span class="chip">Salesforce</span><span class="chip">SharePoint</span><span class="chip">JIRA</span><span class="chip">Confluence</span><span class="chip">Asana</span><span class="chip">Figma</span><span class="chip">Postman</span><span class="chip">Microsoft 365</span><span class="chip">SSO and connectors</span><span class="chip">Azure</span><span class="chip">AWS</span><span class="chip">GCP</span></div></div>
@@ -560,10 +556,6 @@
   // headline: swap word spans back to one text run so the gradient flows across, then sheen once
   var acc = h1.querySelector('.accent');
   if (acc) { var txt = acc.textContent; setTimeout(function(){ acc.textContent = txt; acc.classList.add('done'); }, (wi * 60) + 800); }
-  // icon rail: highlight the section in view
-  var rlinks = document.querySelectorAll('#rail a[data-sec]');
-  var spy = new IntersectionObserver(function(es){ es.forEach(function(e){ if (e.isIntersecting) rlinks.forEach(function(a){ a.classList.toggle('on', a.getAttribute('data-sec') === e.target.id); }); }); }, {rootMargin:'-45% 0px -50% 0px'});
-  ['top','how','ai','experience','projects','resume'].forEach(function(id){ var el = document.getElementById(id); if (el) spy.observe(el); });
   var fine = matchMedia('(pointer:fine)').matches;
   if (fine) {
     // magnetic buttons
@@ -585,6 +577,28 @@
       io.unobserve(el); });
   }, {threshold:.12});
   items.forEach(function(el){ io.observe(el); });
+})();
+</script>
+<script>
+(function(){
+  // icon rail: highlight the section currently on screen (and the one you just clicked)
+  var links = Array.prototype.slice.call(document.querySelectorAll('#rail a[data-sec]'));
+  var ids = ['top','how','ai','experience','projects','resume'];
+  var targets = { top: document.querySelector('.intro') };
+  ids.slice(1).forEach(function(id){ targets[id] = document.getElementById(id); });
+  var lock = 0;
+  function setOn(id){ links.forEach(function(a){ var on = a.getAttribute('data-sec') === id; a.classList.toggle('on', on); if (on) a.setAttribute('aria-current','true'); else a.removeAttribute('aria-current'); }); }
+  function update(){
+    if (Date.now() < lock) return;
+    var line = window.innerHeight * 0.35, current = 'top';
+    ids.forEach(function(id){ var el = targets[id]; if (el && el.getBoundingClientRect().top <= line) current = id; });
+    if (window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 4) current = 'resume';
+    setOn(current);
+  }
+  links.forEach(function(a){ a.addEventListener('click', function(){ setOn(a.getAttribute('data-sec')); lock = Date.now() + 900; setTimeout(update, 950); }); });
+  window.addEventListener('scroll', update, {passive:true});
+  window.addEventListener('resize', update);
+  update();
 })();
 </script>
 <button class="ask-fab" id="askFab" aria-controls="askPanel" aria-expanded="false" aria-label="Chat with my AI twin"><span class="spark"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l1.9 5.6L19.5 9.5l-5.6 1.9L12 17l-1.9-5.6L4.5 9.5l5.6-1.9L12 2Zm6.5 11 .9 2.6 2.6.9-2.6.9-.9 2.6-.9-2.6-2.6-.9 2.6-.9.9-2.6Z" fill="currentColor"/></svg></span><span class="lbl">Chat with my AI twin</span><i class="dot"></i></button>
