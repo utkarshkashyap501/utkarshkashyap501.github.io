@@ -128,6 +128,7 @@
     .intro,.stat,.proj,.tools,.creds{grid-column:span 12}
     .xp{grid-column:span 12}
     .fit{grid-template-columns:1fr}
+    .ai-cols{grid-template-columns:1fr}
     .how{grid-template-columns:1fr 1fr}
   }
   @media (max-width:600px){
@@ -137,6 +138,25 @@
     .seats{grid-template-columns:1fr}
     .stat b{font-size:3.2rem}
   }
+  .ai{grid-column:span 12;background:var(--ink);color:#C7CEDB;padding:40px}
+  .ai:before{background:radial-gradient(420px circle at var(--mx,50%) var(--my,50%),rgba(124,115,240,.18),transparent 60%)}
+  .ai h2{color:#fff;font-size:clamp(1.7rem,3vw,2.3rem);font-weight:800;letter-spacing:-.02em;margin-bottom:12px}
+  .ai .lead{max-width:46em;font-size:1.06rem;color:#C7CEDB}
+  .ai-cols{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:28px}
+  .ai-col{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:20px;padding:22px;transition:background .2s,border-color .2s}
+  .ai-col:hover{background:rgba(255,255,255,.08);border-color:rgba(124,115,240,.6)}
+  .ai-col h3{color:#fff;font-size:1.1rem;font-weight:800;margin-bottom:12px;display:flex;align-items:center;gap:10px}
+  .ai-col h3 i{width:10px;height:10px;border-radius:3px;display:inline-block}
+  .ai-col:nth-child(1) h3 i{background:#7C73F0}
+  .ai-col:nth-child(2) h3 i{background:var(--emerald)}
+  .ai-col:nth-child(3) h3 i{background:var(--coral)}
+  .ai-col ul{list-style:none;display:grid;gap:10px;font-size:.94rem}
+  .ai-col li{padding-left:16px;position:relative}
+  .ai-col li:before{content:"";position:absolute;left:0;top:.62em;width:6px;height:6px;border-radius:50%;background:#7C73F0}
+  .ai .rule{margin-top:22px;padding:16px 20px;border-radius:16px;background:rgba(15,157,118,.14);color:#BFF0DD;font-weight:600}
+  .ai .rule b{color:#fff}
+  .sec-title{grid-column:span 12;font-size:1.6rem;font-weight:800;letter-spacing:-.02em;padding:18px 6px 0}
+  .fit .seat b{font-size:1rem}
 </style>
 </head>
 <body>
@@ -144,8 +164,8 @@
   <section class="t intro">
     <span class="avail"><i></i>Available to join immediately</span>
     <div>
-      <h1>Utkarsh Kashyap.<br><span class="accent">I make products work for the people who use them.</span></h1>
-      <p>For 6+ years I've worked where customers, product and delivery meet: owning the backlog, running rollouts, leading client workshops and driving adoption. Fortune 500, government and mid-market clients across APAC, EMEA, the Americas and the Middle East.</p>
+      <h1>Hi, I'm Utkarsh.<br><span class="accent">I make products work for the people who use them.</span></h1>
+      <p>I've spent the last 6+ years where customers, product and delivery meet. Honestly, that's where I'm happiest: figuring out what people actually need, writing it down clearly, getting it shipped, and then making sure it actually gets used. I've done this for Fortune 500, government and mid-market clients across APAC, EMEA, the Americas and the Middle East.</p>
       <div class="btns">
         <a class="btn p" href="mailto:utkarsh.kashyap768@gmail.com">Email me</a>
         <a class="btn s" href="https://www.linkedin.com/in/utkarshkashyap501" target="_blank" rel="noopener">LinkedIn</a>
@@ -153,38 +173,64 @@
     </div>
   </section>
 
-  <section class="t stat a"><b data-count="30" data-suffix="%">30%</b><span>Team efficiency gain from automating recurring work with AI</span></section>
-  <section class="t stat b"><b data-count="6" data-suffix="+">6+</b><span>Years in product, delivery and client work</span></section>
+  <section class="t stat a"><b data-count="30" data-suffix="%">30%</b><span>Efficiency my team gained after I automated our recurring work with AI</span></section>
+  <section class="t stat b"><b data-count="6" data-suffix="+">6+</b><span>Years doing this, across Hive.ai, Kincentric (Formerly AON) and Mercer</span></section>
 
+  <h2 class="sec-title">How I usually work</h2>
   <section class="how">
-    <div class="s"><em>1</em><h3>Discover</h3><p>Discovery workshops, journey mapping and market research to find the real pain point.</p></div>
-    <div class="s"><em>2</em><h3>Define</h3><p>PRDs and user stories with edge cases and acceptance criteria, plus wireframes and AI prototypes.</p></div>
-    <div class="s"><em>3</em><h3>Deliver</h3><p>Backlog ownership, sprint planning, UAT and root cause analysis through to go-live.</p></div>
-    <div class="s"><em>4</em><h3>Drive adoption</h3><p>Rollout, training and change management, then NPS, CSAT and usage data.</p></div>
+    <div class="s"><em>1</em><h3>Discover</h3><p>I start by talking to people. Workshops, journey maps, a bit of market research, until I know what the real problem is.</p></div>
+    <div class="s"><em>2</em><h3>Define</h3><p>Then I write it down properly: PRDs, user stories, edge cases and acceptance criteria. If words aren't enough, I'll put together a wireframe or a quick AI prototype.</p></div>
+    <div class="s"><em>3</em><h3>Deliver</h3><p>I own the backlog, run the sprints, and test things myself in UAT before anything goes live.</p></div>
+    <div class="s"><em>4</em><h3>Drive adoption</h3><p>Launch isn't the finish line. I run the training, watch NPS, CSAT and usage, and fix whatever isn't landing.</p></div>
   </section>
 
   <section class="t fit">
     <div class="fit-head">
       <h2>Where I fit</h2>
-      <p class="thread">Different titles, one job: <strong>getting customers real value from a product.</strong> Here's how my experience maps to each seat.</p>
+      <p class="thread">People sometimes ask if I'm a product person, a program person or a customer person. The honest answer? <strong>It's the same job from different seats:</strong> getting customers real value from a product. Here's what that's looked like for me.</p>
     </div>
     <div class="seats">
-      <div class="seat"><b>Product owner / product manager</b><span>Own the backlog, PRDs and acceptance criteria, and decide what ships next.</span></div>
-      <div class="seat"><b>Program manager</b><span>Run multi-team platform rollouts from discovery to go-live, with RAID logs and stakeholder updates.</span></div>
-      <div class="seat"><b>Customer success</b><span>Drive adoption after launch, run training, and track NPS and CSAT to see what needs fixing.</span></div>
-      <div class="seat"><b>Consulting</b><span>Lead client discovery workshops and support transformation and AI enablement programs.</span></div>
+      <div class="seat"><b>Product owner / product manager</b><span>I've owned backlogs and PRDs, and made the call on what ships next.</span></div>
+      <div class="seat"><b>Program manager</b><span>I've run platform rollouts across teams, from the first workshop to go-live, RAID log and all.</span></div>
+      <div class="seat"><b>Customer success</b><span>I've driven adoption after launch, run the training, and tracked NPS and CSAT to see what needed fixing.</span></div>
+      <div class="seat"><b>Consulting</b><span>I've led client discovery workshops and supported transformation and AI enablement work.</span></div>
     </div>
   </section>
 
+  <section class="t ai">
+    <h2>How I use AI</h2>
+    <p class="lead">I use AI every single day, at work and on my own projects. The way I look at it, AI is only worth it if it saves real time or people actually use it. So here's what that looks like for me in practice.</p>
+    <div class="ai-cols">
+      <div class="ai-col"><h3><i></i>At work</h3><ul>
+        <li>Built AI agents and RAG workflows on Gemini Enterprise.</li>
+        <li>Rolled out Copilot and Glean company-wide, and ran the training so people actually used them.</li>
+        <li>Kept our prompt libraries, agent catalogs and model registries in order, and tracked latency and cost.</li>
+        <li>Automated our team's recurring tasks with AI, which got us a 30% efficiency gain.</li>
+      </ul></div>
+      <div class="ai-col"><h3><i></i>On my own builds</h3><ul>
+        <li>Built ishqiyaa.com with Lovable, and wired in Razorpay payments myself.</li>
+        <li>Built a job application co-pilot in n8n. It runs on my Mac with a free Groq model and checks in with me on Telegram.</li>
+        <li>I use Claude Code and Replit when I want to build a small tool quickly.</li>
+      </ul></div>
+      <div class="ai-col"><h3><i></i>Every day</h3><ul>
+        <li>Claude, ChatGPT and Gemini for research, first drafts and pressure-testing my thinking.</li>
+        <li>I got into AI at Hive.ai, checking model output for a living: spotting hallucinations, running LLM-as-a-judge checks and calibrating with human graders.</li>
+        <li>So I never take a first answer at face value. I check it.</li>
+      </ul></div>
+    </div>
+    <p class="rule"><b>One rule I stick to:</b> a human signs off. My own co-pilot doesn't send anything until I say yes.</p>
+  </section>
+
+  <h2 class="sec-title">Where I've worked</h2>
   <section class="t xp">
     <div class="when">Mar 2024 to Jul 2026</div>
     <h3>Mercer Talent Enterprise</h3>
     <div class="role">Senior Analyst</div>
     <ul>
-      <li>Owned backlog, user stories and PRDs in JIRA and Confluence</li>
-      <li>Led company-wide AI adoption: Copilot and Glean rollout</li>
-      <li>Built AI agents and RAG workflows using Claude, ChatGPT and Gemini</li>
-      <li>Ran discovery workshops, UAT and post-launch support</li>
+      <li>I owned the backlog, user stories and PRDs in JIRA and Confluence.</li>
+      <li>I led our company-wide AI adoption, including the Copilot and Glean rollout.</li>
+      <li>I built AI agents and RAG workflows using Claude, ChatGPT and Gemini.</li>
+      <li>I ran discovery workshops, UAT and post-launch support for clients.</li>
     </ul>
   </section>
   <section class="t xp">
@@ -192,9 +238,9 @@
     <h3>Kincentric (Formerly AON)</h3>
     <div class="role">Platform delivery and client management</div>
     <ul>
-      <li>Delivered HR-tech platform implementations with SSO and ServiceNow integration</li>
-      <li>Owned NPS and CSAT surveys end to end</li>
-      <li>Maintained and extended the Tableau CSAT dashboard</li>
+      <li>I delivered HR-tech platform rollouts, including SSO setup and ServiceNow integration.</li>
+      <li>I owned our NPS and CSAT surveys end to end.</li>
+      <li>I kept the Tableau CSAT dashboard running and added new data and metrics to it.</li>
     </ul>
   </section>
   <section class="t xp">
@@ -202,35 +248,35 @@
     <h3>Hive.ai</h3>
     <div class="role">AI/ML data operations</div>
     <ul>
-      <li>Ran data labeling, evaluation and grader calibration for model training</li>
-      <li>Coordinated 7 to 10 specialists with 24x7 coverage</li>
-      <li>Promoted within 14 months</li>
+      <li>This is where I got into AI: data labeling, model evaluation and grader calibration.</li>
+      <li>I coordinated a team of 7 to 10 people with 24x7 coverage.</li>
+      <li>Got promoted within 14 months.</li>
     </ul>
   </section>
 
   <section class="t proj dark">
-    <h2>Freelance client product</h2>
+    <h2>Freelance project</h2>
     <h3>Ishqiyaa.com</h3>
-    <p>A paid appointment-booking site that sends meeting invites to the guide and the guest, with Razorpay payments integrated end to end. I now run the client's product, design and engineering.</p>
+    <p>A friend's self-funded company needed a way to take paid bookings online, so I built it. The site books appointments, sends meeting invites to both the guide and the guest, and takes payments through Razorpay, which I integrated myself. These days I look after their product, design and engineering.</p>
     <div class="chips"><span class="chip">Lovable</span><span class="chip">Razorpay</span><span class="chip">Product management</span></div>
     <a class="go" href="https://ishqiyaa.com" target="_blank" rel="noopener">Visit ishqiyaa.com</a>
     <div class="orb" aria-hidden="true"></div>
   </section>
   <section class="t proj">
-    <h2>Personal agentic workflow</h2>
-    <h3>AI job application co-pilot</h3>
-    <p>A self-hosted n8n agent that reads a job description, tailors my resume, scores it against the JD and sends it to Telegram for my approval before anything goes out.</p>
-    <div class="chips"><span class="chip">n8n</span><span class="chip">LLM API</span><span class="chip">Telegram bot</span><span class="chip">Docker</span></div>
+    <h2>Personal project</h2>
+    <h3>My AI job application co-pilot</h3>
+    <p>Tailoring a resume for every single job was eating my evenings, so I built an agent to help. It reads the job description, tailors my resume, scores it against the JD and pings me on Telegram. Nothing goes out until I approve it.</p>
+    <div class="chips"><span class="chip">n8n</span><span class="chip">Groq</span><span class="chip">Telegram bot</span><span class="chip">Docker</span></div>
   </section>
 
   <section class="t tools">
-    <h2>Toolkit</h2>
+    <h2>What I work with</h2>
     <div class="group"><b>Product and delivery</b><div class="chips"><span class="chip">PRDs and user stories</span><span class="chip">Backlog ownership</span><span class="chip">Agile and Scrum</span><span class="chip">Wireframes</span><span class="chip">UAT</span><span class="chip">Go-to-market</span><span class="chip">Journey mapping</span></div></div>
     <div class="group"><b>AI</b><div class="chips"><span class="chip">Claude</span><span class="chip">ChatGPT</span><span class="chip">Gemini Enterprise</span><span class="chip">RAG</span><span class="chip">Claude Code</span><span class="chip">n8n</span><span class="chip">Copilot</span><span class="chip">Glean</span></div></div>
     <div class="group"><b>Tools and data</b><div class="chips"><span class="chip">JIRA</span><span class="chip">Confluence</span><span class="chip">ServiceNow</span><span class="chip">Salesforce</span><span class="chip">SQL</span><span class="chip">Python</span><span class="chip">Tableau</span><span class="chip">Qualtrics</span></div></div>
   </section>
   <section class="t creds">
-    <h2>Credentials</h2>
+    <h2>Certifications</h2>
     <ul>
       <li><b>PMP</b><span>Project Management Institute</span></li>
       <li><b>Generative AI Leader</b><span>Google Cloud</span></li>
@@ -240,7 +286,7 @@
   </section>
 
   <section class="t contact">
-    <h2>Need someone to turn a product into results for customers? Let's talk.</h2>
+    <h2>Need someone to turn a product into real results for customers? I'd love to chat.</h2>
     <div class="btns" style="margin-top:0">
       <a class="btn p" href="mailto:utkarsh.kashyap768@gmail.com">Email me</a>
       <a class="btn s" href="https://www.linkedin.com/in/utkarshkashyap501" target="_blank" rel="noopener">LinkedIn</a>
