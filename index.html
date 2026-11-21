@@ -129,6 +129,7 @@
     .xp{grid-column:span 12}
     .fit{grid-template-columns:1fr}
     .ai-cols{grid-template-columns:1fr}
+    .resume{grid-template-columns:1fr}
     .how{grid-template-columns:1fr 1fr}
   }
   @media (max-width:600px){
@@ -136,6 +137,8 @@
     .t{padding:22px}
     .how{grid-template-columns:1fr}
     .seats{grid-template-columns:1fr}
+    .rform{grid-template-columns:1fr}
+    .rform label.full,.rform .row{grid-column:span 1}
     .stat b{font-size:3.2rem}
   }
   .ai{grid-column:span 12;background:var(--ink);color:#C7CEDB;padding:40px}
@@ -157,6 +160,21 @@
   .ai .rule b{color:#fff}
   .sec-title{grid-column:span 12;font-size:1.6rem;font-weight:800;letter-spacing:-.02em;padding:18px 6px 0}
   .fit .seat b{font-size:1rem}
+  .resume{grid-column:span 12;display:grid;grid-template-columns:1fr 1.4fr;gap:28px;align-items:center;background:var(--emerald-soft)}
+  .resume > *{position:relative;z-index:1}
+  .resume h2{color:var(--ink);font-size:1.6rem;font-weight:800;letter-spacing:-.02em;margin-bottom:8px}
+  .resume p{color:#2F4A42}
+  .rform{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+  .rform label{display:grid;gap:6px;font-size:.85rem;font-weight:700;color:var(--ink)}
+  .rform label.full{grid-column:span 2}
+  .rform input{font:inherit;font-weight:500;padding:12px 14px;border-radius:12px;border:1.5px solid #BFE6D6;background:#fff;color:var(--ink);transition:border-color .2s,box-shadow .2s}
+  .rform input:focus{outline:none;border-color:var(--emerald);box-shadow:0 0 0 4px rgba(15,157,118,.15)}
+  .rform .row{grid-column:span 2;display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+  .rform button{font:inherit;cursor:pointer;border:none}
+  .rform .btn.p{background:var(--emerald);color:#fff}
+  .rform .btn.s{background:#fff;color:var(--ink)}
+  .rform .note{font-size:.85rem;color:#2F4A42;min-height:1.2em}
+  .intro .btn.g{background:var(--emerald-soft);color:var(--emerald)}
 </style>
 </head>
 <body>
@@ -168,6 +186,7 @@
       <p>I've spent the last 6+ years where customers, product and delivery meet. Honestly, that's where I'm happiest: figuring out what people actually need, writing it down clearly, getting it shipped, and then making sure it actually gets used. I've done this for Fortune 500, government and mid-market clients across APAC, EMEA, the Americas and the Middle East.</p>
       <div class="btns">
         <a class="btn p" href="mailto:utkarsh.kashyap768@gmail.com">Email me</a>
+        <a class="btn g" href="#resume">Request my resume</a>
         <a class="btn s" href="https://www.linkedin.com/in/utkarshkashyap501" target="_blank" rel="noopener">LinkedIn</a>
       </div>
     </div>
@@ -285,6 +304,23 @@
     </ul>
   </section>
 
+  <section class="t resume" id="resume">
+    <div>
+      <h2>Want my resume?</h2>
+      <p>Just tell me who you are and what role you're hiring for. It'll open an email to me with everything filled in, and I'll get back to you with my resume for that role.</p>
+    </div>
+    <form class="rform" id="rform" novalidate>
+      <label>Your name<input name="name" autocomplete="name" required></label>
+      <label>Company<input name="company" autocomplete="organization" required></label>
+      <label class="full">Role you're hiring for (optional)<input name="role" placeholder="e.g. Product Owner, Customer Success Manager"></label>
+      <div class="row">
+        <button class="btn p" type="submit">Request my resume</button>
+        <button class="btn s" type="button" id="copymail">Copy my email</button>
+        <span class="note" id="rnote" role="status"></span>
+      </div>
+    </form>
+  </section>
+
   <section class="t contact">
     <h2>Need someone to turn a product into real results for customers? I'd love to chat.</h2>
     <div class="btns" style="margin-top:0">
@@ -296,6 +332,23 @@
 <footer><span>© 2026 Utkarsh Kashyap</span><span>Open to relocation within or outside India</span></footer>
 
 <script>
+(function(){
+  var f = document.getElementById('rform'), note = document.getElementById('rnote'), to = 'utkarsh.kashyap768@gmail.com';
+  var el = function(k){ return f.elements.namedItem(k); };
+  f.addEventListener('submit', function(e){
+    e.preventDefault();
+    var n = el('name').value.trim(), c = el('company').value.trim(), r = el('role').value.trim();
+    if (!n || !c) { note.textContent = 'Please add your name and company.'; el(n ? 'company' : 'name').focus(); return; }
+    var subject = 'Resume request' + (r ? ': ' + r : '') + ' at ' + c;
+    var body = 'Hi Utkarsh,\n\nI came across your website and would like a copy of your resume' + (r ? ' for the ' + r + ' role' : '') + ' at ' + c + '.\n\nThanks,\n' + n;
+    window.location.href = 'mailto:' + to + '?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
+    note.textContent = 'Your email app should open now. Just hit send.';
+  });
+  document.getElementById('copymail').addEventListener('click', function(){
+    var done = function(){ note.textContent = 'Copied: ' + to; };
+    if (navigator.clipboard) navigator.clipboard.writeText(to).then(done, function(){ note.textContent = to; }); else note.textContent = to;
+  });
+})();
 (function(){
   if (matchMedia('(prefers-reduced-motion: reduce)').matches || !('IntersectionObserver' in window)) return;
   document.documentElement.classList.add('js');
