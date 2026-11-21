@@ -754,7 +754,7 @@
     if (!greeted) { greeted = true;
       history = load();
       if (history.length) { add('assistant', "Welcome back! Here's where we left off."); history.forEach(function(m){ add(m.role, m.content); }); sugg.style.display = 'none'; }
-      else add('assistant', "Hi! I'm **Utkarsh's AI twin**. Ask me about my experience, how I work, or whether I'd fit a role you're hiring for."); }
+      else add('assistant', "Hi! I'm **Utkarsh's AI twin**. Ask me about my experience, how I work, or whether I'd fit a role you're hiring for. You can ask me in any language."); }
     setTimeout(function(){ input.focus(); }, 150); }
   function minimise(){ panel.classList.remove('open'); fab.setAttribute('aria-expanded','false'); fab.focus(); }
   fab.addEventListener('click', function(){ panel.classList.contains('open') ? minimise() : open(); });
