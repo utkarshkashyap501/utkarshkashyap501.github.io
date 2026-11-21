@@ -5,6 +5,20 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Utkarsh Kashyap | Product, Program &amp; Customer Success</title>
 <meta name="description" content="Utkarsh Kashyap: 6+ years where customers, product and delivery meet. Product ownership, program delivery, customer success and consulting. PMP certified.">
+<meta name="theme-color" content="#0E1430">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%230E1430'/%3E%3Cstop offset='1' stop-color='%232B2470'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='64' height='64' rx='16' fill='url(%23g)'/%3E%3Ctext x='32' y='42' text-anchor='middle' font-family='Arial,Helvetica,sans-serif' font-weight='800' font-size='28' fill='%23F0D7AC'%3EUK%3C/text%3E%3C/svg%3E">
+<link rel="canonical" href="https://utkarshkashyap501.github.io/">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://utkarshkashyap501.github.io/">
+<meta property="og:title" content="Utkarsh Kashyap | Product, Program &amp; Customer Success">
+<meta property="og:description" content="I make products work for the people who use them. 6+ years across product ownership, program delivery, customer success and AI enablement.">
+<meta property="og:image" content="https://utkarshkashyap501.github.io/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Utkarsh Kashyap | Product, Program &amp; Customer Success">
+<meta name="twitter:description" content="I make products work for the people who use them.">
+<meta name="twitter:image" content="https://utkarshkashyap501.github.io/og.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -128,7 +142,7 @@
     .js .fit.in .seat:nth-child(3){transition-delay:.2s}
     .js .fit.in .seat:nth-child(4){transition-delay:.3s}
     .js .t,.js .how .s{opacity:0;transform:translateY(18px) scale(.98)}
-    .js .in{opacity:1!important;transform:none!important;transition:opacity .6s ease,transform .6s cubic-bezier(.2,.8,.2,1)}
+    .js .in,.js .how .s.in{opacity:1;transform:var(--tilt,none);transition:opacity .6s ease,transform .6s cubic-bezier(.2,.8,.2,1)}
   }
   @media (max-width:1000px){
     .intro,.stat,.proj,.tools,.creds{grid-column:span 12}
@@ -230,19 +244,60 @@
   .social a{background:#fff;border:1px solid var(--line)}
   .social a:hover{background:var(--ink);color:#fff}
   ::selection{background:rgba(91,75,219,.2)}
+  /* ===== Nav, headline sheen, motion ===== */
+  html{scroll-padding-top:92px}
+  body{padding-top:0}
+  .topnav{position:sticky;top:12px;z-index:50;max-width:1240px;margin:0 auto 18px;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:10px 12px 10px 20px;border-radius:18px;background:rgba(255,255,255,.72);backdrop-filter:blur(14px) saturate(160%);-webkit-backdrop-filter:blur(14px) saturate(160%);border:1px solid var(--line);box-shadow:0 8px 30px -18px rgba(14,20,48,.25);transition:box-shadow .25s,background .25s}
+  .topnav.scrolled{background:rgba(255,255,255,.9);box-shadow:0 14px 40px -20px rgba(14,20,48,.35)}
+  .topnav .brand{display:flex;align-items:center;gap:10px;font-weight:800;color:var(--ink);text-decoration:none;letter-spacing:-.01em}
+  .topnav .brand i{width:30px;height:30px;border-radius:9px;display:grid;place-items:center;font-style:normal;font-size:.8rem;background:linear-gradient(135deg,#0E1430,#2B2470);color:#F0D7AC}
+  .topnav nav{display:flex;gap:4px}
+  .topnav nav a{color:var(--muted);text-decoration:none;font-weight:600;font-size:.92rem;padding:8px 12px;border-radius:10px;transition:background .2s,color .2s}
+  .topnav nav a:hover,.topnav nav a.on{background:var(--indigo-soft);color:var(--violet)}
+  .topnav .cta{display:flex;gap:8px}
+  .topnav .btn{padding:10px 16px;border-radius:12px;font-size:.92rem}
+  .topnav .btn.g{background:linear-gradient(135deg,#F3E3C6,#E6C995);color:#3D2A0A;border:1px solid #E2C58F}
+  .js .intro h1 .accent.done{background-image:linear-gradient(110deg,transparent 42%,rgba(255,255,255,.9) 50%,transparent 58%),linear-gradient(100deg,#5B4BDB 0%,#7A5AD6 45%,#B8894A 100%);background-size:250% 100%,100% 100%;background-repeat:no-repeat;background-position:150% 0,0 0;-webkit-background-clip:text;background-clip:text;color:transparent;animation:sheen1 1.6s ease .2s 1 forwards}
+  @keyframes sheen1{to{background-position:-60% 0,0 0}}
+  .journey{grid-column:span 12;position:relative;height:64px;margin:4px 6px 10px}
+  .journey .line{position:absolute;left:0;right:0;top:14px;height:3px;border-radius:3px;background:linear-gradient(90deg,#5B4BDB,#7A5AD6 50%,#B8894A);transform-origin:0 50%}
+  .journey .pt{position:absolute;top:6px;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:6px;font-size:.8rem;font-weight:700;color:var(--ink);white-space:nowrap}
+  .journey .pt:before{content:"";width:18px;height:18px;border-radius:50%;background:#fff;border:3px solid var(--violet);box-shadow:0 0 0 5px rgba(91,75,219,.12)}
+  .journey .pt.now:before{border-color:var(--gold);background:#F7EBD6;box-shadow:0 0 0 5px rgba(184,137,74,.18)}
+  .journey .pt small{color:var(--muted);font-weight:600}
+  .js .journey .line{transform:scaleX(0);transition:transform 1.4s cubic-bezier(.4,.1,.2,1)}
+  .js .journey.in .line{transform:scaleX(1)}
+  .js .journey .pt{opacity:0;transition:opacity .4s ease}
+  .js .journey.in .pt{opacity:1}
+  .js .journey.in .pt:nth-of-type(2){transition-delay:.25s}.js .journey.in .pt:nth-of-type(3){transition-delay:.7s}.js .journey.in .pt:nth-of-type(4){transition-delay:1.1s}.js .journey.in .pt:nth-of-type(5){transition-delay:1.45s}
+  .mag{transition:transform .25s cubic-bezier(.2,.8,.2,1),box-shadow .2s,background .2s}
+  @media (max-width:860px){.topnav nav{display:none}}
+  @media (max-width:600px){.journey{display:none}.topnav{top:8px;padding:8px 8px 8px 14px}.topnav .brand span{display:none}}
 </style>
 </head>
 <body>
-<main class="grid">
+<header class="topnav" id="topnav">
+  <a class="brand" href="#top"><i>UK</i><span>Utkarsh Kashyap</span></a>
+  <nav aria-label="Sections">
+    <a href="#how">How I work</a>
+    <a href="#ai">AI</a>
+    <a href="#experience">Experience</a>
+    <a href="#projects">Projects</a>
+  </nav>
+  <div class="cta">
+    <a class="btn g mag" href="#resume">Request resume</a>
+  </div>
+</header>
+<main class="grid" id="top">
   <section class="t intro">
     <span class="avail"><i></i>Available to join immediately</span>
     <div>
       <h1>Hi, I'm Utkarsh.<br><span class="accent">I make products work for the people who use them.</span></h1>
       <p>I've spent the last 6+ years where customers, product and delivery meet. Honestly, that's where I'm happiest: figuring out what people actually need, writing it down clearly, getting it shipped, and then making sure it actually gets used. I've done this for Fortune 500, government and mid-market clients across APAC, EMEA, the Americas and the Middle East.</p>
       <div class="btns">
-        <a class="btn p" href="mailto:utkarsh.kashyap768@gmail.com"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1Zm0 1.6V17h16V7.6l-8 5.2-8-5.2ZM5.3 7 12 11.3 18.7 7H5.3Z" fill="currentColor"/></svg>Email me</a>
+        <a class="btn p mag" href="mailto:utkarsh.kashyap768@gmail.com"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1Zm0 1.6V17h16V7.6l-8 5.2-8-5.2ZM5.3 7 12 11.3 18.7 7H5.3Z" fill="currentColor"/></svg>Email me</a>
         <a class="btn s" href="https://www.linkedin.com/in/utkarshkashyap501" target="_blank" rel="noopener"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5ZM3 9.5h4V21H3V9.5Zm6.5 0h3.8v1.6h.06c.53-1 1.83-2.05 3.77-2.05 4.03 0 4.77 2.65 4.77 6.1V21h-4v-5.1c0-1.22-.02-2.78-1.7-2.78-1.7 0-1.96 1.33-1.96 2.7V21h-4V9.5Z" fill="currentColor"/></svg>LinkedIn</a>
-        <a class="btn g" href="#resume">Request my resume</a>
+        <a class="btn g mag" href="#resume">Request my resume</a>
       </div>
     </div>
   </section>
@@ -250,7 +305,7 @@
   <section class="t stat a"><b data-count="30" data-suffix="%">30%</b><span>Efficiency my team gained after I automated our recurring work with AI</span></section>
   <section class="t stat b"><b data-count="6" data-suffix="+">6+</b><span>Years doing this, across Hive.ai, Kincentric (Formerly AON) and Mercer</span></section>
 
-  <h2 class="sec-title">How I usually work</h2>
+  <h2 class="sec-title" id="how">How I usually work</h2>
   <section class="how">
     <div class="s"><em>1</em><h3>Discover</h3><p>I start by talking to people. Workshops, journey maps, a bit of market research, until I know what the real problem is.</p></div>
     <div class="s"><em>2</em><h3>Define</h3><p>Then I write it down properly: PRDs, user stories, edge cases and acceptance criteria. If words aren't enough, I'll put together a wireframe or a quick AI prototype.</p></div>
@@ -271,7 +326,7 @@
     </div>
   </section>
 
-  <section class="t ai">
+  <section class="t ai" id="ai">
     <h2>How I use AI</h2>
     <p class="lead">I use AI every single day, at work and on my own projects. The way I look at it, AI is only worth it if it saves real time or people actually use it. So here's what that looks like for me in practice.</p>
     <div class="ai-cols">
@@ -295,16 +350,22 @@
     <p class="rule"><b>One rule I stick to:</b> a human signs off. My own co-pilot doesn't send anything until I say yes.</p>
   </section>
 
-  <h2 class="sec-title">Where I've worked</h2>
+  <h2 class="sec-title" id="experience">Where I've worked</h2>
+  <div class="journey reveal" aria-hidden="true"><div class="line"></div>
+    <div class="pt" style="left:2%">Hive.ai<small>2020</small></div>
+    <div class="pt" style="left:26%">Promoted<small>2021</small></div>
+    <div class="pt" style="left:50%">Kincentric<small>2022</small></div>
+    <div class="pt" style="left:75%">Mercer<small>2024</small></div>
+    <div class="pt now" style="left:98%">Your team?<small>Now</small></div>
+  </div>
   <section class="t xp">
-    <div class="when">Mar 2024 to Jul 2026</div>
-    <h3>Mercer Talent Enterprise</h3>
-    <div class="role">Senior Analyst</div>
+    <div class="when">Sep 2020 to May 2022</div>
+    <h3>Hive.ai</h3>
+    <div class="role">AI/ML data operations</div>
     <ul>
-      <li>I owned the backlog, user stories and PRDs in JIRA and Confluence.</li>
-      <li>I led our company-wide AI adoption, including the Copilot and Glean rollout.</li>
-      <li>I built AI agents and RAG workflows using Claude, ChatGPT and Gemini.</li>
-      <li>I ran discovery workshops, UAT and post-launch support for clients.</li>
+      <li>This is where I got into AI: data labeling, model evaluation and grader calibration.</li>
+      <li>I coordinated a team of 7 to 10 people with 24x7 coverage.</li>
+      <li>Got promoted within 14 months.</li>
     </ul>
   </section>
   <section class="t xp">
@@ -318,17 +379,18 @@
     </ul>
   </section>
   <section class="t xp">
-    <div class="when">Sep 2020 to May 2022</div>
-    <h3>Hive.ai</h3>
-    <div class="role">AI/ML data operations</div>
+    <div class="when">Mar 2024 to Jul 2026</div>
+    <h3>Mercer Talent Enterprise</h3>
+    <div class="role">Senior Analyst</div>
     <ul>
-      <li>This is where I got into AI: data labeling, model evaluation and grader calibration.</li>
-      <li>I coordinated a team of 7 to 10 people with 24x7 coverage.</li>
-      <li>Got promoted within 14 months.</li>
+      <li>I owned the backlog, user stories and PRDs in JIRA and Confluence.</li>
+      <li>I led our company-wide AI adoption, including the Copilot and Glean rollout.</li>
+      <li>I built AI agents and RAG workflows using Claude, ChatGPT and Gemini.</li>
+      <li>I ran discovery workshops, UAT and post-launch support for clients.</li>
     </ul>
   </section>
 
-  <section class="t proj dark">
+  <section class="t proj dark" id="projects">
     <h2>Freelance project</h2>
     <h3>Ishqiyaa.com</h3>
     <p>A friend's self-funded company needed a way to take paid bookings online, so I built it. The site books appointments, sends meeting invites to both the guide and the guest, and takes payments through Razorpay, which I integrated myself. These days I look after their product, design and engineering.</p>
@@ -379,7 +441,7 @@
   <section class="t contact">
     <h2>Need someone to turn a product into real results for customers? I'd love to chat.</h2>
     <div class="btns" style="margin-top:0">
-      <a class="btn p" href="mailto:utkarsh.kashyap768@gmail.com"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1Zm0 1.6V17h16V7.6l-8 5.2-8-5.2ZM5.3 7 12 11.3 18.7 7H5.3Z" fill="currentColor"/></svg>Email me</a>
+      <a class="btn p mag" href="mailto:utkarsh.kashyap768@gmail.com"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1Zm0 1.6V17h16V7.6l-8 5.2-8-5.2ZM5.3 7 12 11.3 18.7 7H5.3Z" fill="currentColor"/></svg>Email me</a>
       <a class="btn s" href="https://www.linkedin.com/in/utkarshkashyap501" target="_blank" rel="noopener"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5ZM3 9.5h4V21H3V9.5Zm6.5 0h3.8v1.6h.06c.53-1 1.83-2.05 3.77-2.05 4.03 0 4.77 2.65 4.77 6.1V21h-4v-5.1c0-1.22-.02-2.78-1.7-2.78-1.7 0-1.96 1.33-1.96 2.7V21h-4V9.5Z" fill="currentColor"/></svg>LinkedIn</a>
     </div>
   </section>
@@ -429,7 +491,29 @@
       t.style.setProperty('--my', (e.clientY - r.top) + 'px');
     });
   });
-  var items = document.querySelectorAll('.t, .how .s'), n = 0;
+  // headline: swap word spans back to one text run so the gradient flows across, then sheen once
+  var acc = h1.querySelector('.accent');
+  if (acc) { var txt = acc.textContent; setTimeout(function(){ acc.textContent = txt; acc.classList.add('done'); }, (wi * 60) + 800); }
+  // sticky nav shadow + active section
+  var nav = document.getElementById('topnav');
+  window.addEventListener('scroll', function(){ nav.classList.toggle('scrolled', window.scrollY > 10); }, {passive:true});
+  var links = nav.querySelectorAll('nav a');
+  var spy = new IntersectionObserver(function(es){ es.forEach(function(e){ if (e.isIntersecting) links.forEach(function(a){ a.classList.toggle('on', a.getAttribute('href') === '#' + e.target.id); }); }); }, {rootMargin:'-45% 0px -50% 0px'});
+  ['how','ai','experience','projects'].forEach(function(id){ var el = document.getElementById(id); if (el) spy.observe(el); });
+  var fine = matchMedia('(pointer:fine)').matches;
+  if (fine) {
+    // magnetic buttons
+    document.querySelectorAll('.mag').forEach(function(b){
+      b.addEventListener('pointermove', function(e){ var r = b.getBoundingClientRect(); var x = (e.clientX - r.left - r.width/2) / r.width, y = (e.clientY - r.top - r.height/2) / r.height; b.style.transform = 'translate(' + (x*8).toFixed(1) + 'px,' + (y*6).toFixed(1) + 'px)'; });
+      b.addEventListener('pointerleave', function(){ b.style.transform = ''; });
+    });
+    // gentle 3D tilt on experience and project cards
+    document.querySelectorAll('.xp, .proj').forEach(function(c){
+      c.addEventListener('pointermove', function(e){ if (!c.classList.contains('in')) return; var r = c.getBoundingClientRect(); var x = (e.clientX - r.left)/r.width - .5, y = (e.clientY - r.top)/r.height - .5; c.style.transition = 'transform .15s ease-out, box-shadow .25s'; c.style.setProperty('--tilt', 'perspective(900px) rotateX(' + (-y*5).toFixed(2) + 'deg) rotateY(' + (x*5).toFixed(2) + 'deg) translateY(-3px)'); });
+      c.addEventListener('pointerleave', function(){ c.style.transition = 'transform .5s cubic-bezier(.2,.8,.2,1), box-shadow .25s'; c.style.setProperty('--tilt', 'none'); });
+    });
+  }
+  var items = document.querySelectorAll('.t, .how .s, .journey'), n = 0;
   function countUp(el){var end=+el.dataset.count,suf=el.dataset.suffix||'',t0;function s(t){t0=t0||t;var k=Math.min(1,(t-t0)/1100);el.textContent=Math.round(end*(1-Math.pow(1-k,3)))+suf;if(k<1)requestAnimationFrame(s)}requestAnimationFrame(s)}
   var io = new IntersectionObserver(function(es){
     es.forEach(function(e){ if(!e.isIntersecting) return; var el=e.target;
