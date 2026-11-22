@@ -1,9 +1,9 @@
 # Utkarsh Kashyap
 
-> Product owner, program manager and customer success professional with 6+ years (Sep 2020 to Jul 2026) where customers, product and delivery meet. Based in India, open to relocation within or outside India, and available to join immediately.
+> Product owner, program manager and customer success professional with 6+ years (since Sep 2020) where customers, product and delivery meet. Based in India, open to relocation within or outside India, and available to join immediately.
 
 ## About
-- Experience across Hive.ai (Sep 2020 to May 2022), Kincentric (Formerly AON) (Jun 2022 to Feb 2024) and Mercer Talent Enterprise (Mar 2024 to Jul 2026). Each started as a startup that later became part of a bigger company.
+- Experience across Hive.ai (Sep 2020 to May 2022), Kincentric (Formerly AON) (Jun 2022 to Feb 2024) and Mercer Talent Enterprise (since Mar 2024). Each started as a startup that later became part of a bigger company.
 - At Mercer: product owner and product manager work on a SaaS platform (backlog, user stories, PRDs), company-wide AI adoption (Microsoft Copilot and Glean), AI agents and RAG workflows, and AI automation that gave the team a 30% efficiency gain.
 - At Kincentric: SaaS platform delivery and client management, including SSO setup, integrations and NPS/CSAT programmes.
 - At Hive.ai: AI/ML data operations, including model evaluation; promoted within 14 months.
