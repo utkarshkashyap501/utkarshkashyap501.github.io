@@ -481,6 +481,10 @@
   @media (max-width:420px){
     .creds ul{grid-template-columns:1fr}
   }
+  @media (max-height:520px){
+    .ask-panel{top:10px;bottom:10px!important;height:auto!important;max-height:none}
+    .ask-sugg{display:none}
+  }
   @media (min-width:1001px) and (max-width:1160px){
     .how{grid-template-columns:1fr 1fr}
   }
@@ -600,7 +604,7 @@
     <ul>
       <li>I worked as the product owner and product manager on our SaaS platform: I owned the backlog, user stories and PRDs in JIRA and Confluence.</li>
       <li>I led our company-wide AI adoption, including the Copilot and Glean rollout.</li>
-      <li>I built AI agents and RAG workflows using Claude, ChatGPT and Gemini.</li>
+      <li>I built AI agents with Claude and ChatGPT to automate our team's recurring work, and RAG workflows on Gemini Enterprise.</li>
       <li>I ran discovery workshops, UAT and post-launch support for clients.</li>
     </ul>
   </section>
@@ -623,7 +627,7 @@
   <section class="t tools">
     <h2>What I work with</h2>
     <div class="group"><b>Product and delivery</b><div class="chips"><span class="chip">Product management</span><span class="chip">SaaS platforms</span><span class="chip">PRDs with edge cases</span><span class="chip">BRDs and FRDs</span><span class="chip">User stories and acceptance criteria</span><span class="chip">Backlog and sprint planning</span><span class="chip">SDLC</span><span class="chip">Agile and Scrum</span><span class="chip">Wireframes and mockups</span><span class="chip">AI prototypes</span><span class="chip">POC management</span><span class="chip">UAT and regression testing</span><span class="chip">Root cause analysis</span><span class="chip">RAID logs</span><span class="chip">Go-to-market</span><span class="chip">0-to-1 initiatives</span><span class="chip">Budget tracking</span></div></div>
-    <div class="group"><b>Customers and stakeholders</b><div class="chips"><span class="chip">Customer journey mapping</span><span class="chip">Discovery workshops</span><span class="chip">NPS, CSAT and VoC</span><span class="chip">Change management</span><span class="chip">Training and enablement</span><span class="chip">Digital adoption</span><span class="chip">C-suite engagement</span><span class="chip">SteerCo support</span><span class="chip">Presales support</span><span class="chip">Cross-sell proposals</span><span class="chip">Case studies</span><span class="chip">Vendor coordination</span><span class="chip">M&A integration support</span><span class="chip">Mentoring PMs and BAs</span><span class="chip">Team coordination</span></div></div>
+    <div class="group"><b>Customers and stakeholders</b><div class="chips"><span class="chip">Customer journey mapping</span><span class="chip">Discovery workshops</span><span class="chip">NPS, CSAT and VoC</span><span class="chip">Change management</span><span class="chip">Training and enablement</span><span class="chip">Digital adoption</span><span class="chip">C-suite engagement</span><span class="chip">SteerCo support</span><span class="chip">Presales support</span><span class="chip">Cross-sell proposals</span><span class="chip">Case studies</span><span class="chip">Vendor coordination</span><span class="chip">M&amp;A integration support</span><span class="chip">Mentoring PMs and BAs</span><span class="chip">Team coordination</span></div></div>
     <div class="group"><b>AI and automation</b><div class="chips"><span class="chip">Claude</span><span class="chip">ChatGPT</span><span class="chip">Gemini</span><span class="chip">Microsoft Copilot</span><span class="chip">Glean</span><span class="chip">Claude Code</span><span class="chip">Lovable</span><span class="chip">Replit</span><span class="chip">n8n</span><span class="chip">Zapier</span><span class="chip">Make</span><span class="chip">AI agents</span><span class="chip">RAG</span><span class="chip">Prompt libraries</span><span class="chip">Agent catalogs and model registries</span><span class="chip">AI observability</span><span class="chip">LLM evaluation</span><span class="chip">Vibe coding</span></div></div>
     <div class="group"><b>Platforms and tools</b><div class="chips"><span class="chip">Salesforce</span><span class="chip">SharePoint</span><span class="chip">JIRA</span><span class="chip">Confluence</span><span class="chip">Asana</span><span class="chip">Figma</span><span class="chip">Postman</span><span class="chip">Microsoft 365</span><span class="chip">SSO and connectors</span><span class="chip">Azure</span><span class="chip">AWS</span><span class="chip">GCP</span></div></div>
     <div class="group"><b>Data and research</b><div class="chips"><span class="chip">SQL</span><span class="chip">Python</span><span class="chip">Excel</span><span class="chip">Tableau</span><span class="chip">Power BI</span><span class="chip">Qualtrics</span><span class="chip">Gartner</span><span class="chip">Forrester</span><span class="chip">Statista</span><span class="chip">Factiva</span><span class="chip">Capital IQ</span></div></div>
@@ -644,9 +648,9 @@
       <p>Just tell me who you are and what role you're hiring for. It'll open an email to me with everything filled in, and I'll get back to you with my resume for that role.</p>
     </div>
     <form class="rform" id="rform" novalidate>
-      <label>Your name<input name="name" autocomplete="name" required></label>
-      <label>Company<input name="company" autocomplete="organization" required></label>
-      <label class="full">Role you're hiring for (optional)<input name="role" placeholder="e.g. Product Owner, Customer Success Manager"></label>
+      <label>Your name<input type="text" name="name" autocomplete="name" required></label>
+      <label>Company<input type="text" name="company" autocomplete="organization" required></label>
+      <label class="full">Role you're hiring for (optional)<input type="text" name="role" placeholder="e.g. Product Owner, Customer Success Manager"></label>
       <div class="row">
         <button class="btn p" type="submit">Request my resume</button>
         <button class="btn s" type="button" id="copymail">Copy my email</button>
@@ -854,7 +858,7 @@
   <button type="button" class="a11y-reset" id="a11yReset">Reset all</button>
   <p class="a11y-note">Saved on this device only.</p>
 </div>
-<button class="ask-fab" id="askFab" aria-controls="askPanel" aria-expanded="false" aria-label="Chat with my AI twin"><span class="spark"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l1.9 5.6L19.5 9.5l-5.6 1.9L12 17l-1.9-5.6L4.5 9.5l5.6-1.9L12 2Zm6.5 11 .9 2.6 2.6.9-2.6.9-.9 2.6-.9-2.6-2.6-.9 2.6-.9.9-2.6Z" fill="currentColor"/></svg></span><span class="lbl">Chat with my AI twin</span><i class="dot"></i></button>
+<button type="button" class="ask-fab" id="askFab" aria-controls="askPanel" aria-expanded="false" aria-label="Chat with my AI twin"><span class="spark"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l1.9 5.6L19.5 9.5l-5.6 1.9L12 17l-1.9-5.6L4.5 9.5l5.6-1.9L12 2Zm6.5 11 .9 2.6 2.6.9-2.6.9-.9 2.6-.9-2.6-2.6-.9 2.6-.9.9-2.6Z" fill="currentColor"/></svg></span><span class="lbl">Chat with my AI twin</span><i class="dot"></i></button>
 <section class="ask-panel" id="askPanel" data-lenis-prevent role="dialog" aria-modal="false" aria-labelledby="askTitle">
   <div class="ask-head"><div class="av">UK</div><div><b id="askTitle">Utkarsh's AI Twin</b><small>Trained on my background. Ask away.</small></div>
     <div class="hb"><button type="button" id="askMin" aria-label="Minimise chat" title="Minimise"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg></button></div></div>
@@ -865,7 +869,7 @@
     <button type="button">Walk me through your career</button>
     <button type="button">Are you open to relocation?</button>
   </div>
-  <form class="ask-form" id="askForm"><label for="askInput" style="position:absolute;left:-9999px">Your question</label><input id="askInput" maxlength="600" placeholder="Ask me anything about my work..." autocomplete="off"><button type="submit" id="askSend">Send</button></form>
+  <form class="ask-form" id="askForm"><label for="askInput" style="position:absolute;left:-9999px">Your question</label><input type="text" id="askInput" maxlength="600" placeholder="Ask me anything about my work..." autocomplete="off"><button type="submit" id="askSend">Send</button></form>
   <div class="ask-note">AI can get things wrong. For anything important, <a href="mailto:utkarsh.kashyap768@gmail.com">email the real me</a>.</div>
 </section>
 <script>
@@ -908,7 +912,8 @@
     return out.join('');
   }
   function add(role, text){ var d = document.createElement('div'); d.className = 'msg ' + (role === 'user' ? 'me' : 'ai'); if (role === 'user') d.textContent = text; else d.innerHTML = render(text); log.appendChild(d); log.scrollTop = log.scrollHeight; return d; }
-  function open(){ panel.classList.add('open'); fab.setAttribute('aria-expanded','true'); fab.classList.add('mini'); fab.classList.remove('unread');
+  function open(){ var ap = document.getElementById('a11yPanel'); if (ap && !ap.hidden) { ap.hidden = true; var ab = document.getElementById('a11yBtn'); if (ab) ab.setAttribute('aria-expanded', 'false'); }
+    panel.classList.add('open'); fab.setAttribute('aria-expanded','true'); fab.classList.add('mini'); fab.classList.remove('unread');
     if (!greeted) { greeted = true;
       history = load();
       if (history.length) { add('assistant', "Welcome back! Here's where we left off."); history.forEach(function(m){ add(m.role, m.content); }); sugg.style.display = 'none'; }
@@ -925,8 +930,8 @@
     var t = document.createElement('div'); t.className = 'msg ai typing'; t.innerHTML = '<i></i><i></i><i></i>'; log.appendChild(t); log.scrollTop = log.scrollHeight;
     fetch(API, {method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify({messages: history.slice(-12)})})
       .then(function(r){ return r.json(); })
-      .then(function(d){ var a = d.reply || "I can't answer right now. Email me at utkarsh.kashyap768@gmail.com and I'll get back to you."; t.classList.remove('typing'); t.innerHTML = render(a); history.push({role:'assistant', content:a}); save(); if (!panel.classList.contains('open')) fab.classList.add('unread'); })
-      .catch(function(){ t.classList.remove('typing'); t.innerHTML = render("I couldn't connect just now. Email me at utkarsh.kashyap768@gmail.com and I'll get back to you."); })
+      .then(function(d){ var a = d.reply; t.classList.remove('typing'); if (a) { t.innerHTML = render(a); history.push({role:'assistant', content:a}); } else { t.innerHTML = render("I can't answer right now. Email me at utkarsh.kashyap768@gmail.com and I'll get back to you."); if (history.length && history[history.length-1].role === 'user') history.pop(); } save(); if (!panel.classList.contains('open')) fab.classList.add('unread'); })
+      .catch(function(){ t.classList.remove('typing'); t.innerHTML = render("I couldn't connect just now. Email me at utkarsh.kashyap768@gmail.com and I'll get back to you."); if (history.length && history[history.length-1].role === 'user') { history.pop(); save(); } })
       .finally(function(){ busy = false; send.disabled = false; log.scrollTop = log.scrollHeight; input.focus(); if (window.goatcounter && window.goatcounter.count) { try { window.goatcounter.count({path:'ask-ai', title:'Asked AI twin', event:true}); } catch(e){} } });
   }
   form.addEventListener('submit', function(e){ e.preventDefault(); ask(input.value); });
@@ -960,7 +965,8 @@
     window.dispatchEvent(new Event('resize'));
   }
   function save(){ try { localStorage.setItem(KEY, JSON.stringify(st)); } catch (e) {} apply(); }
-  function open(){ panel.hidden = false; btn.setAttribute('aria-expanded', 'true'); var f = panel.querySelector('[data-size][aria-pressed="true"]'); if (f) f.focus(); }
+  function open(){ var cp = document.getElementById('askPanel'); if (cp && cp.classList.contains('open')) document.getElementById('askMin').click();
+    panel.hidden = false; btn.setAttribute('aria-expanded', 'true'); var f = panel.querySelector('[data-size][aria-pressed="true"]'); if (f) f.focus(); }
   function close(focusBtn){ if (panel.hidden) return; panel.hidden = true; btn.setAttribute('aria-expanded', 'false'); if (focusBtn) btn.focus(); }
   btn.addEventListener('click', function(){ panel.hidden ? open() : close(true); });
   document.getElementById('a11yClose').addEventListener('click', function(){ close(true); });
