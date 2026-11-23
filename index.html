@@ -87,7 +87,13 @@
   .xp li{padding-left:16px;position:relative}
   .xp li:before{content:"";position:absolute;left:0;top:.6em;width:6px;height:6px;border-radius:50%;background:var(--emerald)}
 
-  .proj{grid-column:span 6;min-height:280px}
+  .proj{grid-column:span 4;min-height:280px;display:flex;flex-direction:column}
+  .nw{white-space:nowrap}
+  .proj .why{font-weight:700;color:var(--ink);margin-bottom:10px}
+  .proj.dark .why{color:#fff}
+  .proj .chips{margin-top:auto;padding-top:18px}
+  .proj .go{align-self:flex-start}
+  .proj .go.try{background:none;border:0;padding:0;font:inherit;font-weight:700;color:var(--indigo);text-decoration:underline;text-underline-offset:4px;cursor:pointer}
   .proj.dark{background:var(--ink);color:#C7CEDB}
   .proj.dark h3,.proj.dark h2{color:#fff}
   .proj.dark h2{color:#98A2B3}
@@ -367,7 +373,7 @@
     @page{margin:14mm}
     html,body{background:#fff!important}
     body{padding:0!important;font-size:10.5pt;color:#0E1430}
-    body:before,.rail,.skip,.ask-fab,.ask-panel,.a11y-panel,.journey,.stat .tex,#resume,.contact,footer .social{display:none!important}
+    body:before,.rail,.skip,.ask-fab,.ask-panel,.a11y-panel,.journey,.stat .tex,#resume,.contact,footer .social,.proj .try{display:none!important}
     .print-only{display:block;grid-column:1/-1;font-weight:700;font-size:9.5pt;color:#4338CA;margin:0 0 2mm}
     .grid{gap:10px!important}
     .t,.how .s,.seat,.intro h1 .w{opacity:1!important;transform:none!important;animation:none!important;transition:none!important}
@@ -612,25 +618,34 @@
   <section class="t proj dark" id="projects">
     <h2>Freelance project</h2>
     <h3>Ishqiyaa.com</h3>
-    <p>A friend's self-funded company needed a way to take paid bookings online, so I built it. The site books appointments, sends meeting invites to both the guide and the guest, and takes payments through Razorpay, which I integrated myself. These days I look after their product, design and engineering.</p>
+    <p class="why">A friend's self-funded company needed a way to take paid bookings online.</p>
+    <p>I built the site with Lovable. It books the appointment, emails a meeting invite to both the guide and the guest, and takes payment through Razorpay, which I integrated myself. I still run their product, design and engineering.</p>
     <div class="chips"><span class="chip">Lovable</span><span class="chip">Razorpay</span><span class="chip">Product management</span></div>
     <a class="go" href="https://ishqiyaa.com" target="_blank" rel="noopener">Visit ishqiyaa.com</a>
     <div class="orb" aria-hidden="true"></div>
   </section>
   <section class="t proj">
     <h2>Personal project</h2>
-    <h3>My AI job application co-pilot</h3>
-    <p>Tailoring a resume for every single job was eating my evenings, so I built an agent to help. It reads the job description, tailors my resume, scores it against the JD and pings me on Telegram. Nothing goes out until I approve it.</p>
+    <h3>AI job application <span class="nw">co-pilot</span></h3>
+    <p class="why">Tailoring a resume for every job was eating my evenings.</p>
+    <p>So I built an agent in n8n that runs on my Mac. It reads a job description, tailors my resume to it, scores the match and sends it to me on Telegram. I decide which jobs to go ahead with, from Telegram or a small dashboard on my laptop.</p>
     <div class="chips"><span class="chip">n8n</span><span class="chip">Groq</span><span class="chip">Telegram bot</span><span class="chip">Docker</span></div>
+  </section>
+  <section class="t proj">
+    <h2>Personal project</h2>
+    <h3>My AI twin</h3>
+    <p class="why">Recruiters have questions at all hours, and a static page can't answer them.</p>
+    <p>So I built the chat on this page. It runs on a Cloudflare Worker with an open-source model through Groq, answers in my voice from details I've checked, keeps the conversation for a day, and works in most languages.</p>
+    <div class="chips"><span class="chip">Cloudflare Workers</span><span class="chip">Groq</span><span class="chip">Prompt design</span><span class="chip">JavaScript</span></div>
+    <button type="button" class="go try" id="tryTwin">Try my AI twin</button>
   </section>
 
   <section class="t tools">
     <h2>What I work with</h2>
-    <div class="group"><b>Product and delivery</b><div class="chips"><span class="chip">Product management</span><span class="chip">SaaS platforms</span><span class="chip">PRDs with edge cases</span><span class="chip">BRDs and FRDs</span><span class="chip">User stories and acceptance criteria</span><span class="chip">Backlog and sprint planning</span><span class="chip">SDLC</span><span class="chip">Agile and Scrum</span><span class="chip">Wireframes and mockups</span><span class="chip">AI prototypes</span><span class="chip">POC management</span><span class="chip">UAT and regression testing</span><span class="chip">Root cause analysis</span><span class="chip">RAID logs</span><span class="chip">Go-to-market</span><span class="chip">0-to-1 initiatives</span><span class="chip">Budget tracking</span></div></div>
-    <div class="group"><b>Customers and stakeholders</b><div class="chips"><span class="chip">Customer journey mapping</span><span class="chip">Discovery workshops</span><span class="chip">NPS, CSAT and VoC</span><span class="chip">Change management</span><span class="chip">Training and enablement</span><span class="chip">Digital adoption</span><span class="chip">C-suite engagement</span><span class="chip">SteerCo support</span><span class="chip">Presales support</span><span class="chip">Cross-sell proposals</span><span class="chip">Case studies</span><span class="chip">Vendor coordination</span><span class="chip">M&amp;A integration support</span><span class="chip">Mentoring PMs and BAs</span><span class="chip">Team coordination</span></div></div>
-    <div class="group"><b>AI and automation</b><div class="chips"><span class="chip">Claude</span><span class="chip">ChatGPT</span><span class="chip">Gemini</span><span class="chip">Microsoft Copilot</span><span class="chip">Glean</span><span class="chip">Claude Code</span><span class="chip">Lovable</span><span class="chip">Replit</span><span class="chip">n8n</span><span class="chip">Zapier</span><span class="chip">Make</span><span class="chip">AI agents</span><span class="chip">RAG</span><span class="chip">Prompt libraries</span><span class="chip">Agent catalogs and model registries</span><span class="chip">AI observability</span><span class="chip">LLM evaluation</span><span class="chip">Vibe coding</span></div></div>
-    <div class="group"><b>Platforms and tools</b><div class="chips"><span class="chip">Salesforce</span><span class="chip">SharePoint</span><span class="chip">JIRA</span><span class="chip">Confluence</span><span class="chip">Asana</span><span class="chip">Figma</span><span class="chip">Postman</span><span class="chip">Microsoft 365</span><span class="chip">SSO and connectors</span><span class="chip">Azure</span><span class="chip">AWS</span><span class="chip">GCP</span></div></div>
-    <div class="group"><b>Data and research</b><div class="chips"><span class="chip">SQL</span><span class="chip">Python</span><span class="chip">Excel</span><span class="chip">Tableau</span><span class="chip">Power BI</span><span class="chip">Qualtrics</span><span class="chip">Gartner</span><span class="chip">Forrester</span><span class="chip">Statista</span><span class="chip">Factiva</span><span class="chip">Capital IQ</span></div></div>
+    <div class="group"><b>Product and delivery</b><div class="chips"><span class="chip">Product management</span><span class="chip">PRDs and user stories</span><span class="chip">Backlog and sprint planning</span><span class="chip">Agile and Scrum</span><span class="chip">Wireframes and mockups</span><span class="chip">AI prototypes</span><span class="chip">UAT and testing</span><span class="chip">Go-to-market</span></div></div>
+    <div class="group"><b>Customers and change</b><div class="chips"><span class="chip">Customer journey mapping</span><span class="chip">Discovery workshops</span><span class="chip">NPS, CSAT and VoC</span><span class="chip">Change management and adoption</span><span class="chip">Training and enablement</span><span class="chip">Presales support</span></div></div>
+    <div class="group"><b>AI and automation</b><div class="chips"><span class="chip">Claude and Claude Code</span><span class="chip">ChatGPT</span><span class="chip">Gemini Enterprise</span><span class="chip">Microsoft Copilot and Glean</span><span class="chip">AI agents and RAG</span><span class="chip">n8n</span><span class="chip">Zapier and Make</span></div></div>
+    <div class="group"><b>Tools and data</b><div class="chips"><span class="chip">JIRA and Confluence</span><span class="chip">Salesforce</span><span class="chip">SQL and Python</span><span class="chip">Excel</span><span class="chip">Tableau</span><span class="chip">Azure, AWS and GCP</span></div></div>
   </section>
   <section class="t creds">
     <h2>Certifications</h2>
@@ -876,6 +891,7 @@
 (function(){
   var API = 'https://ask-utkarsh.utkarsh-kashyap768.workers.dev/';
   var fab = document.getElementById('askFab'), panel = document.getElementById('askPanel'), log = document.getElementById('askLog');
+  var tryBtn = document.getElementById('tryTwin'); if (tryBtn) tryBtn.addEventListener('click', function(){ if (!panel.classList.contains('open')) fab.click(); else document.getElementById('askInput').focus(); });
   var form = document.getElementById('askForm'), input = document.getElementById('askInput'), send = document.getElementById('askSend'), sugg = document.getElementById('askSugg');
   var KEY = 'ukTwinChat', TTL = 24 * 60 * 60 * 1000;
   var history = [], busy = false, greeted = false;
